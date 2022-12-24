@@ -1,0 +1,202 @@
+.main {
+  --radius: 2.5rem;
+  border-radius: var(--radius);
+  background-color: var(--box-background);
+  margin: 0 4rem 4rem 0;
+  padding: 3rem 3.5rem;
+  filter: drop-shadow(0px 2px 2px grey);
+  display: flex;
+  gap: 3rem;
+}
+
+.filter {
+  background-color: var(--comp-background);
+  height: 100%;
+  border-radius: var(--radius);
+  width: 23.7rem;
+  min-width: 23.7rem;
+  padding: 2.2rem 4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+  overflow: hidden;
+  h2 {
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 1.2rem;
+  }
+  div {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    ul {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 0.8rem;
+      li {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        padding: 0.6rem 1.4rem;
+        background-color: var(--box-background);
+        --radius: 1rem;
+        border-radius: var(--radius);
+        &:hover {
+          background-color: var(--contrast-background);
+          opacity: 75%;
+          img {
+            filter: brightness(0) invert(1) contrast(1);
+          }
+        }
+        &:has(input[type="checkbox"]:checked) {
+          background-color: var(--contrast-background);
+          img {
+            filter: brightness(0) invert(1) contrast(1);
+          }
+        }
+        img {
+          width: 1.7rem;
+          height: 1.7rem;
+        }
+        input {
+          opacity: 0;
+          position: absolute;
+          z-index: 2;
+          width: 100%;
+          cursor: pointer;
+          height: 100%;
+        }
+      }
+    }
+  }
+
+  & > :nth-child(2) {
+    li {
+      width: 47%;
+      padding: 0.3rem 1.4rem;
+      img {
+        width: 2.3rem;
+        height: 2.3rem;
+      }
+    }
+  }
+
+  & > :nth-child(3) {
+    ul > :last-child {
+      margin-right: 18%;
+    }
+    ul > :nth-last-child(2) {
+      margin-left: 18%;
+    }
+  }
+}
+
+.view {
+  overflow-y: scroll;
+  .items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3rem;
+    justify-content: center;
+    --radius: 1.5rem;
+    .card {
+      background-color: var(--comp-background);
+      overflow: hidden;
+      border-radius: var(--radius);
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      height: 24rem;
+      width: 20rem;
+      position: relative;
+      &::after {
+        content: "";
+        position: absolute;
+        border-radius: var(--radius);
+        background-color: var(--box-background);
+        opacity: 45%;
+        width: 10rem;
+        height: 10rem;
+        z-index: 0;
+        top: 52%;
+        right: -13%;
+        transform: rotate(45deg);
+      }
+      &::before {
+        content: "";
+        position: absolute;
+        border-radius: var(--radius);
+        background-color: var(--box-background);
+        opacity: 45%;
+        width: 10rem;
+        height: 10rem;
+        z-index: 0;
+        top: 34%;
+        left: -11%;
+        transform: rotate(45deg);
+      }
+      .input {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        z-index: 2;
+        opacity: 0;
+      }
+      .details {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        .detail {
+          display: flex;
+          background-color: var(--contrast-background);
+          border-radius: var(--radius);
+          gap: 0.5rem;
+          padding: 0.2rem 1rem;
+          color: var(--box-background);
+          font-size: 1.3rem;
+          font-weight: 500;
+
+          z-index: 2;
+        }
+        .favorite {
+          align-self: flex-end;
+          width: 2.4rem;
+          height: 2.4rem;
+          z-index: 3;
+        }
+      }
+      .point {
+        width: 14rem;
+        height: 14rem;
+        z-index: 1;
+        margin: 0 0.6rem;
+      }
+      .nameplant {
+        font-weight: 500;
+        text-transform: capitalize;
+        font-size: 1.3rem;
+        margin-top: 0.6rem;
+        width: 100%;
+        z-index: 2;
+      }
+      .vibration {
+        display: flex;
+        background-color: var(--contrast-background);
+        border-radius: var(--radius);
+        gap: 0.5rem;
+        padding: 0.2rem 3rem 0.2rem 1rem;
+        color: var(--box-background);
+        font-size: 1.3rem;
+        font-weight: 500;
+        position: absolute;
+        right: -11%;
+        bottom: 1rem;
+        z-index: 2;
+      }
+    }
+  }
+}
