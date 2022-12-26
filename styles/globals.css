@@ -39,17 +39,20 @@ li {
   html {
     color-scheme: var(--color-scheme);
   }
-  /* :root {
-    --main-background: #2f353a;
-    --color-scheme: dark;
-  } */
   :root {
+    --main-background: #2f353a;
+    --contrast-background: #2f353a;
+    --comp-background: var(--main-background);
+    --box-background: rgb(199, 165, 165);
+    --color-scheme: dark;
+  }
+  /* :root {
     --main-background: #dbcdf0;
     --contrast-background: #2f353a;
     --comp-background: var(--main-background);
     --box-background: #fff;
     --color-scheme: light;
-  }
+  } */
 }
 
 @media (prefers-color-scheme: light) {

@@ -7,17 +7,17 @@ import crystals from "./assets/crystals.svg";
 import favorite from "./assets/favorite.svg";
 import settings from "./assets/settings.svg";
 
-export default function Navigation() {
+export default function TheNavigation() {
   return (
     <nav className={styles.nav}>
       <ul>
         <li>
-          <Link href="/home" >
+          <Link href="/plants" >
             <Image className={styles.icon} src={shop} alt="shop icon" />
           </Link>
         </li>
         <li>
-          <Link href="/home">
+          <Link href="/plants">
             <Image className={styles.icon} src={cart} alt="cart icon" />
           </Link>
         </li>
@@ -27,7 +27,7 @@ export default function Navigation() {
           </Link>
         </li>
         <li>
-          <Link href="/home">
+          <Link href="/plants">
             <Image
               className={styles.icon}
               src={favorite}
@@ -36,7 +36,7 @@ export default function Navigation() {
           </Link>
         </li>
         <li>
-          <Link href="/home">
+          <Link href="/plants">
             <Image className={styles.icon} src={settings} alt="settings icon" />
           </Link>
         </li>

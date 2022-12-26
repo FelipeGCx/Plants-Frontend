@@ -95,6 +95,26 @@
 
 .view {
   overflow-y: scroll;
+  position: relative;
+  .navsref{
+    display: flex;
+    position: sticky;
+    top:0;
+    background: var(--box-background);
+    z-index: 5;
+    padding: 0.6rem;
+    gap: 0.5rem;
+    a{
+    font-size: 1.4rem;
+    text-transform: capitalize;
+    font-style: italic;
+    font-weight: 400;
+    &:nth-child(odd)::after{
+    content: ">";
+    padding-left:0.5rem;
+    }
+    }
+  }
   .items {
     display: flex;
     flex-wrap: wrap;

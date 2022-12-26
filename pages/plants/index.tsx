@@ -75,6 +75,10 @@ export default function Plants() {
         </div>
       </section>
       <section className={styles.view}>
+        <div className={styles.navsref}>
+          <a href="">Plantas</a>
+          <a href="">Todas</a>
+        </div>
         <ul className={styles.items}>
           {PlantsList.map((plant, i) => {
             return (
