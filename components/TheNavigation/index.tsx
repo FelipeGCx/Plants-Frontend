@@ -13,23 +13,23 @@ export default function TheNavigation() {
       <ul>
         <li>
           <Link href="/plants" >
-            <Image className={styles.icon} src={shop} alt="shop icon" />
+            <Image className={styles.navicon} src={shop} alt="shop icon" />
           </Link>
         </li>
         <li>
           <Link href="/plants">
-            <Image className={styles.icon} src={cart} alt="cart icon" />
+            <Image className={styles.navicon} src={cart} alt="cart icon" />
           </Link>
         </li>
         <li>
           <Link href="/crystals">
-            <Image className={styles.icon} src={crystals} alt="crystals icon" />
+            <Image  className={styles.navicon} src={crystals} alt="crystals icon" />
           </Link>
         </li>
         <li>
           <Link href="/plants">
             <Image
-              className={styles.icon}
+              className={styles.navicon}
               src={favorite}
               alt="whishlist icon"
             />
@@ -37,7 +37,7 @@ export default function TheNavigation() {
         </li>
         <li>
           <Link href="/plants">
-            <Image className={styles.icon} src={settings} alt="settings icon" />
+            <Image  className={styles.navicon} src={settings} alt="settings icon" width={48} height={48}/>
           </Link>
         </li>
       </ul>

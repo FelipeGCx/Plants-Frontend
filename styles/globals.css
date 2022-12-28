@@ -14,12 +14,12 @@ body {
 }
 
 body {
-  color: black;
+  color: var(--font-color);
   background: var(--main-background);
 }
 
 a {
-  color: inherit;
+  color: var(--font-color);
   text-decoration: none;
   display: flex;
 }
@@ -33,6 +33,10 @@ li {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
+  color: var(--font-color);
+}
+.icon{
+filter: var(--icon-filter);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -40,11 +44,23 @@ li {
     color-scheme: var(--color-scheme);
   }
   :root {
-    --main-background: #2f353a;
-    --contrast-background: #2f353a;
-    --comp-background: var(--main-background);
-    --box-background: rgb(199, 165, 165);
+    --background-color: #3D413D;
+    --page-color: #2f353a;
+    --box-color: #262a2e;
+    --contrast-color: #e2e2e2;
+    --active-color: #1b1b1b;
+    --opacity-color: #232528;
+    --font-color: #ffffff;
+    --box-hard-color: #1a0a34;
+    --box-hard-var-color: #d9d9d9;
     --color-scheme: dark;
+    --icon-filter: brightness(0) invert(1) contrast(1);
+    
+    --main-background: var(--background-color);
+    --contrast-background: var(--page-color);
+    --comp-background: var(--background-color);
+    --box-background: var(--page-color);
+    
   }
   /* :root {
     --main-background: #dbcdf0;
@@ -60,9 +76,21 @@ li {
     color-scheme: var(--color-scheme);
   }
   :root {
-    --main-background: #dbcdf0;
-    --contrast-background: #2f353a;
-    --box-background: #fff;
+    --background-color: #dbcdf0;
+    --page-color: #ffffff;
+    --box-color: #dbcdf0;
+    --contrast-color: #2f353a;
+    --active-color: #2f353a;
+    --opacity-color: #ebe4f7;
+    --font-color: #262a2e;
+    --box-hard-color: #b597e7;
+    --box-hard-var-color: #b597e7;
     --color-scheme: light;
+    --icon-filter: brightness(1) invert(0) contrast(1);
+    
+    --main-background: var(--background-color);
+    --contrast-background: var(--page-color);
+    --comp-background: var(--background-color);
+    --box-background: var(--page-color);
   }
 }

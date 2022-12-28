@@ -17,7 +17,7 @@ const zodiacList = zodiac.map((item) => {
   return (
     <li>
       <input type="checkbox" name="zodiac" id={item.sign} />
-      <Image src={item.icon} alt={item.alt} width={20} height={20} />
+      <Image className="icon" src={item.icon} alt={item.alt} width={20} height={20} />
     </li>
   );
 });
@@ -26,7 +26,7 @@ const elementsList = elements.map((item) => {
   return (
     <li>
       <input type="checkbox" name="element" id={item.name} />
-      <img src={item.icon} alt={item.alt} />
+      <Image className="icon" src={item.icon} alt={item.alt} width={20} height={20} />
     </li>
   );
 });
@@ -35,7 +35,7 @@ const planetsList = planets.map((item) => {
   return (
     <li>
       <input type="checkbox" name="planet" id={item.name} />
-      <Image src={item.icon} alt={item.alt} width={20} height={20} />
+      <Image className="icon" src={item.icon} alt={item.alt} width={20} height={20} />
     </li>
   );
 });
@@ -113,7 +113,7 @@ export default function Plants() {
                       </span>
                     </div>
                     <Image
-                      className={styles.favorite}
+                      className={styles.favorite, "icon"}
                       src={plant.favorite ? favoriteFilled : favoriteOutline}
                       alt="favorite icon plant"
                       width={18}

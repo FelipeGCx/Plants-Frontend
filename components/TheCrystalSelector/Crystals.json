@@ -1,0 +1,122 @@
+[
+  {
+    "id": 1,
+    "name": "agate",
+    "properties": ["conexión con la tierra", "energia fisica", "confianza"],
+    "benefits": [
+      "estabilización y puesta a tierra cuando estás abrumado",
+      "apoya una conexión profunda con la Tierra y la naturaleza",
+      "ayuda a aceptarte y amarte tal como eres"
+    ],
+    "description": "es una piedra nutritiva y fortalecedora de baja intensidad que apoyan su conexión con la Tierra. Se conectan a tierra y es bueno trabajar con ellos si se siente desconectado, agotado y necesita apoyo. Son piedras tipo “sal de la tierra”, que fomentan la autenticidad, la estabilidad, el pragmatismo, la confianza en uno mismo, el coraje y la fortaleza",
+    "vibration": 7,
+    "price": "40.000",
+    "zodiac": ["geminis", "virgo"],
+    "imageGemstone": "https://firebasestorage.googleapis.com/v0/b/simple-a5eec.appspot.com/o/crystalsGemstone%2Fagate.png?alt=media&token=3a5b81ef-7320-4eb4-9417-b23cd3bb8f4b",
+    "imageCrystal": "https://firebasestorage.googleapis.com/v0/b/simple-a5eec.appspot.com/o/crystalsPoint%2Fagate.png?alt=media&token=e0e2409a-2cc3-4cbe-a8b9-74e4747603a8",
+    "elements": ["tierra"],
+    "planets": ["luna"],
+    "chakra": ["root chakra"],
+    "quantity": 50
+  },
+  {
+    "id": 2,
+    "name": "alexandrite",
+    "properties": ["empoderamiento", "esperanza", "alegría"],
+    "benefits": [
+      "ayuda a sintonizarnos con la frecuencia de la pura alegría divina",
+      "apoya la resiliencia y la capacidad de elegir el estado emocional que habitas",
+      "ayuda a encontrar la fuente de alegría y luz interior"
+    ],
+    "description": "es un tipo de crisoberilo, junto con el ojo de gato. El crisoberilo consiste en óxido de aluminio y berilio y es una piedra muy dura. La característica distintiva de la Alejandrita es que cambia de color según se mire con luz artificial o natural. La alejandrita será de color verde a verde azulado a la luz del día y de rojo a púrpura en el interior, y se describe comúnmente como \"una esmeralda durante el día y un rubí durante la noche\"",
+    "vibration": 0,
+    "price": "40.000",
+    "zodiac": ["geminis"],
+    "imageGemstone": "https://firebasestorage.googleapis.com/v0/b/simple-a5eec.appspot.com/o/crystalsGemstone%2Falexandrite.png?alt=media&token=441b898d-e2e7-4bf4-b9be-80b6dc18ff7b",
+    "imageCrystal": "https://firebasestorage.googleapis.com/v0/b/simple-a5eec.appspot.com/o/crystalsPoint%2Falexandrite.png?alt=media&token=c045055e-3522-4f88-8e63-2d3a27c4d4e6",
+    "elements": ["aire"],
+    "planets": ["mercurio"],
+    "chakra": ["heart chakra"],
+    "quantity": 50
+  },
+  {
+    "id": 3,
+    "name": "amazonite",
+    "properties": ["sinceridad", "claridad", "comunicación"],
+    "benefits": [
+      "te ayuda a hablar lo que hay en tu corazón",
+      "apoya la fuerza interior para establecer límites",
+      "ayuda a resolver conflictos internos"
+    ],
+    "description": "La amazonita es un feldespato azul verdoso, un grupo que también contiene piedra lunar y piedra solar. Es opaco con estrías blancas. La amazonita se fractura fácilmente, por lo que generalmente se convierte en cabujones en lugar de facetas",
+    "vibration": 5,
+    "price": "40.000",
+    "zodiac": ["virgo"],
+    "imageGemstone": "https://firebasestorage.googleapis.com/v0/b/simple-a5eec.appspot.com/o/crystalsGemstone%2Famazonite.png?alt=media&token=ed332b1f-8c67-4515-abba-30d909348a13",
+    "imageCrystal": "https://firebasestorage.googleapis.com/v0/b/simple-a5eec.appspot.com/o/crystalsPoint%2Famazonite.png?alt=media&token=c598d9a5-4ae7-48e7-ad71-42794db5f03d",
+    "elements": ["tierra", "agua"],
+    "planets": ["urano"],
+    "chakra": ["heart chakra", "throat chakra"],
+    "quantity": 50
+  },
+  {
+    "id": 4,
+    "name": "amber",
+    "properties": ["alegría", "vitalidad", "energia fisica"],
+    "benefits": [
+      "apoya un estado de ánimo cálido y alegre",
+      "purifica la energía negativa o estancada",
+      "apoya el bienestar físico y la curación"
+    ],
+    "description": "Amber es savia fosilizada que lleva la energía del sol, el calor y el bienestar. Es enriquecedor y bueno para las personas que se recuperan de una enfermedad o que necesitan consuelo. Puede transmutar energías negativas o estancadas en energía positiva. De esta manera puede ser protector.",
+    "vibration": 3,
+    "price": "40.000",
+    "zodiac": ["leo", "acuario"],
+    "imageGemstone": "https://firebasestorage.googleapis.com/v0/b/simple-a5eec.appspot.com/o/crystalsGemstone%2Fambar.png?alt=media&token=8a20aea5-5814-42a9-91bd-63318f0c59f7",
+    "imageCrystal": "https://firebasestorage.googleapis.com/v0/b/simple-a5eec.appspot.com/o/crystalsPoint%2Fambar.png?alt=media&token=a586bcde-ab2b-4234-b778-7db8ab69fd87",
+    "elements": ["fuego"],
+    "planets": ["sol"],
+    "chakra": ["solar plexus chakra"],
+    "quantity": 50
+  },
+  {
+    "id": 5,
+    "name": "amethyst",
+    "properties": ["protección", "intuición", "claridad"],
+    "benefits": [
+      "protege de la energía negativa",
+      "mejora tu intuición y habilidades psíquicas",
+      "te ayuda a romper malos hábitos"
+    ],
+    "description": "La amatista es una piedra poderosa con muchos beneficios. Crea una burbuja de protección espiritual contra la energía negativa. La amatista despierta una conciencia superior y facilita la meditación y la intuición. Puede ayudarlo a tomar decisiones más sabias sin confusión emocional, aumentar su fuerza interior y profundizar su conciencia espiritual",
+    "vibration": 3,
+    "price": "40.000",
+    "zodiac": ["virgo", "sagitario", "capricornio", "acuario", "piscis"],
+    "imageGemstone": "https://firebasestorage.googleapis.com/v0/b/simple-a5eec.appspot.com/o/crystalsGemstone%2Famethyst.png?alt=media&token=28949993-28fa-46a4-904e-1d640753d310",
+    "imageCrystal": "https://firebasestorage.googleapis.com/v0/b/simple-a5eec.appspot.com/o/crystalsPoint%2Famethyst.png?alt=media&token=adca0f6e-a85c-404c-88d5-9e12d8035176",
+    "elements": ["aire", "agua"],
+    "planets": ["jupiter"],
+    "chakra": ["crown chakra", "third eye chakra"],
+    "quantity": 50
+  },
+  {
+    "id": 6,
+    "name": "ametrine",
+    "properties": ["crecimiento espiritual", "creatividad", "balance"],
+    "benefits": [
+      "ayuda a tener claridad y a tomar decisiones",
+      "alinea tu voluntad con tu camino espiritual",
+      "ayuda a eliminar tu resistencia al cambio"
+    ],
+    "description": "Ametrine es perfecto para las personas que luchan con la ambivalencia, la procrastinación o la duda causada por el miedo a cometer un error o la preocupación por lo que los demás puedan pensar. Con la certeza de que estás en el camino correcto, tu creatividad y energía se desatarán y podrás seguir adelante",
+    "vibration": 4,
+    "price": "40.000",
+    "zodiac": ["cancer", "libra"],
+    "imageGemstone": "https://firebasestorage.googleapis.com/v0/b/simple-a5eec.appspot.com/o/crystalsGemstone%2Fametrine.png?alt=media&token=1d2f1eb0-e418-4ee5-ab02-35371fb7bed3",
+    "imageCrystal": "https://firebasestorage.googleapis.com/v0/b/simple-a5eec.appspot.com/o/crystalsPoint%2Fametrine.png?alt=media&token=dc5664a2-278d-4289-b783-e97b4067e734",
+    "elements": ["agua, aire"],
+    "planets": ["saturno"],
+    "chakra": ["throat chakra"],
+    "quantity": 50
+  }
+]

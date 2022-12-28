@@ -9,7 +9,7 @@ export default function TheHeader() {
     <>
       <header className={styles.header}>
         <Link href={"/plants"} className={ styles.logo}>
-          <Image src={icon} alt="logo" width={48} height={48} />
+          <Image className="icon" src={icon} alt="logo" width={48} height={48} />
           <h1>Mitra</h1> 
         </Link>
        <TheBrowser/>

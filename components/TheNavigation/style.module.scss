@@ -16,20 +16,25 @@
     gap: 1.3rem;
     position: absolute;
     top: calc(50vh - 55.5vh);
-  }
+  
   li {
     padding: 0.5rem;
     border-radius: var(--radius);
     cursor: pointer;
+    a{
+    .navicon {
+      width: 3.08rem;
+      height: 3.08rem;
+      filter: var(--icon-filter);
+    }
+    }
     &:hover {
       background-color: var(--contrast-background);
-      img {
+      .navicon {
         filter: brightness(0.5) invert(1) contrast(1);
       }
     }
-    .icon {
-      width: 3.08rem;
-      height: 3.08rem;
-    }
+    
+  }
   }
 }

@@ -1,0 +1,44 @@
+[
+    {
+        "id":1,
+        "name":"Doisu",
+        "image": "https://firebasestorage.googleapis.com/v0/b/simple-a5eec.appspot.com/o/potsImage%2Fdoisu.webp?alt=media&token=23a89bd3-63e2-49d1-a696-726c07e488e3",
+        "price": 1,
+        "quantity": 1
+    },
+    {
+        "id":2,
+        "name":"Obqal",
+        "image": "https://firebasestorage.googleapis.com/v0/b/simple-a5eec.appspot.com/o/potsImage%2Fobqal.webp?alt=media&token=06bd33dd-9eaa-4d76-9e3f-7753e1ef2759",
+        "price": 1,
+        "quantity": 1
+    },
+    {
+        "id":3,
+        "name":"Retvu",
+        "image": "https://firebasestorage.googleapis.com/v0/b/simple-a5eec.appspot.com/o/potsImage%2Fretvu.webp?alt=media&token=7a4cc0c3-6308-4d9c-9cf5-7b471348243f",
+        "price": 1,
+        "quantity": 1
+    },
+    {
+        "id":4,
+        "name":"Lirys",
+        "image": "https://firebasestorage.googleapis.com/v0/b/simple-a5eec.appspot.com/o/potsImage%2Flirys.webp?alt=media&token=d898385e-2924-4eec-b2e3-b5ea689f3d58",
+        "price": 1,
+        "quantity": 1
+    },
+    {
+        "id":5,
+        "name":"Mytz",
+        "image": "https://firebasestorage.googleapis.com/v0/b/simple-a5eec.appspot.com/o/potsImage%2Fmytz.webp?alt=media&token=bdba3352-c1d8-4ad9-98c0-61c4d4fe15e0",
+        "price": 1,
+        "quantity": 1
+    },
+    {
+        "id":6,
+        "name":"Zolek",
+        "image": "https://firebasestorage.googleapis.com/v0/b/simple-a5eec.appspot.com/o/potsImage%2Fzolek.webp?alt=media&token=66bfdcb4-7f17-434c-9c74-e06d26fb1f64",
+        "price": 1,
+        "quantity": 1
+    }
+]

@@ -28,7 +28,7 @@ export default function TheHeader() {
             setDisplay("flex");
           }}
         />
-        <Image src={search} alt="search icon" width={48} height={48} />
+        <Image className="icon" src={search} alt="search icon" width={48} height={48} />
       </div>
       <div className={styles.drop} style={{ display: displayDrop }}>
         <div
