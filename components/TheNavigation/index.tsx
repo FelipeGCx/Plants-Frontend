@@ -16,7 +16,7 @@ export default function TheNavigation() {
             <Image className={styles.navicon} src={shop} alt="shop icon" />
           </Link>
         </li>
-        <li>
+        <li className={ styles.cart} data-items="4">
           <Link href="/plants">
             <Image className={styles.navicon} src={cart} alt="cart icon" />
           </Link>

@@ -1,0 +1,10 @@
+.productCard{
+  &::before{
+    content: "";
+    background-color: var(--box-hard-color);
+  }
+  &::after{
+    content: "";
+    background-color: var(--box-hard-color);
+  }
+}

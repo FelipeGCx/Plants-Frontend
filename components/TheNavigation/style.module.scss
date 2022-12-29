@@ -16,25 +16,41 @@
     gap: 1.3rem;
     position: absolute;
     top: calc(50vh - 55.5vh);
-  
-  li {
-    padding: 0.5rem;
-    border-radius: var(--radius);
-    cursor: pointer;
-    a{
-    .navicon {
-      width: 3.08rem;
-      height: 3.08rem;
-      filter: var(--icon-filter);
+
+    .cart[data-items]::before {
+      content: attr(data-items);
+      z-index: 10;
+      height: 1.5rem;
+      padding: 0 .5rem;
+      border-radius: 50%;
+      position: absolute;
+      left: 36px;
+      top: 235px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      align-items: center;
+      justify-content: center;
+      display: flex;
+      color: white;
+      background-color: #e91e63;
     }
-    }
-    &:hover {
-      background-color: var(--contrast-background);
-      .navicon {
-        filter: brightness(0.5) invert(1) contrast(1);
+    li {
+      padding: 0.5rem;
+      border-radius: var(--radius);
+      cursor: pointer;
+      a {
+        .navicon {
+          width: 3.08rem;
+          height: 3.08rem;
+          filter: var(--icon-filter);
+        }
+      }
+      &:hover {
+        background-color: var(--active-color);
+        .navicon {
+          filter: brightness(0.5) invert(1) contrast(1);
+        }
       }
     }
-    
-  }
   }
 }

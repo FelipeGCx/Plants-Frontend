@@ -8,7 +8,7 @@ const card = (o: Pot) => {
   return (
     <li>
       <label htmlFor={o.getName()} className={styles.card}>
-        <input name={o.getName()} type="checkbox" />
+        <input name="pot" value={o.getName()} type="radio" />
         <Image
           src={o.getImage()}
           alt={`pot ${o.getName()}`}

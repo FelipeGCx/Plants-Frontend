@@ -49,8 +49,11 @@ filter: var(--icon-filter);
     --box-color: #262a2e;
     --contrast-color: #e2e2e2;
     --active-color: #1b1b1b;
+    --card-active-color: #e91e63;
+    --card-color: #646464;
     --opacity-color: #232528;
     --font-color: #ffffff;
+    --contrast-font-color: #262a2e;
     --box-hard-color: #1a0a34;
     --box-hard-var-color: #d9d9d9;
     --color-scheme: dark;
@@ -71,6 +74,33 @@ filter: var(--icon-filter);
   } */
 }
 
+@media (prefers-color-scheme: darkd) {
+  html {
+    color-scheme: var(--color-scheme);
+  }
+  :root {
+    --background-color: #dbcdf0;
+    --page-color: #ffffff;
+    --box-color: #dbcdf0;
+    --contrast-color: #2f353a;
+    --active-color: #262a2e;
+    --card-active-color: #262a2e;
+    --card-color: #b597e7;
+    --opacity-color: #ebe4f7;
+    --font-color: #262a2e;
+    --contrast-font-color: #ffffff;
+    --box-hard-color: #b597e7;
+    --box-hard-var-color: #b597e7;
+    --color-scheme: dark;
+    --icon-filter: brightness(1) invert(0) contrast(1);
+    
+    --main-background: var(--background-color);
+    --contrast-background: var(--contrast-color);
+    --comp-background: var(--background-color);
+    --box-background: var(--page-color);
+  }
+}
+
 @media (prefers-color-scheme: light) {
   html {
     color-scheme: var(--color-scheme);
@@ -80,16 +110,19 @@ filter: var(--icon-filter);
     --page-color: #ffffff;
     --box-color: #dbcdf0;
     --contrast-color: #2f353a;
-    --active-color: #2f353a;
+    --active-color: #262a2e;
+    --card-active-color: #262a2e;
+    --card-color: #b597e7;
     --opacity-color: #ebe4f7;
     --font-color: #262a2e;
+    --contrast-font-color: #ffffff;
     --box-hard-color: #b597e7;
     --box-hard-var-color: #b597e7;
     --color-scheme: light;
     --icon-filter: brightness(1) invert(0) contrast(1);
     
     --main-background: var(--background-color);
-    --contrast-background: var(--page-color);
+    --contrast-background: var(--contrast-color);
     --comp-background: var(--background-color);
     --box-background: var(--page-color);
   }

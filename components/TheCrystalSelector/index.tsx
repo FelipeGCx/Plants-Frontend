@@ -8,12 +8,12 @@ const card = (o: Crystal) => {
   return (
     <li>
       <label htmlFor={o.getName()} className={styles.card}>
-        <input name={o.getName()} type="radio" />
+        <input name="crystal" id={o.getName()} type="radio" />
         <Image
           src={o.getImageCrystal()}
           alt={`crystal ${o.getName()}`}
-          width={60}
-          height={60}
+          width={250}
+          height={250}
         />
         <h1>{o.getName()} </h1>
       </label>
