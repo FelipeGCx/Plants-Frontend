@@ -1,10 +1,112 @@
-.productCard{
-  &::before{
+.productCard {
+  --radius: 2.5rem;
+  width: 64rem;
+  height: 13rem;
+  position: relative;
+  background-color: var(--box-color);
+  border-radius: var(--radius);
+  display: flex;
+  padding: 1rem;
+  overflow: hidden;
+  justify-content: space-between;
+  &::before {
     content: "";
-    background-color: var(--box-hard-color);
+    background-color: var(--card-active-color);
+    width: 17rem;
+    height: 19.7rem;
+    rotate: 37.14deg;
+    position: absolute;
+    left: -3.3rem;
+    top: -5.7rem;
+    border-radius: 50%;
+    z-index: 0;
   }
-  &::after{
+  &::after {
     content: "";
-    background-color: var(--box-hard-color);
+    background-color: var(--card-active-color);
+    width: 23.8rem;
+    height: 32rem;
+    rotate: 66.43deg;
+    position: absolute;
+    right: -3.9rem;
+    top: -8.4rem;
+    border-radius: 50%;
+    z-index: 0;
+  }
+  .images {
+    position: relative;
+    & > :nth-child(1) {
+      width: 13rem;
+      height: 13rem;
+      bottom: 2rem;
+      left: -1rem;
+      position: inherit;
+      filter: var(--drop-shadow);
+    }
+    & > :nth-child(2) {
+      width: 5rem;
+      height: 5rem;
+      position: absolute;
+      bottom: -0.5rem;
+      right: 0.5rem;
+      filter: var(--drop-shadow);
+    }
+    z-index: 1;
+  }
+  .details {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    z-index: 1;
+    justify-content: space-between;
+    width: 22rem;
+    h1 {
+      font-size: 1.6rem;
+      font-weight: 500;
+      text-transform: capitalize;
+    }
+    p {
+      text-transform: capitalize;
+      font-size: 1.3rem;
+    }
+    .pill {
+      border-radius: var(--radius);
+      background-color: var(--font-color);
+      color: var(--contrast-font-color);
+      padding: 0.2rem 1rem;
+      font-size: 1.3rem;
+    }
+  }
+  .info {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: space-between;
+    align-items: flex-end;
+    width: 9rem;
+    .actions {
+      display: flex;
+      gap: 1rem;
+      img {
+        width: 2rem;
+        height: 2rem;
+        filter: var(--invert-icon-filter);
+      }
+      z-index: 1;
+    }
+    .prices {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      & > :nth-child(1) {
+        font-weight: 600;
+        font-size: 1.3rem;
+      }
+      & > :nth-child(2) {
+        font-weight: 500;
+        font-size: 1.5rem;
+      }
+      z-index: 1;
+    }
   }
 }

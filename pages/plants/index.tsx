@@ -17,7 +17,13 @@ const zodiacList = zodiac.map((item) => {
   return (
     <li>
       <input type="checkbox" name="zodiac" id={item.sign} />
-      <Image className="icon" src={item.icon} alt={item.alt} width={20} height={20} />
+      <Image
+        className="icon"
+        src={item.icon}
+        alt={item.alt}
+        width={20}
+        height={20}
+      />
     </li>
   );
 });
@@ -26,7 +32,13 @@ const elementsList = elements.map((item) => {
   return (
     <li>
       <input type="checkbox" name="element" id={item.name} />
-      <Image className="icon" src={item.icon} alt={item.alt} width={20} height={20} />
+      <Image
+        className="icon"
+        src={item.icon}
+        alt={item.alt}
+        width={20}
+        height={20}
+      />
     </li>
   );
 });
@@ -35,7 +47,13 @@ const planetsList = planets.map((item) => {
   return (
     <li>
       <input type="checkbox" name="planet" id={item.name} />
-      <Image className="icon" src={item.icon} alt={item.alt} width={20} height={20} />
+      <Image
+        className="icon"
+        src={item.icon}
+        alt={item.alt}
+        width={20}
+        height={20}
+      />
     </li>
   );
 });
@@ -96,7 +114,7 @@ export default function Plants() {
                       style={{
                         opacity:
                           plant.quantity <= 0
-                            ? "1" 
+                            ? "1"
                             : plant.initDate
                             ? "1"
                             : !plant.discount
@@ -104,16 +122,14 @@ export default function Plants() {
                             : "1",
                       }}
                     >
-                      <span>
-                        {!plant.quantity
-                          ? "Agotada"
-                          : plant.initDate
-                          ? "Nuevo"
-                          : `${plant.discount}%`}
-                      </span>
+                      {!plant.quantity
+                        ? "Agotada"
+                        : plant.initDate
+                        ? "Nuevo"
+                        : `${plant.discount}%`}
                     </div>
                     <Image
-                      className={styles.favorite, "icon"}
+                      className={(styles.favorite, "icon")}
                       src={plant.favorite ? favoriteFilled : favoriteOutline}
                       alt="favorite icon plant"
                       width={18}
@@ -130,9 +146,9 @@ export default function Plants() {
                     width={300}
                     height={300}
                   />
-                  <h2 className={ styles.nameplant}>{plant.name}</h2>
+                  <h2 className={styles.nameplant}>{plant.name.toLowerCase()}</h2>
                   <div className={styles.vibration}>
-                    <span>${plant.price || 0}.000</span>
+                    ${plant.price || 0}.000
                   </div>
                 </li>
               </>

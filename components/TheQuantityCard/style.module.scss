@@ -1,0 +1,48 @@
+.quantity {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--opacity-color);
+  border-radius: 5rem;
+  width: 13.7rem;
+  height: 13.7rem;
+  rotate: -45deg;
+  position: inherit;
+  top: -1rem;
+  left: -2rem;
+  gap: 1rem;
+  z-index: 1;
+  h1 {
+    text-transform: capitalize;
+    font-weight: 500;
+    font-size: 1.4rem;
+  }
+  p {
+    font-weight: 500;
+    font-size: 1.3rem;
+    width: 1.5rem;
+    text-align: center;
+  }
+  .shift {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    button {
+      border-radius: var(--radius);
+      background-color: var(--font-color);
+      color: var(--contrast-font-color);
+      padding: 0.5rem;
+      border: none;
+      outline: none;
+      cursor: pointer;
+      img {
+        width: 1.5rem;
+        height: 1.5rem;
+        filter: var(--invert-icon-filter);
+      }
+    }
+  }
+}

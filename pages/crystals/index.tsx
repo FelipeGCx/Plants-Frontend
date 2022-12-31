@@ -26,7 +26,13 @@ const zodiacList = zodiac.map((item) => {
   return (
     <li>
       <input type="checkbox" name="zodiac" id={item.sign} />
-      <Image className="icon" src={item.icon} alt={item.alt} width={20} height={20} />
+      <Image
+        className="icon"
+        src={item.icon}
+        alt={item.alt}
+        width={20}
+        height={20}
+      />
     </li>
   );
 });
@@ -35,7 +41,13 @@ const elementsList = elements.map((item) => {
   return (
     <li>
       <input type="checkbox" name="element" id={item.name} />
-      <Image className="icon" src={item.icon} alt={item.alt} width={20} height={20} />
+      <Image
+        className="icon"
+        src={item.icon}
+        alt={item.alt}
+        width={20}
+        height={20}
+      />
     </li>
   );
 });
@@ -44,7 +56,13 @@ const planetsList = planets.map((item) => {
   return (
     <li>
       <input type="checkbox" name="planet" id={item.name} />
-      <Image className="icon" src={item.icon} alt={item.alt} width={20} height={20} />
+      <Image
+        className="icon"
+        src={item.icon}
+        alt={item.alt}
+        width={20}
+        height={20}
+      />
     </li>
   );
 });
@@ -69,7 +87,7 @@ function elementsDisplay(list: Array<string>) {
     return (
       <li>
         <Image
-        className="icon"
+          className="icon"
           src={icon(element)}
           alt={`${element} icon`}
           width={18}
@@ -139,11 +157,11 @@ export default function Crystals() {
                     }}
                   />
                   <Image
-                    className={styles.favorite, "icon"}
+                    className={styles.favorite}
                     src={crystal.favorite ? favoriteFilled : favoriteOutline}
                     alt="favorite icon crystal"
-                    width={18}
-                    height={18}
+                    width={24}
+                    height={24}
                   />
                   <Image
                     className={styles.point}
@@ -160,7 +178,7 @@ export default function Crystals() {
                     <div className={styles.elements}>
                       <ul>{elementsDisplay(crystal.elements)}</ul>
                       <div className={styles.vibration}>
-                        <span>{crystal.vibration || 0}</span>
+                        {crystal.vibration || 0}
                         <Image
                           className="icon"
                           src={vibrationIcon}

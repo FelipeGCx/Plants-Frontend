@@ -1,16 +1,16 @@
 .main {
   --radius: 2.5rem;
   border-radius: var(--radius);
-  background-color: var(--box-background);
+  background-color: var(--page-color);
   margin: 0 4rem 4rem 0;
   padding: 3rem 3.5rem;
-  box-shadow: 0px 0.4rem 0.4rem 0px rgb(0 0 0 / 25%);
+  box-shadow: var(--shadow);
   display: flex;
   gap: 3rem;
 }
 
 .filter {
-  background-color: var(--comp-background);
+  background-color: var(--box-color);
   height: 100%;
   border-radius: var(--radius);
   width: 23.7rem;
@@ -40,20 +40,19 @@
         align-items: center;
         position: relative;
         padding: 0.6rem 1.4rem;
-        background-color: var(--box-background);
+        background-color: var(--page-color);
         --radius: 1rem;
         border-radius: var(--radius);
         &:hover {
-          background-color: var(--contrast-background);
-          opacity: 75%;
+          background-color: var(--active-color);
           img {
-            filter: brightness(0) invert(1) contrast(1);
+            filter: var(--icon-filter);
           }
         }
         &:has(input[type="checkbox"]:checked) {
-          background-color: var(--contrast-background);
+          background-color: var(--active-color);
           img {
-            filter: brightness(0) invert(1) contrast(1);
+            filter: var(--icon-filter);
           }
         }
         img {
@@ -102,7 +101,7 @@
     justify-content: center;
     --radius: 1.5rem;
     .card {
-      background-color: var(--comp-background);
+      background-color: var(--box-color);
       overflow: hidden;
       border-radius: var(--radius);
       padding: 1rem;
@@ -115,7 +114,7 @@
         content: "";
         position: absolute;
         border-radius: var(--radius);
-        background-color: var(--box-background);
+        background-color: var(--page-color);
         opacity: 45%;
         width: 10rem;
         height: 10rem;
@@ -128,7 +127,7 @@
         content: "";
         position: absolute;
         border-radius: var(--radius);
-        background-color: var(--box-background);
+        background-color: var(--page-color);
         opacity: 45%;
         width: 10rem;
         height: 10rem;
@@ -149,6 +148,7 @@
         width: 2.4rem;
         height: 2.4rem;
         z-index: 3;
+        filter: var(--icon-filter);
       }
       .point {
         width: 14rem;
@@ -186,24 +186,24 @@
           }
           .vibration {
             display: flex;
-            background-color: var(--contrast-background);
+            background-color: var(--font-color);
+            color: var(--contrast-font-color);
             border-radius: var(--radius);
             gap: 0.5rem;
             padding: 0.2rem 3rem 0.2rem 1rem;
-            color: var(--box-background);
             font-size: 1.3rem;
             font-weight: 500;
             position: absolute;
             right: -22%;
             img {
-              filter: brightness(0) invert(1) contrast(1);
+              filter: var(--invert-icon-filter);
             }
           }
         }
       }
     }
     .benefits {
-      background-color: var(--comp-background);
+      background-color: var(--box-color);
       border-radius: var(--radius);
       padding: 2rem;
       position: relative;
@@ -253,8 +253,7 @@
         content: "";
         position: absolute;
         border-radius: var(--radius);
-        background-color: var(--box-background);
-        opacity: 45%;
+        background-color: var(--opacity-color);
         width: 87%;
         height: 195%;
         z-index: 0;
@@ -266,8 +265,7 @@
         content: "";
         position: absolute;
         border-radius: var(--radius);
-        background-color: var(--box-background);
-        opacity: 45%;
+        background-color: var(--opacity-color);
         width: 30%;
         height: 118%;
         z-index: 0;
@@ -277,7 +275,7 @@
       }
     }
     .propierties {
-      background-color: var(--comp-background);
+      background-color: var(--box-color);
       border-radius: var(--radius);
       padding: 2rem;
       width: calc(100% - 2rem);
@@ -296,7 +294,7 @@
         font-size: 1.2rem;
         font-weight: 400;
         text-transform: lowercase;
-        &::first-letter{
+        &::first-letter {
           text-transform: uppercase;
         }
       }
@@ -315,8 +313,7 @@
         content: "";
         position: absolute;
         border-radius: var(--radius);
-        background-color: var(--box-background);
-        opacity: 45%;
+        background-color: var(--opacity-color);
         width: 37%;
         height: 177%;
         z-index: 0;
@@ -328,8 +325,7 @@
         content: "";
         position: absolute;
         border-radius: var(--radius);
-        background-color: var(--box-background);
-        opacity: 45%;
+        background-color: var(--opacity-color);
         width: 87%;
         height: 195%;
         z-index: 0;

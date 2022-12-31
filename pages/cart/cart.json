@@ -1,0 +1,38 @@
+[
+  {
+    "id": 23,
+    "name": "COTYLEDON PENDENS",
+    "idPot": 1,
+    "pot": "Doisu",
+    "idCrystal": 46,
+    "crystal": "peridot",
+    "price": 130000,
+    "imagePlant": "https://firebasestorage.googleapis.com/v0/b/simple-a5eec.appspot.com/o/plantsImage%2FCOTYLEDON%20PENDENS.webp?alt=media&token=989d6d97-7c64-4d0d-ab32-b4aad2a413e4",
+    "imageCrystal": "https://firebasestorage.googleapis.com/v0/b/simple-a5eec.appspot.com/o/crystalsPoint%2Fperidot.png?alt=media&token=17035355-1d11-4bb6-b9f3-26a628740a06",
+    "quantity": 2
+  },
+  {
+    "id": 37,
+    "name": "ECHEVERIA BLACK KNIGHT",
+    "idPot": 3,
+    "pot": "Mytz",
+    "idCrystal": 16,
+    "crystal": "howlite",
+    "price": 145000,
+    "imagePlant": "https://firebasestorage.googleapis.com/v0/b/simple-a5eec.appspot.com/o/plantsImage%2FECHEVERIA%20BLACK%20KNIGHT.webp?alt=media&token=838fb03a-7fb8-4fbe-a921-8e9541ba60a8",
+    "imageCrystal": "https://firebasestorage.googleapis.com/v0/b/simple-a5eec.appspot.com/o/crystalsPoint%2Fhowlite.png?alt=media&token=25bb9054-4b29-4043-bdac-962764b5d4b3",
+    "quantity": 1
+  },
+  {
+    "id": 37,
+    "name": "ECHEVERIA BLACK KNIGHT",
+    "idPot": 3,
+    "pot": "Mytz",
+    "idCrystal": 16,
+    "crystal": "howlite",
+    "price": 100000,
+    "imagePlant": "https://firebasestorage.googleapis.com/v0/b/simple-a5eec.appspot.com/o/plantsImage%2FECHEVERIA%20BLACK%20KNIGHT.webp?alt=media&token=838fb03a-7fb8-4fbe-a921-8e9541ba60a8",
+    "imageCrystal": "https://firebasestorage.googleapis.com/v0/b/simple-a5eec.appspot.com/o/crystalsPoint%2Fhowlite.png?alt=media&token=25bb9054-4b29-4043-bdac-962764b5d4b3",
+    "quantity": 1
+  }
+]

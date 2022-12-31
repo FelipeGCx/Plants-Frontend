@@ -1,34 +1,60 @@
 import Image from "next/image";
 import Link from "next/link";
+import React, { useEffect, useState } from "react";
 import styles from "./style.module.scss";
-import search from "./assets/search.svg";
-import arrow from "./assets/arrow-right.svg";
-import React, { useState } from "react";
+import edit from "./assets/edit.svg";
+import clean from "./assets/delete.svg";
+import TheQuantityCard from "../TheQuantityCard";
 
 type Product = {
-  id: Number;
+  id: number;
   name: string;
+  idPot: number;
   pot: string;
+  idCrystal: number;
   crystal: string;
-  price: string;
+  price: number;
   imagePlant: string;
   imageCrystal: string;
+  quantity: number;
 };
 
 const Quantity = () => {
   return <div></div>;
 };
 
+const formatter = new Intl.NumberFormat("es-CO", {
+  style: "currency",
+  currency: "COP",
+  maximumFractionDigits: 0,
+});
+
 export default function TheProductCard(product: Product) {
-  const [total, setTotal] = useState(0);
+  const [total, setTotal] = useState(product.price * product.quantity);
+  const [quantity, setQuantity] = useState(product.quantity);
+
+  const handleSubstract = () => {
+    if (quantity > 1) {
+      setQuantity(quantity - 1);
+      setTotal(quantity * product.price);
+    }
+  };
+  const handleAdd = () => {
+    if (quantity < 10) {
+      setQuantity(quantity + 1);
+    }
+  };
+  useEffect(()=>{
+  setTotal(quantity * product.price);
+  })
   return (
     <div className={styles.productCard}>
-      <div>
+      <div className={styles.images}>
         <Image
           src={product.imagePlant}
           alt={`image plant ${product.name}`}
-          width={120}
-          height={120}
+          width={200}
+          height={200}
         />
         <Image
           src={product.imageCrystal}
@@ -37,21 +63,29 @@ export default function TheProductCard(product: Product) {
           height={60}
         />
       </div>
-      <div>
-        <h1>{product.name}</h1>
+      <div className={styles.details}>
+        <h1>{product.name.toLowerCase()}</h1>
         <p>Matera Céramica {product.pot}</p>
         <p>Cristal {product.crystal}</p>
-        <div>${product.price}</div>
+        <div className={styles.pill}>{formatter.format(product.price)}</div>
       </div>
-      <div></div>
-      <div>
-        <div>
-          <Image />
-          <Image />
+      <TheQuantityCard
+        quantity={quantity}
+        onSubstract={handleSubstract}
+        onAdd={handleAdd}
+      />
+      <div className={styles.info}>
+        <div className={styles.actions}>
+          <Link
+            href={`plants/product/${product.id}?crystal=${product.idCrystal}&pot=${product.idPot}`}
+          >
+            <Image src={edit} width={48} height={48} alt="icon edit" />
+          </Link>
+          <Image src={clean} width={48} height={48} alt="icon delete" />
         </div>
-        <div>
+        <div className={styles.prices}>
           <p>SubTotal</p>
-          <p>${ total }</p>
+          <p>{formatter.format(total)}</p>
         </div>
       </div>
     </div>
