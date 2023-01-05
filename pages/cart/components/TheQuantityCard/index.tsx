@@ -2,9 +2,6 @@ import Image from "next/image";
 import styles from "./style.module.scss";
 import arrowLeft from "./assets/arrow-left.svg";
 import arrowRight from "./assets/arrow-right.svg";
-type Props = {
-  quantity: Number;
-};
 
 export default function TheQuantityCard(props: {
   quantity: number;

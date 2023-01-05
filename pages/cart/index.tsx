@@ -1,5 +1,5 @@
-import ThePayMethods from "../../components/ThePayMethods";
-import TheProductCard from "../../components/TheProductCard";
+import ThePayMethods from "./components/ThePayMethods";
+import TheProductCard from "./components/TheProductCard";
 import Cart from "./cart.json";
 import styles from "./style.module.scss";
 
@@ -38,6 +38,7 @@ export default function TheCart() {
           );
         })}
       </ul>
+      <TheProductList />
     </main>
   );
 }

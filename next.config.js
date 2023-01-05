@@ -6,17 +6,23 @@ const nextConfig = {
 const path = require("path");
 
 module.exports = {
+  serverRuntimeConfig: {
+    CORS_ORIGIN: "*",
+  },
   sassOptions: {
     includePaths: [path.join(__dirname, "styles")],
   },
   images: {
-    domains: ["https://firebasestorage.googleapis.com","firebasestorage.googleapis.com"],
+    domains: [
+      "https://firebasestorage.googleapis.com",
+      "firebasestorage.googleapis.com",
+    ],
     remotePatterns: [
       {
-        protocol: 'https',
-        hostname: 'firebasestorage.googleapis.com',
-        port: '',
-        pathname: '/v0/b/simple-a5eec.appspot.com/o/**',
+        protocol: "https",
+        hostname: "firebasestorage.googleapis.com",
+        port: "",
+        pathname: "/v0/b/simple-a5eec.appspot.com/o/**",
       },
     ],
   },
