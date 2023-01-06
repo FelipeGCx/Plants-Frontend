@@ -103,14 +103,27 @@
     z-index: 5;
     padding: 0.6rem;
     gap: 0.5rem;
-    a {
-      font-size: 1.4rem;
-      text-transform: capitalize;
-      font-style: italic;
-      font-weight: 400;
-      &:nth-child(odd)::after {
-        content: ">";
-        padding-left: 0.5rem;
+    align-items: center;
+    justify-content: space-between;
+    & > :nth-child(1) {
+      a {
+        font-size: 1.4rem;
+        text-transform: capitalize;
+        font-style: italic;
+        font-weight: 400;
+        display: flex;
+        &:nth-child(odd)::after {
+          content: ">";
+          padding-left: 0.5rem;
+        }
+      }
+    }
+    & > :nth-child(2) {
+      display: flex;
+      span {
+        color: var(--font-color);
+        font-size: 1.3rem;
+        font-weight: 600;
       }
     }
   }

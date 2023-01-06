@@ -3,15 +3,16 @@ import Image from "next/image";
 import planets from "./planets";
 import zodiac from "./zodiac";
 import elements from "./elements";
-import PlantsList from "./plants.json";
-import favoriteOutline from "./assets/favorite_outline.svg";
-import favoriteFilled from "./assets/favorite_filled.svg";
 import iconAir from "./assets/elements/air.svg";
 import iconWater from "./assets/elements/water.svg";
 import iconFire from "./assets/elements/fire.svg";
 import iconEarth from "./assets/elements/earth.svg";
 
-import React, { useState } from "react";
+import iconArrowLeft from "./assets/arrow-left.svg";
+import iconArrowRight from "./assets/arrow-right.svg";
+
+import React, { useEffect, useState } from "react";
+import ThePlantCard from "./components/ThePlantCard";
 
 const zodiacList = zodiac.map((item) => {
   return (
@@ -73,89 +74,94 @@ function icon(element: string) {
   }
 }
 
-function detailMore(plant: Object);
-
 export default function Plants() {
-  return (
-    <main className={styles.main}>
-      <section className={styles.filter}>
-        <div>
-          <h2>zodiaco</h2>
-          <ul>{zodiacList}</ul>
-        </div>
-        <div>
-          <h2>elemento</h2>
-          <ul>{elementsList}</ul>
-        </div>
-        <div>
-          <h2>planeta</h2>
-          <ul>{planetsList}</ul>
-        </div>
-      </section>
-      <section className={styles.view}>
-        <div className={styles.navsref}>
-          <a href="">Plantas</a>
-          <a href="">Todas</a>
-        </div>
-        <ul className={styles.items}>
-          {PlantsList.map((plant, i) => {
-            return (
-              <>
-                <li key={i} className={styles.card} id={plant.name}>
-                  <input
-                    className={styles.input}
-                    type="radio"
-                    name="plant"
-                    id={plant.name}
-                  />
-                  <div className={styles.details}>
-                    <div
-                      className={styles.detail}
-                      style={{
-                        opacity:
-                          plant.quantity <= 0
-                            ? "1"
-                            : plant.initDate
-                            ? "1"
-                            : !plant.discount
-                            ? "0"
-                            : "1",
-                      }}
-                    >
-                      {!plant.quantity
-                        ? "Agotada"
-                        : plant.initDate
-                        ? "Nuevo"
-                        : `${plant.discount}%`}
-                    </div>
-                    <Image
-                      className={(styles.favorite, "icon")}
-                      src={plant.favorite ? favoriteFilled : favoriteOutline}
-                      alt="favorite icon plant"
-                      width={18}
-                      height={18}
-                    />
-                  </div>
-                  <Image
-                    className={styles.point}
-                    src={
-                      plant.frontalImage ||
-                      "https://firebasestorage.googleapis.com/v0/b/simple-a5eec.appspot.com/o/crystalsPoint%2Fnot%20found.png?alt=media&token=fd19155e-edb8-4e67-9e13-76a62cc59ce2"
-                    }
-                    alt={`${plant.name} plant frontal image`}
-                    width={300}
-                    height={300}
-                  />
-                  <h2 className={styles.nameplant}>{plant.name.toLowerCase()}</h2>
-                  <div className={styles.vibration}>
-                    ${plant.price || 0}.000
-                  </div>
-                </li>
-              </>
-            );
-          })}
-        </ul>
-      </section>
-    </main>
-  );
+  const [page, setPage] = useState(1);
+  const [idUser, setIdUser] = useState(1);
+  const [PlantsList, setPlantsList] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [totalItems, setTotalItems] = useState(30);
+  const [totalPages, setTotalPages] = useState(3);
+
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const response = await fetch(
+          `https://plants-api-production.up.railway.app/api/v1/plantis/${idUser}/?page=${page}`
+        );
+        const data = await response.json();
+        setPlantsList(data.results);
+        console.log(data.results);
+        setTotalItems(data.totalItems);
+        setTotalPages(data.totalPages);
+        setLoading(false);
+      } catch (err) {
+        setError(err);
+        setLoading(false);
+      }
+    }
+    fetchData();
+  }, []);
+
+  if (loading) {
+    return <p>Loading...</p>;
+  }
+  if (error) {
+    return <p>An error occurred: {error}</p>;
+  } else {
+    return (
+      <main className={styles.main}>
+        <section className={styles.filter}>
+          <div>
+            <h2>zodiaco</h2>
+            <ul>{zodiacList}</ul>
+          </div>
+          <div>
+            <h2>elemento</h2>
+            <ul>{elementsList}</ul>
+          </div>
+          <div>
+            <h2>planeta</h2>
+            <ul>{planetsList}</ul>
+          </div>
+        </section>
+        <section className={styles.view}>
+          <div className={styles.navsref}>
+            <div>
+              <a href="">Plantas</a>
+              <a href="">Todas</a>
+            </div>
+            <div>
+              <button>
+                <Image src={iconArrowLeft} alt="icon arrow left" />
+              </button>
+              <span>{`${page}/${totalPages}`}</span>
+              <button>
+                <Image src={iconArrowRight} alt="icon arrow right" />
+              </button>
+            </div>
+          </div>
+          <ul className={styles.items}>
+            {PlantsList.map((plant) => {
+              return (
+                <ThePlantCard
+                  plant={{
+                    id: plant.id,
+                    name: plant.name,
+                    quantity: plant.quantity,
+                    discount: plant.discount,
+                    createdAt: plant.createdAt,
+                    favorite: plant.favorite,
+                    imageFront: plant.imageFront,
+                    vibration: plant.vibration,
+                    price: plant.price,
+                  }}
+                />
+              );
+            })}
+          </ul>
+        </section>
+      </main>
+    );
+  }
 }

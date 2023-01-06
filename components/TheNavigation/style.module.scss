@@ -57,3 +57,12 @@
     }
   }
 }
+.app-light {
+  .active {
+    a {
+      .navicon {
+        filter: var(--invert-icon-filter);
+      }
+    }
+  }
+}
