@@ -12,11 +12,12 @@
   }
   form {
     width: fit-content;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    gap: 0.5rem;
     ul {
+      width: fit-content;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 0.5rem;
       li {
         --radius: 15px;
         background-color: var(--card-color);

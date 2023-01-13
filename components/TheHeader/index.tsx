@@ -5,39 +5,39 @@ import TheBrowser from "../../components/TheBrowser";
 import icon from "./assets/icon.svg";
 import iconDark from "./assets/dark.svg";
 import iconLight from "./assets/light.svg";
-import { useEffect, useState } from "react";
+import iconUser from "./assets/icon-user.png";
+import { useContext, useEffect, useState } from "react";
+import ThemeContext from "../../contexts/themeContext";
 
-export default function TheHeader(props: { onClick: () => void }) {
-  const [theme, setTheme] = useState("light");
-  useEffect(() => {
-    let lsTheme = localStorage.getItem("theme");
-    if (lsTheme == null || lsTheme == undefined) {
-      const prefers = window.matchMedia("(prefers-color-scheme: dark)").matches;
-      localStorage.setItem("theme", prefers ? "dark" : "light");
-      lsTheme = prefers ? "dark" : "light";
-    }
-    setTheme(lsTheme);
-  }, []);
+export default function TheHeader() {
+  const { theme, toggleTheme } = useContext(ThemeContext);
   return (
     <>
       <header className={styles.header}>
-        <Link href={"/plants"} className={styles.logo}>
-          <Image
-            className="icon"
-            src={icon}
-            alt="logo"
-            width={48}
-            height={48}
-          />
-          <h1>Mitra</h1>
-        </Link>
-        <TheBrowser />
-        <button onClick={props.onClick}>
-          <Image
-            src={theme == "dark" ? iconLight : iconDark}
-            alt={theme == "dark" ? "icon moon outline" : "icon moon filled"}
-          />
-        </button>
+        <div>
+          <Link href={"/plants"} className={styles.logo}>
+            <Image
+              className="icon"
+              src={icon}
+              alt="logo"
+              width={48}
+              height={48}
+            />
+            <h1>Mitra</h1>
+          </Link>
+          <TheBrowser />
+        </div>
+        <div>
+          <button onClick={toggleTheme}>
+            <Image
+              src={theme == "dark" ? iconDark : iconLight}
+              alt={theme == "dark" ? "icon sun" : "icon moon"}
+              width={48}
+              height={48}
+            />
+          </button>
+          <Image src={iconUser} alt={"icon user xsxs"} width={48} height={48} />
+        </div>
       </header>
     </>
   );

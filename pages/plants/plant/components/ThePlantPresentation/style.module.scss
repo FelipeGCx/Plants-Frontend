@@ -1,0 +1,57 @@
+.presentation {
+  display: flex;
+  position: relative;
+  width: 48rem;
+  height: fit-content;
+  justify-content: flex-end;
+  &::before {
+    content: "";
+    border-radius: var(--radius);
+    background-color: var(--card-color);
+    position: absolute;
+    width: 28rem;
+    height: 34rem;
+    z-index: 0;
+    top: 0;
+    left: 0;
+  }
+  img {
+    width: 37rem;
+    height: 37rem;
+    position: absolute;
+    top: -21%;
+    left: -11%;
+    z-index: 2;
+    filter: var(--drop-filter);
+  }
+  div {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    background-color: var(--opacity-color);
+    border-radius: var(--radius);
+    padding: 3rem 3rem 3rem 10rem;
+    margin: 2rem 0 2rem 0;
+    gap: .5rem;
+    width: 34.5rem;
+    height: 30rem;
+    z-index: 1;
+    h1 {
+      font-size: 1.7rem;
+      font-weight: 500;
+    }
+    h2 {
+      font-size: 1.4rem;
+      font-weight: 300;
+    }
+    p {
+      text-align: justify;
+      font-size: 1rem;
+      border-top: solid 0.01rem var(--font-color);
+      padding-top: 1rem;
+    }
+    button{
+      margin-top: 2rem;
+    }
+  }
+}

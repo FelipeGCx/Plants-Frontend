@@ -13,8 +13,6 @@ export default function TheNavigation() {
   const [itemsInCart, setItems] = useState(0);
   const [active, setActive] = useState("plants");
   const router = useRouter();
-  console.log(router.asPath);
-  console.log(router);
   useEffect(() => {
     setItems(localStorage.getItem("cart")?.length || 0);
     if (router.route.includes("plants")) {
@@ -32,7 +30,7 @@ export default function TheNavigation() {
     if (router.route.includes("settings")) {
       setActive("settings");
     }
-  });
+  },[router]);
   return (
     <nav className={styles.nav}>
       <ul>

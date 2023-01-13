@@ -36,6 +36,9 @@
     }
     .active {
       background-color: var(--active-color);
+       .navicon {
+        filter: var(--active-icon-filter);
+      }
     }
     li {
       padding: 0.5rem;
@@ -53,15 +56,6 @@
         .navicon {
           filter: brightness(0.5) invert(1) contrast(1);
         }
-      }
-    }
-  }
-}
-.app-light {
-  .active {
-    a {
-      .navicon {
-        filter: var(--invert-icon-filter);
       }
     }
   }

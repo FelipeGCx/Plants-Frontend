@@ -31,6 +31,35 @@ li {
   list-style: none;
 }
 
+button,
+a {
+  cursor: default;
+  appearance: none;
+}
+button,
+input {
+  background-color: transparent;
+  border: none;
+  font-family: "Poppins";
+}
+.button {
+  padding: 0.6rem;
+  color: var(--contrast-font-color);
+  background-color: var(--active-color);
+  text-transform: uppercase;
+  font-weight: 500;
+  border-radius: 1rem;
+}
+input[type="number"] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  // background-image: url("@/assets/icons/arrow-down.svg");
+  // background-repeat: no-repeat;
+  // background-position-x: right;
+  // background-position-y: center;
+  // background-origin: content-box;
+}
 
 ::-webkit-scrollbar {
   height: 1rem;
@@ -73,6 +102,7 @@ li {
   --color-scheme: dark;
   --icon-filter: brightness(0) invert(1) contrast(1);
   --invert-icon-filter: brightness(1) invert(0) contrast(1);
+  --active-icon-filter: brightness(0) invert(1) contrast(1);
 }
 .app-light {
   --background-color: #dbcdf0;
@@ -90,6 +120,7 @@ li {
   --color-scheme: light;
   --icon-filter: brightness(1) invert(0) contrast(1);
   --invert-icon-filter: brightness(0) invert(1) contrast(1);
+  --active-icon-filter: brightness(0) invert(1) contrast(1);
 }
 // @media (prefers-color-scheme: dark) {
 //   html {

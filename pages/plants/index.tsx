@@ -1,78 +1,11 @@
 import styles from "./style.module.scss";
 import Image from "next/image";
-import planets from "./planets";
-import zodiac from "./zodiac";
-import elements from "./elements";
-import iconAir from "./assets/elements/air.svg";
-import iconWater from "./assets/elements/water.svg";
-import iconFire from "./assets/elements/fire.svg";
-import iconEarth from "./assets/elements/earth.svg";
-
 import iconArrowLeft from "./assets/arrow-left.svg";
 import iconArrowRight from "./assets/arrow-right.svg";
-
 import React, { useEffect, useState } from "react";
 import ThePlantCard from "./components/ThePlantCard";
-
-const zodiacList = zodiac.map((item) => {
-  return (
-    <li>
-      <input type="checkbox" name="zodiac" id={item.sign} />
-      <Image
-        className="icon"
-        src={item.icon}
-        alt={item.alt}
-        width={20}
-        height={20}
-      />
-    </li>
-  );
-});
-
-const elementsList = elements.map((item) => {
-  return (
-    <li>
-      <input type="checkbox" name="element" id={item.name} />
-      <Image
-        className="icon"
-        src={item.icon}
-        alt={item.alt}
-        width={20}
-        height={20}
-      />
-    </li>
-  );
-});
-
-const planetsList = planets.map((item) => {
-  return (
-    <li>
-      <input type="checkbox" name="planet" id={item.name} />
-      <Image
-        className="icon"
-        src={item.icon}
-        alt={item.alt}
-        width={20}
-        height={20}
-      />
-    </li>
-  );
-});
-
-function icon(element: string) {
-  switch (element) {
-    case "aire":
-      return iconAir;
-    case "fuego":
-      return iconFire;
-    case "agua":
-      return iconWater;
-    case "tierra":
-      return iconEarth;
-    default:
-      return iconAir;
-  }
-}
+import TheFilters from "./components/TheFilters";
+import { useRouter } from "next/router";
 
 export default function Plants() {
   const [page, setPage] = useState(1);
@@ -82,26 +15,64 @@ export default function Plants() {
   const [error, setError] = useState(null);
   const [totalItems, setTotalItems] = useState(30);
   const [totalPages, setTotalPages] = useState(3);
+  const router = useRouter();
 
   useEffect(() => {
     async function fetchData() {
+      // declare the url to fetch
+      let uri = `https://plants-api-production.up.railway.app/api/v1/plantis/${idUser}/`;
+      // let uri = `https://plants-api-production.up.railway.app/api/v1/stock/plants/?`;
+      // get query params to filter
+      const page = router.query["page"];
+      if (page == null) {
+        uri += `?page=1`;
+        setPage(1);
+      } else {
+        uri += `?page=${page}`;
+        setPage(+page);
+      }
+      const name = router.query["name"];
+      if (name != null) {
+        uri += `&name=${name}`;
+      }
+      const species = router.query["species"];
+      if (species != null) {
+        uri += `&species=${species}`;
+      }
+      const irrigation = router.query["irrigation"];
+      if (irrigation != null) {
+        uri += `&irrigation=${irrigation}`;
+      }
+      const priceFirst = router.query["priceFirst"];
+      if (priceFirst != null) {
+        const priceSecond = router.query["priceSecond"];
+        if (priceSecond != null) {
+          uri += `&priceFirst=${priceFirst}&priceSecond=${priceSecond}`;
+        }
+      }
+      const order = router.query["order"];
+      if (order != null) {
+        uri += `&order=${order}`;
+      }
+      const light = router.query["light"];
+      if (light != null) {
+        uri += `&light=${light}`;
+      }
       try {
-        const response = await fetch(
-          `https://plants-api-production.up.railway.app/api/v1/plantis/${idUser}/?page=${page}`
-        );
+        const response = await fetch(uri);
         const data = await response.json();
         setPlantsList(data.results);
         console.log(data.results);
         setTotalItems(data.totalItems);
         setTotalPages(data.totalPages);
         setLoading(false);
-      } catch (err) {
+      } catch (err: unknown) {
         setError(err);
         setLoading(false);
       }
     }
     fetchData();
-  }, []);
+  }, [router, idUser]);
 
   if (loading) {
     return <p>Loading...</p>;
@@ -112,18 +83,7 @@ export default function Plants() {
     return (
       <main className={styles.main}>
         <section className={styles.filter}>
-          <div>
-            <h2>zodiaco</h2>
-            <ul>{zodiacList}</ul>
-          </div>
-          <div>
-            <h2>elemento</h2>
-            <ul>{elementsList}</ul>
-          </div>
-          <div>
-            <h2>planeta</h2>
-            <ul>{planetsList}</ul>
-          </div>
+          <TheFilters />
         </section>
         <section className={styles.view}>
           <div className={styles.navsref}>
@@ -142,9 +102,10 @@ export default function Plants() {
             </div>
           </div>
           <ul className={styles.items}>
-            {PlantsList.map((plant) => {
+            {PlantsList?.map((plant: Plant, i: number) => {
               return (
                 <ThePlantCard
+                  key={i}
                   plant={{
                     id: plant.id,
                     name: plant.name,
