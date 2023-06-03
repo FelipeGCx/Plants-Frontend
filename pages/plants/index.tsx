@@ -6,16 +6,33 @@ import React, { useEffect, useState } from "react";
 import ThePlantCard from "./components/ThePlantCard";
 import TheFilters from "./components/TheFilters";
 import { useRouter } from "next/router";
+import { Plant } from "../../types";
 
 export default function Plants() {
   const [page, setPage] = useState(1);
   const [idUser, setIdUser] = useState(1);
-  const [PlantsList, setPlantsList] = useState(null);
+  const [PlantsList, setPlantsList] = useState<Plant[]>([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState("");
   const [totalItems, setTotalItems] = useState(30);
   const [totalPages, setTotalPages] = useState(3);
   const router = useRouter();
+
+  const handlePageChange = (newPage: number) => {
+    const { query, pathname } = router;
+    const updatedQuery = { ...query, page: newPage.toString() };
+    router.push({ pathname, query: updatedQuery });
+  };
+
+  const changePage = (direction: number) => {
+    let newPage = 1;
+    if (direction === 0) {
+      newPage = page - 1 <= 0 ? 1 : page - 1;
+    } else {
+      newPage = page + 1 > totalPages ? totalPages : page + 1;
+    }
+    handlePageChange(newPage);
+  };
 
   useEffect(() => {
     async function fetchData() {
@@ -66,8 +83,8 @@ export default function Plants() {
         setTotalItems(data.totalItems);
         setTotalPages(data.totalPages);
         setLoading(false);
-      } catch (err: unknown) {
-        setError(err);
+      } catch (err) {
+        setError("error");
         setLoading(false);
       }
     }
@@ -92,11 +109,11 @@ export default function Plants() {
               <a href="">Todas</a>
             </div>
             <div>
-              <button>
+              <button onClick={() => changePage(0)}>
                 <Image src={iconArrowLeft} alt="icon arrow left" />
               </button>
               <span>{`${page}/${totalPages}`}</span>
-              <button>
+              <button onClick={() => changePage(1)}>
                 <Image src={iconArrowRight} alt="icon arrow right" />
               </button>
             </div>
@@ -106,17 +123,7 @@ export default function Plants() {
               return (
                 <ThePlantCard
                   key={i}
-                  plant={{
-                    id: plant.id,
-                    name: plant.name,
-                    quantity: plant.quantity,
-                    discount: plant.discount,
-                    createdAt: plant.createdAt,
-                    favorite: plant.favorite,
-                    imageFront: plant.imageFront,
-                    vibration: plant.vibration,
-                    price: plant.price,
-                  }}
+                  plant={plant}
                 />
               );
             })}

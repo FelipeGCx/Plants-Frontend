@@ -12,14 +12,9 @@ export default function TheFilters() {
           <span>idd</span>
         </label>
         <label htmlFor="otras" className={styles.item}>
-          <input type="radio" name="species" id="otras" checked/>
+          <input type="radio" name="species" id="otras" />
           <label htmlFor="otras"></label>
           <span>otras</span>
-        </label>
-        <label htmlFor="todas" className={styles.item}>
-          <input type="radio" name="species" id="todas" />
-          <label htmlFor="todas"></label>
-          <span>todas</span>
         </label>
       </div>
       <div>
@@ -39,16 +34,35 @@ export default function TheFilters() {
           <label htmlFor="escaso"></label>
           <span>escaso</span>
         </label>
-        <label htmlFor="todos" className={styles.item}>
-          <input type="radio" name="irrigation" id="todos" checked/>
-          <label htmlFor="todos"></label>
-          <span>todos</span>
+      </div>
+      <div>
+        <h1>Iluminación</h1>
+        <label htmlFor="pleno sol" className={styles.item}>
+          <input type="radio" name="irrigation" id="pleno sol" />
+          <label htmlFor="pleno sol"></label>
+          <span>pleno sol</span>
+        </label>
+        <label htmlFor="sol parcial" className={styles.item}>
+          <input type="radio" name="irrigation" id="sol parcial" />
+          <label htmlFor="sol parcial"></label>
+          <span>sol parcial</span>
+        </label>
+        <label htmlFor="sombra parcial" className={styles.item}>
+          <input type="radio" name="irrigation" id="sombra parcial" />
+          <label htmlFor="sombra parcial"></label>
+          <span>sombra parcial</span>
+        </label>
+
+        <label htmlFor="sombra completa" className={styles.item}>
+          <input type="radio" name="irrigation" id="sombra completa" />
+          <label htmlFor="sombra completa"></label>
+          <span>sombra completa</span>
         </label>
       </div>
       <div>
         <h1>Uso</h1>
         <label htmlFor="interior" className={styles.item}>
-          <input type="radio" name="zone" id="interior" checked/>
+          <input type="radio" name="zone" id="interior" checked />
           <label htmlFor="interior"></label>
           <span>interior</span>
         </label>

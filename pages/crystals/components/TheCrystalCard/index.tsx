@@ -8,6 +8,7 @@ import vibrationIcon from "./assets/vibration.svg";
 import favoriteOutline from "./assets/favorite_outline.svg";
 import favoriteFilled from "./assets/favorite_filled.svg";
 import React from "react";
+import { Crystal } from "../../../../types";
 
 function icon(element: string) {
   switch (element) {
@@ -27,7 +28,7 @@ function icon(element: string) {
 function elementsDisplay(list: Array<string>) {
   return list.map((element) => {
     return (
-      <li>
+      <li key={element}>
         <Image
           className="icon"
           src={icon(element)}
@@ -39,14 +40,6 @@ function elementsDisplay(list: Array<string>) {
     );
   });
 }
-
-type Crystal = {
-  name: string;
-  vibration: number;
-  elements: Array<string>;
-  imageCrystal: string;
-  favorite: string;
-};
 
 export default function CrystalCard(props: {
   crystal: Crystal;
@@ -92,7 +85,7 @@ export default function CrystalCard(props: {
         className={styles.point}
         src={
           props.crystal.imageCrystal ||
-          "https://firebasestorage.googleapis.com/v0/b/simple-a5eec.appspot.com/o/crystalsPoint%2Fnot%20found.png?alt=media&token=fd19155e-edb8-4e67-9e13-76a62cc59ce2"
+          "https://firebasestorage.googleapis.com/v0/b/simple-a5eec.appspot.com/o/crystalsPoints%2Fnot%20found.webp?alt=media&token=da69fbe7-ec86-4cc6-b73a-6d4661316f5f"
         }
         alt={`${props.crystal.name} crystal point`}
         width={300}

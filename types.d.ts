@@ -1,6 +1,7 @@
 import { Interface } from "readline";
 
 interface Plant {
+  id: number;
   name: string;
   otherNames: Array<string>;
   description: string;
@@ -17,8 +18,11 @@ interface Plant {
   imageFront: string;
   createdAt: string;
   state: boolean;
+  quantity: number;
+  discount: number;
+  price: number;
+  favorite: boolean;
 }
-
 
 interface PlantView {
   id: number;
@@ -43,4 +47,21 @@ interface CrystalView {
   vibration: number;
   zodiac: Array<string>;
   imageCrystal: string;
+}
+interface Crystal {
+  id: number;
+  name: string;
+  description: string;
+  vibration: number;
+  benefits: Array<string>;
+  properties: Array<string>;
+  zodiac: Array<string>;
+  planets: Array<string>;
+  chakras: Array<string>;
+  imageCrystal: string;
+  imageGemstone: string;
+  quantity: number;
+  price: number;
+  state: boolean;
+  favorite: boolean;
 }

@@ -3,24 +3,13 @@ import Image from "next/image";
 import favoriteFilled from "./assets/favorite_filled.svg";
 import favoriteOutline from "./assets/favorite_outline.svg";
 import Link from "next/link";
+import { Plant } from "../../../../types";
 
 const formatter = new Intl.NumberFormat("es-CO", {
   style: "currency",
   currency: "COP",
   maximumFractionDigits: 0,
 });
-
-type Plant = {
-  id: number;
-  name: string;
-  quantity: number;
-  discount: number;
-  createdAt: Date;
-  favorite: boolean;
-  imageFront: string;
-  vibration: number;
-  price: number;
-};
 
 export default function ThePlantCard(props: { plant: Plant }) {
   return (
