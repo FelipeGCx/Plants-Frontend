@@ -17,6 +17,9 @@
     position: absolute;
     top: calc(50vh - 55.5vh);
 
+    .cart{
+      position: relative;
+    }
     .cart[data-items]::before {
       content: attr(data-items);
       z-index: 10;
@@ -24,8 +27,8 @@
       padding: 0 0.5rem;
       border-radius: 50%;
       position: absolute;
-      left: 36px;
-      top: 235px;
+      right: 0;
+      top: 15%;
       font-weight: 700;
       font-size: 0.9rem;
       align-items: center;
