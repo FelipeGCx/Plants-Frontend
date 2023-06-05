@@ -7,6 +7,9 @@ import { PlantsQParams } from "../../../../types";
 export default function TheFilters(props: { params: PlantsQParams }) {
   const [species, setSpecies] = useState([]);
   const router = useRouter();
+  const [minPrice, setMinPrice] = useState(0);
+  const [maxPrice, setMaxPrice] = useState(1000);
+
   useEffect(() => {
     async function fetchData() {
       // declare the url to fetch
@@ -73,6 +76,14 @@ export default function TheFilters(props: { params: PlantsQParams }) {
     }
 
   }
+
+  const handlePriceChange = (min: number, max: number) => {
+    setMinPrice(min);
+    setMaxPrice(max);
+    const { query, pathname } = router;
+    let updatedQuery = { ...query, priceFirst: minPrice.toString(), priceSecond: maxPrice.toString(), page: "1" };
+    router.push({ pathname, query: updatedQuery });
+  };
 
   return (
     <form className={styles.filters}>
@@ -165,11 +176,11 @@ export default function TheFilters(props: { params: PlantsQParams }) {
           <span>todas</span>
         </label>
       </div>
-      {/* <TheDoubleSlider
-        min={10000}
-        max={300000}
-        onChange={({ min, max }) => console.log(`min = ${min}, max = ${max}`)}
-      /> */}
+      <TheDoubleSlider
+        minPrice={30000}
+        maxPrice={250000}
+        onPriceChange= {handlePriceChange}
+      />
     </form>
   );
 }

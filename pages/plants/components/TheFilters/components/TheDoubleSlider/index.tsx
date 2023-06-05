@@ -1,80 +1,58 @@
-import React, { useCallback, useEffect, useState, useRef } from "react";
-import "./style.module.scss";
+import { useEffect, useState } from "react";
+import styles from "./style.module.scss";
+import { useRouter } from 'next/router';
 
-function MultiRangeSlider(props: { min: number; max: number; onChange: ({min, max}) => void; }) {
-    const [minVal, setMinVal] = useState(props.min);
-    const [maxVal, setMaxVal] = useState(props.max);
-    const minValRef = useRef(props.min);
-    const maxValRef = useRef(props.max);
-    const range = useRef(null);
+export default function DoubleSlider(props: { minPrice: number, maxPrice: number, onPriceChange: (minPrice: number, maxPrice: number) => void; }) {
+  const router = useRouter();
+  const [minVal, setMinVal] = useState(0);
+  const [maxVal, setMaxVal] = useState(0);
 
-    // Convert to percentage
-    const getPercent = useCallback(
-      (value: number) => Math.round(((value - props.min) / (props.max - props.min)) * 100),
-      [props.min, props.max]
-    );
-    // Set width of the range to decrease from the left side
   useEffect(() => {
-    const minPercent = getPercent(minVal);
-    const maxPercent = getPercent(maxValRef.current);
-
-    if (range.current) {
-      range.current.style.left = `${minPercent}%`;
-      range.current.style.width = `${maxPercent - minPercent}%`;
+    function getValues() {
+      const min = router.query["priceFirst"] || props.minPrice;
+      const max = router.query["priceSecond"] || props.maxPrice;
+      setMinVal(+min);
+      setMaxVal(+max);
     }
-  }, [minVal, getPercent]);
+    getValues();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
-  // Set width of the range to decrease from the right side
-  useEffect(() => {
-    const minPercent = getPercent(minValRef.current);
-    const maxPercent = getPercent(maxVal);
-
-    if (range.current) {
-      range.current.style.width = `${maxPercent - minPercent}%`;
-    }
-  }, [maxVal, getPercent]);
-
-  // Get props.min and props.max values when their state changes
-  useEffect(() => {
-    props.onChange({ props.min: minVal, props.max: maxVal });
-  }, [minVal, maxVal, props.onChange]);
-
+  const handlerChangeLeft = (event: React.ChangeEvent<HTMLInputElement>) => {
+    let newValue = +event.target.value;
+    newValue = newValue >= maxVal ? minVal : newValue;
+    setMinVal(newValue);
+    props.onPriceChange(minVal, maxVal);
+  }
+  const handlerChangeRigth = (event: React.ChangeEvent<HTMLInputElement>) => {
+    let newValue = +event.target.value;
+    newValue = newValue <= minVal ? maxVal : newValue;
+    setMaxVal(newValue);
+    props.onPriceChange(minVal, maxVal);
+  }
   return (
-    <div className="container">
-      <input
-        type="range"
-        min={props.min}
-        max={props.max}
-        value={minVal}
-        onChange={(event) => {
-          const value = Math.min(Number(event.target.value), maxVal - 1);
-          setMinVal(value);
-          minValRef.current = value;
-        }}
-        className="thumb thumb--left"
-        style={{ zIndex: minVal > props.max - 100 && "5" }}
-      />
-      <input
-        type="range"
-        min={props.min}
-        max={props.max}
-        value={maxVal}
-        onChange={(event) => {
-          const value = Math.max(Number(event.target.value), minVal + 1);
-          setMaxVal(value);
-          maxValRef.current = value;
-        }}
-        className="thumb thumb--right"
-      />
-
-      <div className="slider">
-        <div className="slider__track" />
-        <div ref={range} className="slider__range" />
-        <div className="slider__left-value">{minVal}</div>
-        <div className="slider__right-value">{maxVal}</div>
+    <div className={styles.container}>
+      <h1>Precio</h1>
+      <div className={styles.prices}><span>{minVal.toLocaleString('es-ES') + " COP"}</span> - <span>{maxVal.toLocaleString('es-ES') + " COP"}</span></div>
+      <div className={styles.slider}>
+        <input
+          type="range"
+          min={props.minPrice}
+          max={props.maxPrice}
+          value={minVal}
+          className={`${styles.thumb} ${styles.left}`}
+          onChange={handlerChangeLeft}
+        />
+        {/* style={{ zIndex: minVal > props.maxPrice - 100 && "5" }} */}
+        <input
+          type="range"
+          min={props.minPrice}
+          max={props.maxPrice}
+          value={maxVal}
+          className={`${styles.thumb} ${styles.right}`}
+          onChange={handlerChangeRigth}
+        />
       </div>
     </div>
   );
 };
-
-export default MultiRangeSlider;
