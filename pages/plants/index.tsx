@@ -18,6 +18,7 @@ export default function Plants() {
     {
       "species": null,
       "light": null,
+      "zone": null,
       "irrigation": null,
       "priceFirst": null,
       "priceSecond": null,
@@ -71,6 +72,10 @@ export default function Plants() {
       if (irrigation != null) {
         uri += `&irrigation=${irrigation}`;
       }
+      const zone = router.query["zone"] || null;
+      if (zone != null) {
+        uri += `&inside=${zone == "interior"}`;
+      }
       const priceFirst = router.query["priceFirst"] || null;
       const priceSecond = router.query["priceSecond"] || null;
       if (priceFirst != null) {
@@ -89,6 +94,7 @@ export default function Plants() {
       const params = {
         "species": species,
         "light": light,
+        "zone": zone,
         "irrigation": irrigation,
         "priceFirst": priceFirst,
         "priceSecond": priceSecond,
