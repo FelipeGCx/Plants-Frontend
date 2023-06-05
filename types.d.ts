@@ -65,3 +65,11 @@ interface Crystal {
   state: boolean;
   favorite: boolean;
 }
+
+interface PlantsQParams {
+  species: string | string[] | null;
+  light: string | string[] | null;
+  irrigation: string | string[] | null;
+  priceFirst: string | string[] | null;
+  priceSecond: string | string[] | null;
+}
