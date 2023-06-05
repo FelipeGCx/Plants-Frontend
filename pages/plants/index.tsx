@@ -6,12 +6,23 @@ import React, { useEffect, useState } from "react";
 import ThePlantCard from "./components/ThePlantCard";
 import TheFilters from "./components/TheFilters";
 import { useRouter } from "next/router";
-import { Plant } from "../../types";
+import { Plant, PlantsQParams } from "../../types";
+
+
 
 export default function Plants() {
   const [page, setPage] = useState(1);
   const [idUser, setIdUser] = useState(1);
   const [PlantsList, setPlantsList] = useState<Plant[]>([]);
+  const [plantParams, setPlantParams] = useState<PlantsQParams>(
+    {
+      "species": null,
+      "light": null,
+      "irrigation": null,
+      "priceFirst": null,
+      "priceSecond": null,
+    }
+  );
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const [totalItems, setTotalItems] = useState(30);
@@ -52,17 +63,17 @@ export default function Plants() {
       if (name != null) {
         uri += `&name=${name}`;
       }
-      const species = router.query["species"];
+      const species = router.query["species"] || null;
       if (species != null) {
         uri += `&species=${species}`;
       }
-      const irrigation = router.query["irrigation"];
+      const irrigation = router.query["irrigation"] || null;
       if (irrigation != null) {
         uri += `&irrigation=${irrigation}`;
       }
-      const priceFirst = router.query["priceFirst"];
+      const priceFirst = router.query["priceFirst"] || null;
+      const priceSecond = router.query["priceSecond"] || null;
       if (priceFirst != null) {
-        const priceSecond = router.query["priceSecond"];
         if (priceSecond != null) {
           uri += `&priceFirst=${priceFirst}&priceSecond=${priceSecond}`;
         }
@@ -71,10 +82,18 @@ export default function Plants() {
       if (order != null) {
         uri += `&order=${order}`;
       }
-      const light = router.query["light"];
+      const light = router.query["light"] || null;
       if (light != null) {
         uri += `&light=${light}`;
       }
+      const params = {
+        "species": species,
+        "light": light,
+        "irrigation": irrigation,
+        "priceFirst": priceFirst,
+        "priceSecond": priceSecond,
+      }
+      setPlantParams(params);
       try {
         const response = await fetch(uri);
         const data = await response.json();
@@ -100,7 +119,7 @@ export default function Plants() {
     return (
       <main className={styles.main}>
         <section className={styles.filter}>
-          <TheFilters />
+          <TheFilters params={plantParams } />
         </section>
         <section className={styles.view}>
           <div className={styles.navsref}>

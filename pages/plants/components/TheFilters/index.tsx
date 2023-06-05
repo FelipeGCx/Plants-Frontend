@@ -1,20 +1,60 @@
+import { useState, useEffect } from "react";
 import TheDoubleSlider from "./components/TheDoubleSlider";
 import styles from "./style.module.scss";
+import { useRouter } from 'next/router';
+import { PlantsQParams } from "../../../../types";
 
-export default function TheFilters() {
+export default function TheFilters(props: { params: PlantsQParams }) {
+  const [species, setSpecies] = useState([]);
+  const router = useRouter();
+  useEffect(() => {
+    async function fetchData() {
+      // declare the url to fetch
+      let uri = `https://plants-api-production.up.railway.app/api/v1/species/`;
+
+      try {
+        const response = await fetch(uri);
+        const data = await response.json();
+        setSpecies(data);
+      } catch (err) {
+        console.log(err);
+      }
+    }
+    fetchData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
+  const setFilter = (filter: string, value: any) => {
+    const { query, pathname } = router;
+    if (value == "todas") {
+      const { species, ...restQuery } = query;
+      let updatedQuery = { ...restQuery, page: "1" };
+      router.push({ pathname, query: updatedQuery });
+    } else {
+      let updatedQuery = { ...query, species: value.toString(), page: "1" };
+      router.push({ pathname, query: updatedQuery });
+    }
+  }
+
   return (
-    <form action="" className={styles.filters}>
+    <form className={styles.filters}>
       <div>
         <h1>Especie</h1>
-        <label htmlFor="idd" className={styles.item}>
-          <input type="radio" name="species" id="idd" />
-          <label htmlFor="idd"></label>
-          <span>idd</span>
-        </label>
-        <label htmlFor="otras" className={styles.item}>
-          <input type="radio" name="species" id="otras" />
-          <label htmlFor="otras"></label>
-          <span>otras</span>
+        {
+          species?.map((item: string, i: number) => {
+            return (
+              <label htmlFor={item} className={styles.item} key={i}>
+                <input type="radio" name="species" id={item} onClick={() => setFilter("species", item)} checked={props.params.species == item} />
+                <label htmlFor={item}></label>
+                <span>{item}</span>
+              </label>
+            )
+          })
+        }
+        <label htmlFor="todas" className={styles.item} key="todas">
+          <input type="radio" name="species" id="todas" checked={props.params.species == null} onClick={() => setFilter("species", "todas")} />
+          <label htmlFor="todas"></label>
+          <span>todas</span>
         </label>
       </div>
       <div>
