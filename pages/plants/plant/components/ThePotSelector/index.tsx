@@ -1,16 +1,33 @@
 import Image from "next/image";
 import styles from "./style.module.scss";
-import React, { useState } from "react";
-import Pots from "./Pots.json";
+import React, { useEffect, useState } from "react";
+import { Pot } from "../../../../../types";
 
 export default function ThePotSelector(props: { id: number }) {
   const [selected, setSelected] = useState(props.id);
+  const [potsList, setPotsList] = useState<Pot[]>([]);
+  const [error, setError] = useState("");
+
+  useEffect(() => {
+    async function fetchData() {
+      const url = "https://plants-api-production.up.railway.app/api/v1/pots/";
+      try {
+        const response = await fetch(url);
+        const data = await response.json();
+        setPotsList(data);
+      } catch (err) {
+        setError("error");
+      }
+    }
+    fetchData();
+  }, [])
+
   return (
     <section className={styles.selector}>
       <h1 className={styles.title}>Materas</h1>
       <form action="">
         <ul>
-          {Pots.map((pot, i) => {
+          {potsList?.map((pot:Pot, i:number) => {
             return (
               <li key={i}>
                 <label htmlFor={pot.name} className={styles.card}>
