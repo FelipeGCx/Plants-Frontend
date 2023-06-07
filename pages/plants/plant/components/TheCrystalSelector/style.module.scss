@@ -10,12 +10,15 @@
     font-size: 1.2rem;
     margin-bottom: 0.5rem;
   }
-  form {
+  .form {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     gap: 10rem 1rem;
-    ul {
+    .crystalsList {
+      display: flex;
+    gap: 10rem 1rem;
+      flex-wrap: wrap;
       li {
         --radius: 15px;
         background-color: var(--card-color);

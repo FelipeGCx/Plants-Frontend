@@ -1,53 +1,65 @@
 import Image from "next/image";
 import styles from "./style.module.scss";
-import React, { useState } from "react";
-import Crystal from "./models/Crystal";
-import Crystals from "./Crystals.json";
+import React, { useEffect, useState } from "react";
+import { CrystalFav } from "../../../../../types";
+import { useRouter } from "next/router";
 
-const card = (o: Crystal) => {
-  return (
-    <li>
-      <label htmlFor={o.getName()} className={styles.card}>
-        <input name="crystal" id={o.getName()} type="radio" />
-        <Image
-          src={o.getImageCrystal()}
-          alt={`crystal ${o.getName()}`}
-          width={250}
-          height={250}
-        />
-        <h1>{o.getName()} </h1>
-      </label>
-    </li>
-  );
-};
+export default function TheCrystalSelector(props: { id: number }) {
+  const [selected, setSelected] = useState(props.id);
+  const [crystalList, setCrystalList] = useState<CrystalFav[]>([]);
+  const [error, setError] = useState("");
+  const router = useRouter();
 
-export default function TheCrystalSelector() {
+  useEffect(() => {
+    async function fetchData() {
+      const url = `https://plants-api-production.up.railway.app/api/v1/crystalis/1/?page=1&page_size=13`;
+      try {
+        const response = await fetch(url);
+        const data = await response.json();
+        setCrystalList(data.results);
+      } catch (error) {
+        setError("error");
+      }
+    }
+    fetchData();
+  }, []);
+
+  const handlerChange = (id: number) => {
+    setSelected(id);
+    const { query, pathname } = router;
+    let updatedQuery = { ...query, crystal: id.toString() };
+    router.push({ pathname, query: updatedQuery });
+  }
+
+
   return (
     <section className={styles.selector}>
       <h1 className={styles.title}>Cristales</h1>
-      <form action="">
-        {Crystals.map((crystal) => {
-          return (
-            <ul>
-              {card(
-                new Crystal(
-                  crystal.id,
-                  crystal.name,
-                  crystal.properties,
-                  crystal.benefits,
-                  crystal.description,
-                  crystal.vibration,
-                  crystal.zodiac,
-                  crystal.imageGemstone,
-                  crystal.imageCrystal,
-                  crystal.elements,
-                  crystal.planets,
-                  false
-                )
-              )}
-            </ul>
-          );
-        })}
+      <form action="" className={styles.form}>
+        <ul className={styles.crystalsList}>
+          {crystalList?.map((crystal: CrystalFav, i: number) => {
+            return (
+              <li key={i}>
+                <label htmlFor={crystal.name} className={styles.card}>
+                  <input
+                    name="crystal"
+                    id={crystal.name}
+                    type="radio"
+                    checked={crystal.id == selected}
+                    onChange={() => handlerChange(crystal.id)}
+                  />
+                  <Image
+                    src={crystal.imageCrystal}
+                    alt={`crystal ${crystal.name}`}
+                    width={250}
+                    height={250}
+                  />
+                  <h1>{crystal.name} </h1>
+                </label>
+              </li>
+            );
+          })}
+        </ul>
       </form>
     </section>
   );
