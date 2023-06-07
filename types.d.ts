@@ -57,9 +57,13 @@ interface Crystal {
   properties: Array<string>;
   zodiac: Array<string>;
   planets: Array<string>;
+  elements: Array<string>;
   chakras: Array<string>;
   imageCrystal: string;
   imageGemstone: string;
+}
+
+interface CrystalFav extends Crystal {
   quantity: number;
   price: number;
   state: boolean;
@@ -73,4 +77,12 @@ interface PlantsQParams {
   zone: string | string[] | null;
   priceFirst: string | string[] | null;
   priceSecond: string | string[] | null;
+}
+
+interface Pot {
+  id: number;
+  name: string;
+  price: number;
+  image: string;
+  quantity: number;
 }
