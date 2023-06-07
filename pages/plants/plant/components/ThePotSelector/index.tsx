@@ -2,11 +2,13 @@ import Image from "next/image";
 import styles from "./style.module.scss";
 import React, { useEffect, useState } from "react";
 import { Pot } from "../../../../../types";
+import { useRouter } from "next/router";
 
 export default function ThePotSelector(props: { id: number }) {
   const [selected, setSelected] = useState(props.id);
   const [potsList, setPotsList] = useState<Pot[]>([]);
   const [error, setError] = useState("");
+  const router = useRouter();
 
   useEffect(() => {
     async function fetchData() {
@@ -22,6 +24,13 @@ export default function ThePotSelector(props: { id: number }) {
     fetchData();
   }, [])
 
+  const handlerChange = (id: number) => {
+    setSelected(id);
+    const { query, pathname } = router;
+    let updatedQuery = { ...query, pot: id.toString()};
+    router.push({ pathname, query: updatedQuery });
+  }
+
   return (
     <section className={styles.selector}>
       <h1 className={styles.title}>Materas</h1>
@@ -36,7 +45,7 @@ export default function ThePotSelector(props: { id: number }) {
                     value={pot.name}
                     type="radio"
                     checked={pot.id == selected}
-                    onChange={() => setSelected(pot.id)}
+                    onChange={() => handlerChange(pot.id)}
                   />
                   <Image
                     src={pot.image}
