@@ -4,32 +4,22 @@ import TheCrystalSelector from "./components/TheCrystalSelector";
 import ThePlantView from "./components/ThePlantView";
 import crystal from "./crystal.json";
 import { useRouter } from "next/router";
-import { PlantView } from "../../../types";
+import { Crystal, PlantView } from "../../../types";
 import { useEffect, useState } from "react";
 
 const Plant = (props: { plant: PlantView }) => {
   const router = useRouter();
-  const [idPot, setPot] = useState(router.query["pot"]);
+  const [idPot, setIdPot] = useState(router.query["pot"] || 1);
+  const [idCrystal, setIdCrystal] = useState(router.query["crystal"] || 1);
 
-  const ccc = {
-    id: crystal.id,
-    name: crystal.name,
-    properties: crystal.properties,
-    benefits: crystal.benefits,
-    description: crystal.description,
-    vibration: crystal.vibration,
-    zodiac: crystal.zodiac,
-    imageGemstone: crystal.imageGemstone,
-    imageCrystal: crystal.imageCrystal,
-    elements: crystal.elements,
-    planets: crystal.planets,
-    favorite: true,
-  };
+  useEffect(() => {
+    
+  },[])
   return (
     <main className={styles.main}>
       <ThePotSelector id={+idPot} />
-      <ThePlantView plant={props.plant} crystal={ccc} />
-      <TheCrystalSelector />
+      <ThePlantView plant={props.plant}/>
+      <TheCrystalSelector id={+idCrystal} />
     </main>
   );
 };
