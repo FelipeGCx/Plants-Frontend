@@ -7,7 +7,6 @@ import ThePlantPresentation from "../ThePlantPresentation";
 
 export default function ThePlantView(props: {
   plant: PlantView;
-  crystal: CrystalView;
 }) {
   return (
     <section className={styles.plantView}>
@@ -18,13 +17,7 @@ export default function ThePlantView(props: {
         imageFront={props.plant.plant.imageFront}
         price={props.plant.price}
       />
-      {/* <TheCrystalSelect
-        name={props.crystal.name}
-        properties={props.crystal.properties}
-        vibration={props.crystal.vibration}
-        zodiac={props.crystal.zodiac}
-        imageCrystal={props.crystal.imageCrystal}
-      /> */}
+      <TheCrystalSelect/>
     </section>
   );
 }
