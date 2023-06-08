@@ -3,7 +3,7 @@ import Image from "next/image";
 import favoriteFilled from "./assets/favorite_filled.svg";
 import favoriteOutline from "./assets/favorite_outline.svg";
 import Link from "next/link";
-import { Plant } from "../../../../types";
+import { PlantFavorite } from "../../../../types";
 
 const formatter = new Intl.NumberFormat("es-CO", {
   style: "currency",
@@ -11,10 +11,10 @@ const formatter = new Intl.NumberFormat("es-CO", {
   maximumFractionDigits: 0,
 });
 
-export default function ThePlantCard(props: { plant: Plant }) {
+export default function ThePlantCard(props: { plant: PlantFavorite }) {
   return (
     <li key={props.plant.id} className={styles.card} id={props.plant.name}>
-      <Link href={`/plants/plant/${props.plant.id}`} className={styles.content} >
+      <Link href={`/plants/plant/${props.plant.id}/?pot=1`} className={styles.content} >
         <div className={styles.details}>
           <div
             className={styles.detail}
