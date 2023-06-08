@@ -47,17 +47,19 @@
     .dropitem {
       display: flex;
       justify-content: space-between;
+      font-size: 1.2rem;
       p {
         text-transform: capitalize;
       }
       a {
         text-decoration: none;
-        color: var(--page-color);
+        // color: var(--page-color);
         align-items: center;
         gap: 0.5rem;
         img {
-          width: 1rem;
-          height: 1rem;
+          width: 1.4rem;
+          height: 1.4rem;
+          filter: var(--icon-brightness);
         }
       }
     }

@@ -103,6 +103,7 @@ input[type="number"] {
   --icon-filter: brightness(0) invert(1) contrast(1);
   --invert-icon-filter: brightness(1) invert(0) contrast(1);
   --active-icon-filter: brightness(0) invert(1) contrast(1);
+  --icon-brightness: brightness(2);
 }
 .app-light {
   --background-color: #dbcdf0;
@@ -121,6 +122,7 @@ input[type="number"] {
   --icon-filter: brightness(1) invert(0) contrast(1);
   --invert-icon-filter: brightness(0) invert(1) contrast(1);
   --active-icon-filter: brightness(0) invert(1) contrast(1);
+  --icon-brightness: brightness(0);
 }
 // @media (prefers-color-scheme: dark) {
 //   html {
