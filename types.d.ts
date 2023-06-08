@@ -13,10 +13,13 @@ interface Plant {
   precautions: Array<string>;
   flowering: boolean;
   size: string;
-  render: string;
-  inside: boolean;
   imageFront: string;
+  render: string;
   createdAt: string;
+  inside: boolean;
+  
+}
+interface PlantFavorite extends Plant {
   state: boolean;
   quantity: number;
   discount: number;
@@ -24,12 +27,13 @@ interface Plant {
   favorite: boolean;
 }
 
-interface PlantView {
+interface PlantStock {
   id: number;
   plant: Plant;
   quantity: number;
-  discount: number;
   price: number;
+  discount: number;
+  state: boolean;
 }
 
 interface PlantPresentation {
