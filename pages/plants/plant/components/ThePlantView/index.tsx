@@ -1,23 +1,19 @@
 import styles from "./style.module.scss";
-import Image from "next/image";
-import React, { useState } from "react";
-import TheCrystalSelect from "../TheCrystalSelect";
-import { PlantView, CrystalView } from "../../../../../types";
-import ThePlantPresentation from "../ThePlantPresentation";
+import TheCrystalSelect from "./components/TheCrystalSelect";
+import { PlantStock } from "../../../../../types";
+import ThePlantPresentation from "./components/ThePlantPresentation";
+import ThePlantDetail from "./components/ThePlantDetail";
 
 export default function ThePlantView(props: {
-  plant: PlantView;
+  plant: PlantStock;
 }) {
   return (
     <section className={styles.plantView}>
       <ThePlantPresentation
-        id={props.plant.id}
-        name={props.plant.plant.name}
-        description={props.plant.plant.description}
-        imageFront={props.plant.plant.imageFront}
-        price={props.plant.price}
+        plant={props.plant}
       />
-      <TheCrystalSelect/>
+      <ThePlantDetail plant={ props.plant.plant} />
+      <TheCrystalSelect />
     </section>
   );
 }

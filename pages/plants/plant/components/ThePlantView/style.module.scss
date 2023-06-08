@@ -1,8 +1,19 @@
 .plantView {
   background-color: var(--box-color);
   border-radius: var(--radius);
-  display: flex;
-  justify-content: center;
-  align-content: center;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  grid-template-rows: 1fr 1fr;
+}
+.plantView > :nth-child(1) {
+  grid-area: 1 / 1 / 3 / 2;
+  margin:auto
+}
+.plantView > :nth-child(2) {
+  grid-area: 1/2/2/2;
+  margin:auto
+}
+.plantView > :nth-child(3) {
+  grid-area: 2/2/2/2;
+  margin:auto
 }

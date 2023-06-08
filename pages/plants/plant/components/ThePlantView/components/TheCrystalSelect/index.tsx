@@ -5,7 +5,7 @@ import zodiac from "./zodiac";
 import vibration from "./assets/vibration.svg";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
-import { Crystal } from "../../../../../types";
+import { Crystal } from "../../../../../../../types";
 
 export default function TheCrystalSelect() {
   const router = useRouter();

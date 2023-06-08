@@ -2,12 +2,11 @@ import styles from "./style.module.scss";
 import ThePotSelector from "./components/ThePotSelector";
 import TheCrystalSelector from "./components/TheCrystalSelector";
 import ThePlantView from "./components/ThePlantView";
-import crystal from "./crystal.json";
 import { useRouter } from "next/router";
-import { Crystal, PlantView } from "../../../types";
+import { Crystal, PlantStock } from "../../../types";
 import { useEffect, useState } from "react";
 
-const Plant = (props: { plant: PlantView }) => {
+const Plant = (props: { plant: PlantStock }) => {
   const router = useRouter();
   const [idPot, setIdPot] = useState(router.query["pot"] || 1);
   const [idCrystal, setIdCrystal] = useState(router.query["crystal"] || 1);

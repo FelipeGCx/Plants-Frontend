@@ -1,7 +1,6 @@
 import styles from "./style.module.scss";
 import Image from "next/image";
-import React, { useState } from "react";
-import { PlantPresentation } from "../../../../../types";
+import {PlantStock } from "../../../../../../../types";
 
 const formatter = new Intl.NumberFormat("es-CO", {
   style: "currency",
@@ -9,19 +8,19 @@ const formatter = new Intl.NumberFormat("es-CO", {
   maximumFractionDigits: 0,
 });
 
-export default function ThePlantPresentation(plant: PlantPresentation) {
+export default function ThePlantPresentation(props:{plant: PlantStock}) {
   return (
     <section className={styles.presentation}>
       <Image
-        src={plant.imageFront}
-        alt={`image plant ${plant.name}`}
+        src={props.plant.plant.imageFront}
+        alt={`image plant ${props.plant.plant.name}`}
         width={400}
         height={400}
       />
       <div>
-        <h1>{plant.name}</h1>
-        <h2>{formatter.format(plant.price)}</h2>
-        <p>{plant.description}</p>
+        <h1>{props.plant.plant.name}</h1>
+        <h2>{formatter.format(props.plant.price)}</h2>
+        <p>{props.plant.plant.description}</p>
         <button className="button">añadir al carrito</button>
       </div>
     </section>
