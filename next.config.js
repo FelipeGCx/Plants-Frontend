@@ -12,6 +12,24 @@ module.exports = {
   sassOptions: {
     includePaths: [path.join(__dirname, "styles")],
   },
+  // webpack: (config) => {
+  //   config.module.rules.push({
+  //     test: /\.scss$/,
+  //     use: [
+  //       {
+  //         loader: "sass-resources-loader",
+  //         options: {
+  //           resources: [
+  //             path.join(__dirname, "styles/globals.scss"),
+  //             path.join(__dirname, "styles/mixins.scss"),
+  //           ],
+  //         },
+  //       },
+  //     ],
+  //   });
+
+  //   return config;
+  // },
   images: {
     domains: [
       "https://firebasestorage.googleapis.com",
@@ -21,10 +39,10 @@ module.exports = {
       {
         protocol: "https",
         hostname: "firebasestorage.googleapis.com",
-        port: "",
+        port: "443",
         pathname: "/v0/b/simple-a5eec.appspot.com/o/**",
       },
     ],
   },
-  nextConfig,
+  ...nextConfig,
 };
