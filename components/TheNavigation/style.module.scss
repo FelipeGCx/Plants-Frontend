@@ -17,20 +17,20 @@
     position: absolute;
     top: calc(50vh - 55.5vh);
 
-    .cart{
+    .cart {
       position: relative;
     }
     .cart[data-items]::before {
       content: attr(data-items);
       z-index: 10;
-      height: 1.5rem;
-      padding: 0 0.5rem;
+      min-height: 1.5rem;
+      min-width: 1.5rem;
       border-radius: 50%;
       position: absolute;
       right: 0;
-      top: 15%;
+      // top: 15%;
       font-weight: 700;
-      font-size: 0.9rem;
+      // font-size: 0.9rem;
       align-items: center;
       justify-content: center;
       display: flex;
@@ -39,7 +39,7 @@
     }
     .active {
       background-color: var(--active-color);
-       .navicon {
+      .navicon {
         filter: var(--active-icon-filter);
       }
     }
