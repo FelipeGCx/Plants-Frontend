@@ -100,6 +100,8 @@ input[type="number"] {
   --box-hard-color: #1a0a34;
   --box-hard-var-color: #d9d9d9;
   --color-scheme: dark;
+  --font-color-button: #ffffff;
+  --color-button: var(--card-active-color);
   --icon-filter: brightness(0) invert(1) contrast(1);
   --invert-icon-filter: brightness(1) invert(0) contrast(1);
   --active-icon-filter: brightness(0) invert(1) contrast(1);
@@ -119,6 +121,8 @@ input[type="number"] {
   --box-hard-color: #b597e7;
   --box-hard-var-color: #b597e7;
   --color-scheme: light;
+  --font-color-button: #ffffff;
+  --color-button: var(--card-active-color);
   --icon-filter: brightness(1) invert(0) contrast(1);
   --invert-icon-filter: brightness(0) invert(1) contrast(1);
   --active-icon-filter: brightness(0) invert(1) contrast(1);
