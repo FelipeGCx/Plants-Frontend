@@ -8,7 +8,7 @@ const formatter = new Intl.NumberFormat("es-CO", {
   maximumFractionDigits: 0,
 });
 
-export default function ThePlantPresentation(props:{plant: PlantStock}) {
+export default function ThePlantPresentation(props: { plant: PlantStock, addToCart():void }) {
   return (
     <section className={styles.presentation}>
       <Image
@@ -21,7 +21,7 @@ export default function ThePlantPresentation(props:{plant: PlantStock}) {
         <h1>{props.plant.plant.name}</h1>
         <h2>{formatter.format(props.plant.price)}</h2>
         <p>{props.plant.plant.description}</p>
-        <button className="button">añadir al carrito</button>
+        <button className="button" onClick={props.addToCart}>añadir al carrito</button>
       </div>
     </section>
   );

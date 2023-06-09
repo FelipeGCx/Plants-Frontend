@@ -10,14 +10,27 @@ const Plant = (props: { plant: PlantStock }) => {
   const router = useRouter();
   const [idPot, setIdPot] = useState(router.query["pot"] || 1);
   const [idCrystal, setIdCrystal] = useState(router.query["crystal"] || 1);
+  
+  const addToCart = () => {
+    let item = {
+      plant: props.plant.id,
+      crystal: idCrystal,
+      pot: idPot
+    }
+    let newCart = [];
+    if (localStorage.getItem("cart")) {
+      let actualCart = localStorage.getItem("cart") || "";
+      newCart = JSON.parse(actualCart);
+    }
+    newCart.push(item);
+    localStorage.setItem("cart", JSON.stringify(newCart));
+    router.push("/cart");
+  }
 
-  useEffect(() => {
-    
-  },[])
   return (
     <main className={styles.main}>
       <ThePotSelector id={+idPot} />
-      <ThePlantView plant={props.plant}/>
+      <ThePlantView plant={props.plant} addToCart={addToCart} />
       <TheCrystalSelector id={+idCrystal} />
     </main>
   );
