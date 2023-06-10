@@ -14,8 +14,12 @@ export default function TheNavigation() {
   const [active, setActive] = useState("plants");
   const router = useRouter();
   useEffect(() => {
-    const cart = JSON.parse(localStorage.getItem("cart") || "");
-    setItems(cart.length || 0);
+    if (localStorage.getItem("cart")) {
+      const cart = JSON.parse(localStorage.getItem("cart") || "");
+      setItems(cart.length);
+    } else {
+      setItems(0);
+    }
     if (router.route.includes("plants")) {
       setActive("plants");
     }
