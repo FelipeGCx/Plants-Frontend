@@ -17,7 +17,6 @@ interface Plant {
   render: string;
   createdAt: string;
   inside: boolean;
-  
 }
 interface PlantFavorite extends Plant {
   state: boolean;
@@ -67,13 +66,15 @@ interface Crystal {
   imageGemstone: string;
 }
 
-interface CrystalFav extends Crystal {
+interface CrystalStock extends Crystal {
   quantity: number;
   price: number;
   state: boolean;
-  favorite: boolean;
 }
 
+interface CrystalFav extends CrystalStock {
+  favorite: boolean;
+}
 interface PlantsQParams {
   species: string | string[] | null;
   light: string | string[] | null;
@@ -88,5 +89,21 @@ interface Pot {
   name: string;
   price: number;
   image: string;
+  quantity: number;
+}
+
+interface Product {
+  id: number;
+  name: string;
+  idPot: number;
+  potName: string;
+  idCrystal: number;
+  crystalName: string;
+  plantPrice: number;
+  potPrice: number;
+  crystalPrice: number;
+  price: number;
+  imagePlant: string;
+  imageCrystal: string;
   quantity: number;
 }
