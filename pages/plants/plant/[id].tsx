@@ -10,12 +10,12 @@ const Plant = (props: { plant: PlantStock }) => {
   const router = useRouter();
   const [idPot, setIdPot] = useState(router.query["pot"] || 1);
   const [idCrystal, setIdCrystal] = useState(router.query["crystal"] || 1);
-  
+
   const addToCart = () => {
     let item = {
       plant: props.plant.id,
-      crystal: idCrystal,
-      pot: idPot
+      crystal: +(router.query["crystal"] || 1),
+      pot: +(router.query["pot"] || 1)
     }
     let newCart = [];
     if (localStorage.getItem("cart")) {
