@@ -29,8 +29,11 @@
     z-index: 5;
     img {
       &:nth-child(1) {
-        top: -42%;
+        top: -40% !important;
+        width: 75% !important;
+        height: auto !important;
         z-index: 6;
+        margin: 0 auto;
       }
       &:nth-child(2) {
         position: relative !important;

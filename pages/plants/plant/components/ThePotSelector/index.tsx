@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import { Pot } from "../../../../../types";
 import { useRouter } from "next/router";
 
-export default function ThePotSelector(props: { id: number }) {
+export default function ThePotSelector(props: { id: number, selectedPot(pot:string):void }) {
   const [selected, setSelected] = useState(props.id);
   const [potsList, setPotsList] = useState<Pot[]>([]);
   const [error, setError] = useState("");
@@ -21,8 +21,14 @@ export default function ThePotSelector(props: { id: number }) {
         setError("error");
       }
     }
+   
     fetchData();
   }, [])
+
+  useEffect(() => {
+    props.selectedPot(potsList.find(objeto => objeto.id === selected)?.render || "https://firebasestorage.googleapis.com/v0/b/simple-a5eec.appspot.com/o/potsImage/doisu-render.webp?alt=media&token=289ff965-53e9-4a78-b3c2-02edfb573c57");
+  }, [potsList, props, selected])
+  
 
   const handlerChange = (id: number) => {
     setSelected(id);

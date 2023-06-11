@@ -6,13 +6,14 @@ import ThePlantDetail from "./components/ThePlantDetail";
 
 export default function ThePlantView(props: {
   plant: PlantStock;
+  renderPot: string;
   addToCart(): void;
 }) {
   
   return (
     <section className={styles.plantView}>
       <ThePlantPresentation
-        plant={props.plant} addToCart={props.addToCart}
+        plant={props.plant} addToCart={props.addToCart} renderPot={ props.renderPot}
       />
       <ThePlantDetail plant={props.plant.plant} />
       <TheCrystalSelect />

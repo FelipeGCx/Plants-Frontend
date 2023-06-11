@@ -10,6 +10,7 @@ const Plant = (props: { plant: PlantStock }) => {
   const router = useRouter();
   const [idPot, setIdPot] = useState(router.query["pot"] || 1);
   const [idCrystal, setIdCrystal] = useState(router.query["crystal"] || 1);
+  const [renderPot, setRenderPot] = useState("https://firebasestorage.googleapis.com/v0/b/simple-a5eec.appspot.com/o/potsImage/doisu-render.webp?alt=media&token=289ff965-53e9-4a78-b3c2-02edfb573c57");
 
   const addToCart = () => {
     let item = {
@@ -26,11 +27,15 @@ const Plant = (props: { plant: PlantStock }) => {
     localStorage.setItem("cart", JSON.stringify(newCart));
     router.push("/cart");
   }
+  const handlerPot = (pot: string) => {
+    console.log("lapot", pot);
+    setRenderPot(pot);
+  }
 
   return (
     <main className={styles.main}>
-      <ThePotSelector id={+idPot} />
-      <ThePlantView plant={props.plant} addToCart={addToCart} />
+      <ThePotSelector id={+idPot} selectedPot={handlerPot} />
+      <ThePlantView plant={props.plant} addToCart={addToCart} renderPot={renderPot} />
       <TheCrystalSelector id={+idCrystal} />
     </main>
   );
