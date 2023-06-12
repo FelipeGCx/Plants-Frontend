@@ -75,6 +75,7 @@ interface CrystalStock extends Crystal {
 interface CrystalFav extends CrystalStock {
   favorite: boolean;
 }
+
 interface PlantsQParams {
   species: string | string[] | null;
   light: string | string[] | null;
@@ -89,6 +90,7 @@ interface Pot {
   name: string;
   price: number;
   image: string;
+  render: string;
   quantity: number;
 }
 
@@ -97,6 +99,7 @@ interface Product {
   name: string;
   idPot: number;
   potName: string;
+  renderPot: string;
   idCrystal: number;
   crystalName: string;
   plantPrice: number;
@@ -105,5 +108,12 @@ interface Product {
   price: number;
   imagePlant: string;
   imageCrystal: string;
+  quantity: number;
+}
+
+interface Cart {
+  plant: number;
+  pot: number;
+  crystal: number;
   quantity: number;
 }
