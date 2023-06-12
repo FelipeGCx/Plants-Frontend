@@ -13,9 +13,9 @@ export default function TheProductList(props: {
     <div className={styles.list}>
       <h1>Resumen de tu compra</h1>
       <ul>
-        {props.products.map((p) => {
+        {props.products.map((p, i: number) => {
           return (
-            <li>
+            <li key={i}>
               <span>{p.name}</span>
               <span>{p.total}</span>
             </li>

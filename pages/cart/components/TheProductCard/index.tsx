@@ -1,20 +1,18 @@
 import Image from "next/image";
-import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import styles from "./style.module.scss";
-import edit from "./assets/edit.svg";
+// import edit from "./assets/edit.svg";
 import clean from "./assets/delete.svg";
 import TheQuantityCard from "../TheQuantityCard";
 import { Cart, Product } from "../../../../types";
 
 
-const formatter = new Intl.NumberFormat("es-CO", {
-  style: "currency",
-  currency: "COP",
-  maximumFractionDigits: 0,
-});
-
 export default function TheProductCard(props: { product: Product, delete(id: number, idPot: number, idCrystal: number): void }) {
+  const formatter = new Intl.NumberFormat("es-CO", {
+    style: "currency",
+    currency: "COP",
+    maximumFractionDigits: 0,
+  });
   const [total, setTotal] = useState(props.product.price * props.product.quantity);
   const [quantity, setQuantity] = useState(props.product.quantity);
 
@@ -55,7 +53,7 @@ export default function TheProductCard(props: { product: Product, delete(id: num
 
   useEffect(() => {
     setTotal(quantity * props.product.price);
-  })
+  },[props.product.price, quantity])
   return (
     <div className={styles.productCard}>
       <div className={styles.images}>
@@ -95,11 +93,6 @@ export default function TheProductCard(props: { product: Product, delete(id: num
       />
       <div className={styles.info}>
         <div className={styles.actions}>
-          {/* <Link
-            href={`plants/plant/${props.product.id}?crystal=${props.product.idCrystal}&pot=${props.product.idPot}`}
-          >
-            <Image src={edit} width={48} height={48} alt="icon edit" />
-          </Link> */}
           <button onClick={() => props.delete(props.product.id, props.product.idPot, props.product.idCrystal)}>
             <Image src={clean} width={48} height={48} alt="icon delete" />
           </button>
