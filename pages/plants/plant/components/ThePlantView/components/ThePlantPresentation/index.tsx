@@ -1,14 +1,14 @@
 import styles from "./style.module.scss";
 import Image from "next/image";
 import { PlantStock } from "../../../../../../../types";
+import renderPot from "./assets/doisu-render.webp";
 
-const formatter = new Intl.NumberFormat("es-CO", {
-  style: "currency",
-  currency: "COP",
-  maximumFractionDigits: 0,
-});
-
-export default function ThePlantPresentation(props: { plant: PlantStock, renderPot: string, addToCart(): void }) {
+export default function ThePlantPresentation(props: { plant: PlantStock, renderPot?: string, addToCart(): void }) {
+  const formatter = new Intl.NumberFormat("es-CO", {
+    style: "currency",
+    currency: "COP",
+    maximumFractionDigits: 0,
+  });
   return (
     <section className={styles.presentation}>
       <div className={styles.picture}>
@@ -18,13 +18,23 @@ export default function ThePlantPresentation(props: { plant: PlantStock, renderP
           alt={`image plant ${props.plant.plant.name}`}
           sizes="100%"
         />
-        <Image
-          fill
-          src={props.renderPot}
-          alt={`image pot`}
-          sizes='100%'
-
-        />
+        {
+          (props.renderPot != "") ? (
+            <Image
+              fill
+              src={props.renderPot}
+              alt={`image pot`}
+              sizes='100%'
+              priority={true}
+            />) : (
+            <Image
+              fill
+              src={renderPot}
+              alt={`image potsadasdas`}
+                sizes='100%'
+                priority={true}
+            />)
+        }
       </div>
       <div className={styles.info}>
         <h1>{props.plant.plant.name}</h1>

@@ -26,7 +26,7 @@ export default function ThePotSelector(props: { id: number, selectedPot(pot:stri
   }, [])
 
   useEffect(() => {
-    props.selectedPot(potsList.find(objeto => objeto.id === selected)?.render || "https://firebasestorage.googleapis.com/v0/b/simple-a5eec.appspot.com/o/potsImage/doisu-render.webp?alt=media&token=289ff965-53e9-4a78-b3c2-02edfb573c57");
+    props.selectedPot(potsList.find(objeto => objeto.id === selected)?.render || "");
   }, [potsList, props, selected])
   
 
