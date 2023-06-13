@@ -4,7 +4,10 @@ import React, { useEffect, useState } from "react";
 import { CrystalFav } from "../../../../../types";
 import { useRouter } from "next/router";
 
-export default function TheCrystalSelector(props: { id: number }) {
+export default function TheCrystalSelector(props: {
+  id: number;
+  selectedCrystal(crystal: CrystalFav): void;
+}) {
   const [selected, setSelected] = useState(props.id);
   const [crystalList, setCrystalList] = useState<CrystalFav[]>([]);
   const [error, setError] = useState("");
@@ -24,13 +27,38 @@ export default function TheCrystalSelector(props: { id: number }) {
     fetchData();
   }, []);
 
+  useEffect(() => {
+    let item:CrystalFav = {
+      favorite: false,
+      quantity: 0,
+      price: 0,
+      state: false,
+      id: 0,
+      name: "",
+      description: "",
+      vibration: 0,
+      benefits: [],
+      properties: [],
+      zodiac: [],
+      planets: [],
+      elements: [],
+      chakras: [],
+      imageCrystal: "",
+      imageGemstone: ""
+    }
+    let find = crystalList.find((objeto) => objeto.id === selected)
+    if (find) {
+      item = find
+    }
+    props.selectedCrystal(item);
+  }, [crystalList, props, selected]);
+
   const handlerChange = (id: number) => {
     setSelected(id);
     const { query, pathname } = router;
     let updatedQuery = { ...query, crystal: id.toString() };
     router.push({ pathname, query: updatedQuery });
-  }
-
+  };
 
   return (
     <section className={styles.selector}>
