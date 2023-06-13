@@ -8,6 +8,15 @@ import React, { useState } from "react";
 export default function TheHeader() {
   const [valueSearch, setValue] = useState("");
   const [displayDrop, setDisplay] = useState("none");
+  const handlerState = (e:any) => {
+    let value = e.target.value;
+    setValue(value.toString());
+    if (value.length <= 0) {
+      setDisplay("none");
+    } else {
+      setDisplay("flex");
+    }
+  };
   return (
     <div
       className={styles.search}
@@ -23,15 +32,8 @@ export default function TheHeader() {
           name="buscador"
           placeholder="Buscar"
           value={valueSearch}
-          onClick={() => setDisplay("flex")}
-          onChange={(e) => {
-            setValue(e.target.value);
-            if (e.target.value.length <= 0) {
-              setDisplay("none");
-            } else {
-              setDisplay("flex");
-            }
-          }}
+          onClick={handlerState}
+          onChange={handlerState}
         />
         <Image
           className="icon"
