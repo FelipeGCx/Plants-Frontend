@@ -18,10 +18,10 @@
     box-shadow: var(--shadow);
     input {
       height: 100%;
+      width: 100%;
       border: none;
-      width: auto;
       background-color: transparent;
-      font-size: 1.1rem;
+      font-size: 1.2rem;
       text-indent: 1rem;
       &:focus {
         border: none;
