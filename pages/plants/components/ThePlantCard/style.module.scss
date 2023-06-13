@@ -11,6 +11,30 @@
     width: 20rem;
     position: relative;
     cursor: pointer;
+    &:hover {
+      background-color: var(--card-hover-color);
+      &::after {
+        top: 45%;
+        right: 3%;
+        transform: rotate(225deg);
+        width: 29rem;
+        height: 16rem;
+      }
+      &::before {
+        top: -7%;
+        left: 60%;
+        transform: rotate(185deg);
+
+        // background-color: var(--card-color);
+        // opacity: 50%;
+      }
+      // .nameplant{
+      //   // color:var(--contrast-font-color);
+      //   padding: .2rem 1rem;
+      //   border-radius: var(--radius);
+      //   // background-color: var(--card-active-color)+"cc";
+      // }
+    }
     &::after {
       content: "";
       position: absolute;
@@ -22,6 +46,7 @@
       top: 52%;
       right: -13%;
       transform: rotate(45deg);
+      transition: transform 1s ease, top 1s ease, left 1s ease, width 1s ease, height 1s ease;
     }
     &::before {
       content: "";
@@ -34,6 +59,8 @@
       top: 34%;
       left: -11%;
       transform: rotate(45deg);
+     transition: transform 1s ease, top 1s ease, left 1s ease;
+
     }
     .details {
       display: flex;
