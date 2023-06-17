@@ -85,6 +85,13 @@ interface PlantsQParams {
   priceSecond: string | string[] | null;
 }
 
+interface CrystalsQParams {
+  zodiac: string | string[] | null;
+  elements: string | string[] | null;
+  planets: string | string[] | null;
+  chakras: string | string[] | null;
+}
+
 interface Pot {
   id: number;
   name: string;
@@ -117,3 +124,4 @@ interface Cart {
   crystal: number;
   quantity: number;
 }
+
