@@ -9,19 +9,18 @@ import { CrystalsQParams } from "../../../../types";
 
 export default function TheFilter(props: { params: CrystalsQParams }) {
   const router = useRouter();
-    const setFilter = (filter: string, value: any) => {
+    const handlerFilter = (filter: string, value: any) => {
         console.log(filter, value);
     const { query, pathname } = router;
     switch (filter) {
-      case "species":
-        if (value == "todas") {
-          const { species, ...restQuery } = query;
-          let updatedQuery = { ...restQuery, page: "1" };
-          router.push({ pathname, query: updatedQuery });
+      case "zodiac":
+        const { zodiac, ...restQuery } = query;
+        if (zodiac?.includes(value)) {
+          // here need remove if exist to uncheck
         } else {
           let updatedQuery = {
             ...query,
-            species: value.toString(),
+            zodiac: zodiac?.push(value.toString()),
             page: "1",
           };
           router.push({ pathname, query: updatedQuery });
@@ -39,7 +38,7 @@ export default function TheFilter(props: { params: CrystalsQParams }) {
           type="checkbox"
           name="zodiac"
           id={item.sign}
-          onInput={() => setFilter("zodiac", item.sign)}
+          onInput={() => handlerFilter("zodiac", item.sign)}
           checked={props.params.zodiac?.includes(item.sign)}
         />
         <Image
