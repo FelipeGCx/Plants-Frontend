@@ -6,32 +6,40 @@ import elements from "./elements";
 import styles from "./style.module.scss";
 import { useRouter } from "next/router";
 import { CrystalsQParams } from "../../../../types";
-import { type } from "os";
 
 export default function TheFilter(props: { params: CrystalsQParams }) {
   const router = useRouter();
   const handlerFilter = (filter: string, value: any) => {
-    console.log(filter, value);
+    console.table({ filter, value });
     const { query, pathname } = router;
     switch (filter) {
       case "zodiac":
         const { zodiac, ...restQuery } = query;
-        console.log("Z", zodiac);
-        console.log(typeof zodiac);
         if (zodiac) {
           let newZodiac = zodiac.toString().split(",");
           if (zodiac.includes(value)) {
-            const idx = zodiac.indexOf(value);
-            let updatedQuery = {
-              ...restQuery,
-              zodiac: newZodiac.splice(idx, 1).join(""),
-              page: "1",
-            };
-            router.push({ pathname, query: updatedQuery });
+            let deleteZodiac = newZodiac.filter((item) => {
+              return item != value
+            });
+            if (deleteZodiac.length == 0) {
+              let updatedQuery = {
+                ...restQuery,
+                page: "1",
+              };
+              router.push({ pathname, query: updatedQuery });
+            } else {
+              let updatedQuery = {
+                ...restQuery,
+                zodiac: deleteZodiac.join(","),
+                page: "1",
+              };
+              router.push({ pathname, query: updatedQuery });
+            }
           } else {
+            newZodiac.push(value.toString());
             let updatedQuery = {
               ...restQuery,
-              zodiac: value.toString(),
+              zodiac: newZodiac.join(","),
               page: "1",
             };
             router.push({ pathname, query: updatedQuery });
@@ -57,9 +65,9 @@ export default function TheFilter(props: { params: CrystalsQParams }) {
           type="checkbox"
           name="zodiac"
           id={item.sign}
-          // onInput={() => handlerFilter("zodiac", item.sign)}
-          onChange={() => handlerFilter("zodiac", item.sign)}
-          checked={props.params.zodiac?.includes(item.sign)}
+          onInput={() => handlerFilter("zodiac", item.value)}
+          onChange={() => handlerFilter("zodiac", item.value)}
+          checked={props.params.zodiac?.includes(item.value) || false}
         />
         <Image
           className="icon"
@@ -123,7 +131,8 @@ export default function TheFilter(props: { params: CrystalsQParams }) {
           <h2>zodiaco</h2>
           <ul>{zodiacList}</ul>
         </div>
-        <div>
+        <h1>{ props.params.zodiac}</h1>
+        {/* <div>
           <h2>elemento</h2>
           <ul>{elementsList}</ul>
         </div>
@@ -134,7 +143,7 @@ export default function TheFilter(props: { params: CrystalsQParams }) {
         <div>
           <h2>chakras</h2>
           <ul>{chakrasList}</ul>
-        </div>
+        </div> */}
       </form>
     </section>
   );

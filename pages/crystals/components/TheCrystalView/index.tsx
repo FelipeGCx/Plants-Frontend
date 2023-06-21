@@ -10,7 +10,7 @@ export default function TheCrystalView(props: { crystals: CrystalFav[], totalIte
   return (
     <section className={styles.view}>
       <ul className={styles.items}>
-        {props.crystals.map((crystal: CrystalFav, i: number) => {
+        {/* {props.crystals.map((crystal: CrystalFav, i: number) => {
           // eslint-disable-next-line react-hooks/rules-of-hooks
           const [order, setOrder] = useState((props.totalItems - i) * -1);
           // eslint-disable-next-line react-hooks/rules-of-hooks
@@ -50,6 +50,9 @@ export default function TheCrystalView(props: { crystals: CrystalFav[], totalIte
               <TheCrystalBenefitsCard crystal={crystal} order={order} display={display} />
             </>
           );
+        })} */}
+        {props.crystals.map((crystal:CrystalFav )=>{
+          return(<li key={ crystal.id} >{ crystal.name}</li>)
         })}
       </ul>
     </section>
