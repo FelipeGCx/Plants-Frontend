@@ -58,7 +58,7 @@ export default function Crystals() {
         "zodiac": zodiac,
         "elements": elements,
         "planets": planets,
-        "chakras": chakras,
+        "chakras": chakras
       };
       setCrystalParams(params);
       try {

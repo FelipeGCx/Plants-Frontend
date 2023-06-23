@@ -285,9 +285,12 @@ export default function TheFilter(props: { params: CrystalsQParams }) {
   return (
     <section className={styles.filter}>
       <form>
+        {props.params.vibrationFirst}
         <TheDoubleSlider
           minValue={0}
           maxValue={11}
+          firstValue={props.params.vibrationFirst}
+          secondValue={props.params.vibrationSecond}
           onValueChange={handlerVibration}
         />
         <div>
