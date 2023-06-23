@@ -6,9 +6,13 @@ import elements from "./elements";
 import styles from "./style.module.scss";
 import { useRouter } from "next/router";
 import { CrystalsQParams } from "../../../../types";
+import TheDoubleSlider from "./components/TheDoubleSlider";
+import { useState } from "react";
 
 export default function TheFilter(props: { params: CrystalsQParams }) {
   const router = useRouter();
+  const [minVibration, setMinVibration] = useState(0);
+  const [maxVibration, setMaxVibration] = useState(1000);
   const handlerFilter = (filter: string, value: any) => {
     console.table({ filter, value });
     const { query, pathname } = router;
@@ -265,9 +269,27 @@ export default function TheFilter(props: { params: CrystalsQParams }) {
     );
   });
 
+  const handlerVibration = (minValue: number, maxValue: number) => {
+    setMinVibration(minValue);
+    setMaxVibration(maxValue);
+    const { query, pathname } = router;
+    let updatedQuery = {
+      ...query,
+      minVibration: minVibration.toString(),
+      maxVibration: maxVibration.toString(),
+      page: "1",
+    };
+    router.push({ pathname, query: updatedQuery });
+  };
+
   return (
     <section className={styles.filter}>
       <form>
+        <TheDoubleSlider
+          minValue={0}
+          maxValue={11}
+          onValueChange={handlerVibration}
+        />
         <div>
           <h2>zodiaco</h2>
           <ul>{zodiacList}</ul>

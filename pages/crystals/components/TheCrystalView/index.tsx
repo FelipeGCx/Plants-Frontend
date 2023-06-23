@@ -5,8 +5,10 @@ import TheCrystalCard from "./components/TheCrystalCard";
 import TheCrystalPropertiesCard from "./components/TheCrystalPropertiesCard";
 import TheCrystalBenefitsCard from "./components/TheCrystalBenefitsCard";
 
-
-export default function TheCrystalView(props: { crystals: CrystalFav[], totalItems: number }) {
+export default function TheCrystalView(props: {
+  crystals: CrystalFav[];
+  totalItems: number;
+}) {
   return (
     <section className={styles.view}>
       <ul className={styles.items}>
@@ -51,10 +53,30 @@ export default function TheCrystalView(props: { crystals: CrystalFav[], totalIte
             </>
           );
         })} */}
-        {props.crystals.map((crystal:CrystalFav )=>{
-          return(<li key={ crystal.id} >{ crystal.name}</li>)
+        {props.crystals.map((crystal: CrystalFav) => {
+          return (
+            <TheCrystalCard
+              key={crystal.id}
+              crystal={crystal}
+              idx={crystal.id}
+              totalItems={props.totalItems}
+              order={0}
+              onFavorite={function (): void {
+                throw new Error("Function not implemented.");
+              }}
+              onNewOrder={function (oldOrder: number): void {
+                getNewOrder(oldOrder, 5);
+              }}
+              onDisplay={function (display: string): void {
+                setDisplay(display);
+              }}
+              onOrder={function (order: number): void {
+                setOrder(order);
+              }}
+            />
+          );
         })}
       </ul>
     </section>
-  )
+  );
 }
