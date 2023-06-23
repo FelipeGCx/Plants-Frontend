@@ -22,13 +22,13 @@ export default function DoubleSlider(props: { minValue: number, maxValue: number
     let newValue = +event.target.value;
     newValue = newValue >= maxVal ? minVal : newValue;
     setMinVal(newValue);
-    props.onValueChange(minVal, maxVal);
+    props.onValueChange(newValue, maxVal);
   }
   const handlerChangeRigth = (event: React.ChangeEvent<HTMLInputElement>) => {
     let newValue = +event.target.value;
     newValue = newValue <= minVal ? maxVal : newValue;
     setMaxVal(newValue);
-    props.onValueChange(minVal, maxVal);
+    props.onValueChange(minVal, newValue);
   }
   return (
     <div className={styles.container}>
@@ -41,7 +41,7 @@ export default function DoubleSlider(props: { minValue: number, maxValue: number
           max={props.maxValue}
           value={minVal}
           className={`${styles.thumb} ${styles.left}`}
-          onInput={handlerChangeLeft}
+          onChange={handlerChangeLeft}
         />
         {/* style={{ zIndex: minVal > props.maxValue - 100 && "5" }} */}
         <input
@@ -50,7 +50,7 @@ export default function DoubleSlider(props: { minValue: number, maxValue: number
           max={props.maxValue}
           value={maxVal}
           className={`${styles.thumb} ${styles.right}`}
-          onInput={handlerChangeRigth}
+          onChange={handlerChangeRigth}
         />
       </div>
     </div>

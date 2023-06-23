@@ -275,8 +275,8 @@ export default function TheFilter(props: { params: CrystalsQParams }) {
     const { query, pathname } = router;
     let updatedQuery = {
       ...query,
-      minVibration: minVibration.toString(),
-      maxVibration: maxVibration.toString(),
+      vibrationFirst: minValue,
+      vibrationSecond: maxValue,
       page: "1",
     };
     router.push({ pathname, query: updatedQuery });

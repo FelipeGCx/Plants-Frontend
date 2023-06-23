@@ -47,6 +47,13 @@ export default function Crystals() {
       if (chakras != null) {
         uri += `&chakras=${chakras}`;
       }
+      const vibrationFirst = router.query["vibrationFirst"] || null;
+      const vibrationSecond = router.query["vibrationSecond"] || null;
+      if (vibrationFirst != null) {
+        if (vibrationSecond != null) {
+          uri += `&vibrationFirst=${vibrationFirst}&vibrationSecond=${vibrationSecond}`;
+        }
+      }
       const params = {
         "zodiac": zodiac,
         "elements": elements,
