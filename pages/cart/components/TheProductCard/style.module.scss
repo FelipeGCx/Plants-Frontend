@@ -1,10 +1,10 @@
 .productCard {
-  --radius: 2.5rem;
-  width: 64rem;
+  width: auto;
   height: 13rem;
+  min-height: 13rem;
   position: relative;
   background-color: var(--box-color);
-  border-radius: var(--radius);
+  border-radius: var(--radius-2x);
   display: flex;
   padding: 1rem;
   overflow: hidden;
