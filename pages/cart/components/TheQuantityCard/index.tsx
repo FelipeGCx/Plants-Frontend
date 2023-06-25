@@ -12,18 +12,18 @@ export default function TheQuantityCard(props: {
     <div className={styles.quantity}>
       <h1>Cantidad</h1>
       <div className={styles.shift}>
-        <button onClick={props.onSubstract}>
+        <a onClick={props.onSubstract}>
           <Image src={arrowLeft} width={48} height={48} alt="arrow left icon" />
-        </button>
+        </a>
         <p>{props.quantity.toString()}</p>
-        <button onClick={props.onAdd}>
+        <a onClick={props.onAdd}>
           <Image
             src={arrowRight}
             width={48}
             height={48}
             alt="arrow right icon"
           />
-        </button>
+        </a>
       </div>
     </div>
   );
