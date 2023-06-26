@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import styles from "./style.module.scss";
 // import edit from "./assets/edit.svg";
 import clean from "./assets/delete.svg";
-import TheQuantityCard from "../TheQuantityCard";
+import TheQuantityCard from "./components/TheQuantityCard";
 import { Cart, Product } from "../../../../types";
 
 
