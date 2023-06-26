@@ -13,176 +13,41 @@ export default function TheFilter(props: { params: CrystalsQParams }) {
   const router = useRouter();
   const [minVibration, setMinVibration] = useState(0);
   const [maxVibration, setMaxVibration] = useState(1000);
-  const handlerFilter = (filter: string, value: any) => {
-    console.table({ filter, value });
+  const pushPath = (filter: string, value: string) => {
+    let updatedQuery: any = null;
     const { query, pathname } = router;
-    const pushZodiac = (value?: string) => {
-      const { zodiac, ...restQuery } = query;
-      let updatedQuery: any = null;
-      if (value) {
-        updatedQuery = {
-          ...restQuery,
-          zodiac: value,
-          page: "1",
-        };
+    const { [filter]: filterParam, ...restQuery } = query;
+    if (value != "") {
+      updatedQuery = {
+        ...restQuery,
+        [filter]: value,
+        page: "1",
+      };
+    } else {
+      updatedQuery = {
+        ...restQuery,
+        page: "1",
+      };
+    }
+    router.push({ pathname, query: updatedQuery });
+  };
+
+  const handlerFilter = (filter: string, value: string) => {
+    const { query } = router;
+    const { [filter]: filterParam } = query;
+    if (filterParam) {
+      let paramValues = filterParam.toString().split(",");
+      if (paramValues.includes(value)) {
+        let newParamValues = paramValues.filter((paramValue) => {
+          return paramValue != value;
+        });
+        pushPath(filter, newParamValues.join(","));
       } else {
-        updatedQuery = {
-          ...restQuery,
-          page: "1",
-        };
+        paramValues.push(value);
+        pushPath(filter, paramValues.join(","));
       }
-      router.push({ pathname, query: updatedQuery });
-    };
-    const pushElements = (value?: string) => {
-      const { elements, ...restQuery } = query;
-      let updatedQuery: any = null;
-      if (value) {
-        updatedQuery = {
-          ...restQuery,
-          elements: value,
-          page: "1",
-        };
-      } else {
-        updatedQuery = {
-          ...restQuery,
-          page: "1",
-        };
-      }
-      router.push({ pathname, query: updatedQuery });
-    };
-    const pushPlanets = (value?: string) => {
-      const { planets, ...restQuery } = query;
-      let updatedQuery: any = null;
-      if (value) {
-        updatedQuery = {
-          ...restQuery,
-          planets: value,
-          page: "1",
-        };
-      } else {
-        updatedQuery = {
-          ...restQuery,
-          page: "1",
-        };
-      }
-      router.push({ pathname, query: updatedQuery });
-    };
-    const pushChakras = (value?: string) => {
-      const { chakras, ...restQuery } = query;
-      let updatedQuery: any = null;
-      if (value) {
-        updatedQuery = {
-          ...restQuery,
-          chakras: value,
-          page: "1",
-        };
-      } else {
-        updatedQuery = {
-          ...restQuery,
-          page: "1",
-        };
-      }
-      router.push({ pathname, query: updatedQuery });
-    };
-    switch (filter) {
-      case "zodiac":
-        const { zodiac } = query;
-        // check if zodiac exist
-        if (zodiac) {
-          let array = zodiac.toString().split(",");
-          // check if value exist, if exist delete it
-          if (zodiac.includes(value)) {
-            let newArray = array.filter((item) => {
-              return item != value;
-            });
-            // check if zodiac is void to remove it of path
-            if (newArray.length == 0) {
-              pushZodiac();
-            } else {
-              pushZodiac(newArray.join(","));
-            }
-          } else {
-            array.push(value.toString());
-            pushZodiac(array.join(","));
-          }
-        } else {
-          pushZodiac(value.toString());
-        }
-        break;
-      case "elements":
-        const { elements } = query;
-        // check if elements exist
-        if (elements) {
-          let array = elements.toString().split(",");
-          // check if value exist, if exist delete it
-          if (elements.includes(value)) {
-            let newArray = array.filter((item) => {
-              return item != value;
-            });
-            // check if elements is void to remove it of path
-            if (newArray.length == 0) {
-              pushElements();
-            } else {
-              pushElements(newArray.join(","));
-            }
-          } else {
-            array.push(value.toString());
-            pushElements(array.join(","));
-          }
-        } else {
-          pushElements(value.toString());
-        }
-        break;
-      case "planets":
-        const { planets } = query;
-        // check if planets exist
-        if (planets) {
-          let array = planets.toString().split(",");
-          // check if value exist, if exist delete it
-          if (planets.includes(value)) {
-            let newArray = array.filter((item) => {
-              return item != value;
-            });
-            // check if planets is void to remove it of path
-            if (newArray.length == 0) {
-              pushPlanets();
-            } else {
-              pushPlanets(newArray.join(","));
-            }
-          } else {
-            array.push(value.toString());
-            pushPlanets(array.join(","));
-          }
-        } else {
-          pushPlanets(value.toString());
-        }
-        break;
-      case "chakras":
-        const { chakras } = query;
-        // check if chakras exist
-        if (chakras) {
-          let array = chakras.toString().split(",");
-          // check if value exist, if exist delete it
-          if (chakras.includes(value)) {
-            let newArray = array.filter((item) => {
-              return item != value;
-            });
-            // check if chakras is void to remove it of path
-            if (newArray.length == 0) {
-              pushChakras();
-            } else {
-              pushChakras(newArray.join(","));
-            }
-          } else {
-            array.push(value.toString());
-            pushChakras(array.join(","));
-          }
-        } else {
-          pushChakras(value.toString());
-        }
-        break;
-      default:
-        break;
+    } else {
+      pushPath(filter, value);
     }
   };
 
