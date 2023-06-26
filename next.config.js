@@ -10,7 +10,7 @@ module.exports = {
     CORS_ORIGIN: "*",
   },
   sassOptions: {
-    includePaths: [path.join(__dirname, "styles")],
+    includePaths: [path.join(__dirname, "src/styles")],
   },
   // webpack: (config) => {
   //   config.module.rules.push({
