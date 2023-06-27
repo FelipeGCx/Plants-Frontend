@@ -8,7 +8,7 @@ import React, { useState } from "react";
 export default function TheHeader() {
   const [valueSearch, setValue] = useState("");
   const [displayDrop, setDisplay] = useState("none");
-  const handlerState = (e:any) => {
+  const handlerState = (e: any) => {
     let value = e.target.value;
     setValue(value.toString());
     if (value.length <= 0) {
@@ -50,7 +50,9 @@ export default function TheHeader() {
             setDisplay("none");
           }}
         >
-          <p>Buscar &quot;{valueSearch}&quot;</p>
+          <p>
+            Buscar &quot;<span>{valueSearch}</span>&quot;
+          </p>
           <Link href={`/plants/?name=${valueSearch}`}>
             En Plantas
             <Image src={arrow} alt="arrow right icon" width={48} height={48} />
@@ -62,7 +64,9 @@ export default function TheHeader() {
             setDisplay("none");
           }}
         >
-          <p>Buscar &quot;{valueSearch}&quot;</p>
+          <p>
+            Buscar &quot;<span>{valueSearch}</span>&quot;
+          </p>
           <Link href={`/crystals/?name=${valueSearch}`}>
             En Cristales
             <Image src={arrow} alt="arrow right icon" width={48} height={48} />

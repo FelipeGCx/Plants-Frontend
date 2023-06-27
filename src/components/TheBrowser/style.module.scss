@@ -50,6 +50,15 @@
       font-size: 1.2rem;
       p {
         text-transform: capitalize;
+        display: inline-flex;
+        span {
+          text-transform: inherit;
+          text-overflow: ellipsis;
+          overflow: hidden;
+          word-wrap: normal;
+          white-space: nowrap;
+          max-width: 8.5rem;
+        }
       }
       a {
         text-decoration: none;
