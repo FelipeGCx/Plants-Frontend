@@ -4,6 +4,8 @@ import { CrystalFav, CrystalsQParams } from "../../types";
 import TheCrystalView from "./components/TheCrystalView";
 import TheFilter from "./components/TheFilter";
 import { useRouter } from "next/router";
+import { ProductionService } from "../../api/ProductionService";
+import { HttpService } from "../../api/HttpService";
 
 export default function Crystals() {
   const [idUser, setIdUser] = useState(1);
@@ -22,48 +24,49 @@ export default function Crystals() {
 
   useEffect(() => {
     async function fetchData() {
-      let uri = `https://plants-api-production.up.railway.app/api/v1/crystalis/${idUser}/`;
+      let url = `https://plants-api-production.up.railway.app/api/v1/crystalis/${idUser}/`;
       const page = router.query["page"];
       if (page == null) {
-        uri += `?page=1`;
+        url += `?page=1`;
         setPage(1);
       } else {
-        uri += `?page=${page}`;
+        url += `?page=${page}`;
         setPage(+page);
       }
       const zodiac = router.query["zodiac"] || null;
       if (zodiac != null) {
-        uri += `&zodiac=${zodiac}`;
+        url += `&zodiac=${zodiac}`;
       }
       const elements = router.query["elements"] || null;
       if (elements != null) {
-        uri += `&elements=${elements}`;
+        url += `&elements=${elements}`;
       }
       const planets = router.query["planets"] || null;
       if (planets != null) {
-        uri += `&planets=${planets}`;
+        url += `&planets=${planets}`;
       }
       const chakras = router.query["chakras"] || null;
       if (chakras != null) {
-        uri += `&chakras=${chakras}`;
+        url += `&chakras=${chakras}`;
       }
       const vibrationFirst = router.query["vibrationFirst"] || null;
       const vibrationSecond = router.query["vibrationSecond"] || null;
       if (vibrationFirst != null) {
         if (vibrationSecond != null) {
-          uri += `&vibrationFirst=${vibrationFirst}&vibrationSecond=${vibrationSecond}`;
+          url += `&vibrationFirst=${vibrationFirst}&vibrationSecond=${vibrationSecond}`;
         }
       }
       const params = {
-        "zodiac": zodiac,
-        "elements": elements,
-        "planets": planets,
-        "chakras": chakras
+        zodiac: zodiac,
+        elements: elements,
+        planets: planets,
+        chakras: chakras,
       };
       setCrystalParams(params);
       try {
-        const response = await fetch(uri);
-        const data = await response.json();
+        const httpProvider = new ProductionService();
+        const httpService = new HttpService(httpProvider);
+        const data = await httpService.getRequest(url);
         setCrystals(data.results);
         setTotalItems(+data.totalItems);
         setLoading(false);

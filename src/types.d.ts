@@ -125,3 +125,16 @@ interface Cart {
   quantity: number;
 }
 
+interface Request {
+  page: number;
+  results:
+    | Plant[]
+    | Crystal[]
+    | PlantFavorite[]
+    | CrystalFav[]
+    | CrystalStock[]
+    | PlantStock[]
+    | string[];
+  totalItems: number;
+  totalPages: number;
+}

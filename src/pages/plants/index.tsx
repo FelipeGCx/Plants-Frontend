@@ -7,23 +7,21 @@ import ThePlantCard from "./components/ThePlantCard";
 import TheFilters from "./components/TheFilters";
 import { useRouter } from "next/router";
 import { Plant, PlantsQParams } from "../../types";
-
-
+import { ProductionService } from "../../api/ProductionService";
+import { HttpService } from "../../api/HttpService";
 
 export default function Plants() {
   const [page, setPage] = useState(1);
   const [idUser, setIdUser] = useState(1);
   const [PlantsList, setPlantsList] = useState<Plant[]>([]);
-  const [plantParams, setPlantParams] = useState<PlantsQParams>(
-    {
-      "species": null,
-      "light": null,
-      "zone": null,
-      "irrigation": null,
-      "priceFirst": null,
-      "priceSecond": null,
-    }
-  );
+  const [plantParams, setPlantParams] = useState<PlantsQParams>({
+    species: null,
+    light: null,
+    zone: null,
+    irrigation: null,
+    priceFirst: null,
+    priceSecond: null,
+  });
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const [totalItems, setTotalItems] = useState(30);
@@ -49,62 +47,62 @@ export default function Plants() {
   useEffect(() => {
     async function fetchData() {
       // declare the url to fetch
-      let uri = `https://plants-api-production.up.railway.app/api/v1/plantis/${idUser}/`;
-      // let uri = `https://plants-api-production.up.railway.app/api/v1/stock/plants/?`;
+      let url = `https://plants-api-production.up.railway.app/api/v1/plantis/${idUser}/`;
+      // let url = `https://plants-api-production.up.railway.app/api/v1/stock/plants/?`;
       // get query params to filter
       const page = router.query["page"];
       if (page == null) {
-        uri += `?page=1`;
+        url += `?page=1`;
         setPage(1);
       } else {
-        uri += `?page=${page}`;
+        url += `?page=${page}`;
         setPage(+page);
       }
       const name = router.query["name"];
       if (name != null) {
-        uri += `&name=${name}`;
+        url += `&name=${name}`;
       }
       const species = router.query["species"] || null;
       if (species != null) {
-        uri += `&species=${species}`;
+        url += `&species=${species}`;
       }
       const irrigation = router.query["irrigation"] || null;
       if (irrigation != null) {
-        uri += `&irrigation=${irrigation}`;
+        url += `&irrigation=${irrigation}`;
       }
       const zone = router.query["zone"] || null;
       if (zone != null) {
-        uri += `&inside=${zone == "interior"}`;
+        url += `&inside=${zone == "interior"}`;
       }
       const priceFirst = router.query["priceFirst"] || null;
       const priceSecond = router.query["priceSecond"] || null;
       if (priceFirst != null) {
         if (priceSecond != null) {
-          uri += `&priceFirst=${priceFirst}&priceSecond=${priceSecond}`;
+          url += `&priceFirst=${priceFirst}&priceSecond=${priceSecond}`;
         }
       }
       const order = router.query["order"];
       if (order != null) {
-        uri += `&order=${order}`;
+        url += `&order=${order}`;
       }
       const light = router.query["light"] || null;
       if (light != null) {
-        uri += `&light=${light}`;
+        url += `&light=${light}`;
       }
       const params = {
-        "species": species,
-        "light": light,
-        "zone": zone,
-        "irrigation": irrigation,
-        "priceFirst": priceFirst,
-        "priceSecond": priceSecond,
-      }
+        species: species,
+        light: light,
+        zone: zone,
+        irrigation: irrigation,
+        priceFirst: priceFirst,
+        priceSecond: priceSecond,
+      };
       setPlantParams(params);
       try {
-        const response = await fetch(uri);
-        const data = await response.json();
+        const httpProvider = new ProductionService();
+        const httpService = new HttpService(httpProvider);
+        const data = await httpService.getRequest(url);
         setPlantsList(data.results);
-        console.log(data.results);
         setTotalItems(data.totalItems);
         setTotalPages(data.totalPages);
         setLoading(false);
@@ -125,7 +123,7 @@ export default function Plants() {
     return (
       <main className={styles.main}>
         <section className={styles.filter}>
-          <TheFilters params={plantParams } />
+          <TheFilters params={plantParams} />
         </section>
         <section className={styles.view}>
           <div className={styles.navsref}>
@@ -145,12 +143,7 @@ export default function Plants() {
           </div>
           <ul className={styles.items}>
             {PlantsList?.map((plant: Plant, i: number) => {
-              return (
-                <ThePlantCard
-                  key={i}
-                  plant={plant}
-                />
-              );
+              return <ThePlantCard key={i} plant={plant} />;
             })}
           </ul>
         </section>
