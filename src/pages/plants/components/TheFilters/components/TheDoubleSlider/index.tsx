@@ -22,13 +22,13 @@ export default function DoubleSlider(props: { minPrice: number, maxPrice: number
     let newValue = +event.target.value;
     newValue = newValue >= maxVal ? minVal : newValue;
     setMinVal(newValue);
-    props.onPriceChange(minVal, maxVal);
+    props.onPriceChange(newValue, maxVal);
   }
   const handlerChangeRigth = (event: React.ChangeEvent<HTMLInputElement>) => {
     let newValue = +event.target.value;
     newValue = newValue <= minVal ? maxVal : newValue;
     setMaxVal(newValue);
-    props.onPriceChange(minVal, maxVal);
+    props.onPriceChange(minVal, newValue);
   }
   return (
     <div className={styles.container}>

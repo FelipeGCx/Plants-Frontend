@@ -81,7 +81,7 @@ export default function TheFilters(props: { params: PlantsQParams }) {
     setMinPrice(min);
     setMaxPrice(max);
     const { query, pathname } = router;
-    let updatedQuery = { ...query, priceFirst: minPrice.toString(), priceSecond: maxPrice.toString(), page: "1" };
+    let updatedQuery = { ...query, priceFirst: min.toString(), priceSecond: max.toString(), page: "1" };
     router.push({ pathname, query: updatedQuery });
   };
 
