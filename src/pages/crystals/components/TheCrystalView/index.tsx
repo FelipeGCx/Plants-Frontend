@@ -65,13 +65,13 @@ export default function TheCrystalView(props: {
                 throw new Error("Function not implemented.");
               }}
               onNewOrder={function (oldOrder: number): void {
-                getNewOrder(oldOrder, 5);
+                // getNewOrder(oldOrder, 5);
               }}
               onDisplay={function (display: string): void {
-                setDisplay(display);
+                // setDisplay(display);
               }}
               onOrder={function (order: number): void {
-                setOrder(order);
+                // setOrder(order);
               }}
             />
           );
