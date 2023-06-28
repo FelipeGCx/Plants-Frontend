@@ -51,11 +51,14 @@
       filter: var(--drop-shadow);
       img {
         &:nth-child(1) {
-          top: -40% !important;
-          width: 75% !important;
-          height: auto !important;
-          z-index: 6;
-          margin: 0 auto;
+         width: 160% !important;
+        height: auto !important;
+        z-index: 6;
+        margin: 0 auto;
+        top: initial !important;
+        bottom: -3% !important;
+        left: initial !important;
+        right: initial !important;
         }
         &:nth-child(2) {
           position: relative !important;
