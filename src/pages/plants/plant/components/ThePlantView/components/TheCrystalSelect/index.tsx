@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import zodiac from "./zodiac";
 import vibration from "./assets/vibration.svg";
+import link from "./assets/link.svg";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { CrystalFav } from "../../../../../../../types";
@@ -32,9 +33,14 @@ export default function TheCrystalSelect(props: { crystal: CrystalFav }) {
               />
             </div>
           </div>
-          <Link href={`crystals/${props.crystal.name}`}>
+          <Link
+            href={{
+              pathname: "/crystals",
+              query: { name: props.crystal.name },
+            }}
+          >
             <Image
-              src={vibration}
+              src={link}
               alt="icon open reference"
               width={48}
               height={48}

@@ -46,7 +46,8 @@
       top: 52%;
       right: -13%;
       transform: rotate(45deg);
-      transition: transform 1s ease, top 1s ease, left 1s ease, width 1s ease, height 1s ease;
+      transition: transform 0.5s ease, top 0.5s ease, left 0.5s ease,
+        width 0.5s ease, height 0.5s ease;
     }
     &::before {
       content: "";
@@ -59,8 +60,7 @@
       top: 34%;
       left: -11%;
       transform: rotate(45deg);
-     transition: transform 1s ease, top 1s ease, left 1s ease;
-
+      transition: transform 0.5s ease, top 0.5s ease, left 0.5s ease;
     }
     .details {
       display: flex;
