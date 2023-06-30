@@ -4,17 +4,33 @@ import styles from "./style.module.scss";
 import search from "./assets/search.svg";
 import arrow from "./assets/arrow-right.svg";
 import React, { useState } from "react";
+import { useRouter } from "next/router";
 
 export default function TheHeader() {
   const [valueSearch, setValue] = useState("");
   const [displayDrop, setDisplay] = useState("none");
-  const handlerState = (e: any) => {
-    let value = e.target.value;
+  const router = useRouter();
+  const handlerState = (event: any) => {
+    let value = event.target.value;
     setValue(value.toString());
     if (value.length <= 0) {
       setDisplay("none");
     } else {
       setDisplay("flex");
+    }
+  };
+  const handlerInput = (event: any) => {
+    if (event.keyCode === 13) {
+      const { pathname } = router;
+      let path = "/plants";
+      let value = event.target.value;
+      if (pathname.includes("crystals")) {
+        path = "/crystals";
+      }
+      router.push({
+        pathname: path,
+        query: { name: value },
+      });
     }
   };
   return (
@@ -34,6 +50,7 @@ export default function TheHeader() {
           value={valueSearch}
           onClick={handlerState}
           onChange={handlerState}
+          onKeyDown={handlerInput}
         />
         <Image
           className="icon"
