@@ -9,6 +9,7 @@ import { useRouter } from "next/router";
 import { Plant, PlantsQParams } from "../../types";
 import { ProductionService } from "../../api/ProductionService";
 import { HttpService } from "../../api/HttpService";
+import Link from "next/link";
 
 export default function Plants() {
   const [page, setPage] = useState(1);
@@ -128,8 +129,30 @@ export default function Plants() {
         <section className={styles.view}>
           <div className={styles.navsref}>
             <div>
-              <a href="">Plantas</a>
-              <a href="">Todas</a>
+              <Link
+                href={{
+                  pathname: "/plants",
+                }}
+              >
+                Plantas
+              </Link>
+              {Object.entries(plantParams).map(([key, value]) => {
+                if (value) {
+                  return (
+                    <Link
+                      key={key}
+                      href={{
+                        pathname: "/plants",
+                        query: { [key]: value },
+                      }}
+                    >
+                      {value}
+                    </Link>
+                  );
+                } else {
+                  return null;
+                }
+              })}
             </div>
             <div>
               <button onClick={() => changePage(0)}>

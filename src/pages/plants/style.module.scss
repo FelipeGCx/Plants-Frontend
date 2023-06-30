@@ -45,9 +45,12 @@
         font-style: italic;
         font-weight: 400;
         display: flex;
-        &:nth-child(odd)::after {
+        &::after {
           content: ">";
           padding: 0 0.5rem;
+        }
+        &:last-child::after {
+          display: none;
         }
       }
     }
