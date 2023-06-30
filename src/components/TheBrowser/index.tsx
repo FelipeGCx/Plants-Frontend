@@ -20,10 +20,10 @@ export default function TheHeader() {
     }
   };
   const handlerInput = (event: any) => {
-    if (event.keyCode === 13) {
+    let value = event.target.value;
+    if (event.keyCode === 13 && value.length >= 1) {
       const { pathname } = router;
       let path = "/plants";
-      let value = event.target.value;
       if (pathname.includes("crystals")) {
         path = "/crystals";
       }
@@ -31,6 +31,7 @@ export default function TheHeader() {
         pathname: path,
         query: { name: value },
       });
+      setDisplay("none");
     }
   };
   return (
