@@ -10,6 +10,7 @@ import { Plant, PlantsQParams } from "../../types";
 import { ProductionService } from "../../api/ProductionService";
 import { HttpService } from "../../api/HttpService";
 import Link from "next/link";
+import TheLoader from "./components/TheLoader";
 
 export default function Plants() {
   const [page, setPage] = useState(1);
@@ -116,7 +117,7 @@ export default function Plants() {
   }, [router, idUser]);
 
   if (loading) {
-    return <p>Loading...</p>;
+    return <TheLoader/>;
   }
   if (error) {
     return <p>An error occurred: {error}</p>;

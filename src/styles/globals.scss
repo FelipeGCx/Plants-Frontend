@@ -10,9 +10,9 @@ body {
 :root {
   font-size: 10px;
   --radius-scale: 0.8;
-  --radius-1x: calc(1rem*var(--radius-scale));
-  --radius-2x: calc(2rem*var(--radius-scale));
-  --radius-3x: calc(3rem*var(--radius-scale));
+  --radius-1x: calc(1rem * var(--radius-scale));
+  --radius-2x: calc(2rem * var(--radius-scale));
+  --radius-3x: calc(3rem * var(--radius-scale));
   --color-scheme: light;
   --shadow: 0px 0.4rem 0.4rem 0px rgb(0 0 0 / 25%);
   --drop-shadow: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
@@ -21,7 +21,7 @@ body {
 body {
   color: var(--font-color);
   background: var(--background-color);
-  overflow:hidden;
+  overflow: hidden;
 }
 
 a {
@@ -64,7 +64,7 @@ input[type="number"] {
   // background-position-y: center;
   // background-origin: content-box;
 }
-img{
+img {
   pointer-events: none;
 }
 
@@ -116,6 +116,12 @@ img{
   --active-icon-filter: brightness(0) invert(1) contrast(1);
   --icon-brightness: brightness(2);
   --icon-br: brightness(6);
+  --gradient-loading: linear-gradient(
+    to right,
+    #ffffff23 0%,
+    var(--box-color) 50%,
+    #ffffff56 100%
+  );
 }
 .app-light {
   --background-color: #dbcdf0;
@@ -139,6 +145,12 @@ img{
   --active-icon-filter: brightness(0) invert(1) contrast(1);
   --icon-brightness: brightness(0);
   --icon-br: brightness(6);
+  --gradient-loading: linear-gradient(
+    to right,
+    #ffffff23 0%,
+    var(--box-color) 50%,
+    #ffffff56 100%
+  );
 }
 // @media (prefers-color-scheme: dark) {
 //   html {
