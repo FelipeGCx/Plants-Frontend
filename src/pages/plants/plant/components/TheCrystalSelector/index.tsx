@@ -11,11 +11,15 @@ export default function TheCrystalSelector(props: {
   const [selected, setSelected] = useState(props.id);
   const [crystalList, setCrystalList] = useState<CrystalFav[]>([]);
   const [error, setError] = useState("");
+  const [nameToFilter, setNameToFilter] = useState("");
   const router = useRouter();
 
   useEffect(() => {
     async function fetchData() {
-      const url = `https://plants-api-production.up.railway.app/api/v1/crystalis/1/?page=1&page_size=13`;
+      let url = `https://plants-api-production.up.railway.app/api/v1/crystalis/1/?page=1&page_size=13`;
+      if (nameToFilter.length > 0) {
+        url += `&named=${nameToFilter}`;
+      }
       try {
         const response = await fetch(url);
         const data = await response.json();
@@ -25,10 +29,10 @@ export default function TheCrystalSelector(props: {
       }
     }
     fetchData();
-  }, []);
+  }, [nameToFilter]);
 
   useEffect(() => {
-    let item:CrystalFav = {
+    let item: CrystalFav = {
       favorite: false,
       quantity: 0,
       price: 0,
@@ -44,11 +48,11 @@ export default function TheCrystalSelector(props: {
       elements: [],
       chakras: [],
       imageCrystal: "",
-      imageGemstone: ""
-    }
-    let find = crystalList.find((objeto) => objeto.id === selected)
+      imageGemstone: "",
+    };
+    let find = crystalList.find((objeto) => objeto.id === selected);
     if (find) {
-      item = find
+      item = find;
     }
     props.selectedCrystal(item);
   }, [crystalList, props, selected]);
@@ -59,10 +63,18 @@ export default function TheCrystalSelector(props: {
     let updatedQuery = { ...query, crystal: id.toString() };
     router.push({ pathname, query: updatedQuery });
   };
+  const handlerInputSearch = (event: any) => {
+    const value = event.target.value;
+    setNameToFilter(value);
+    console.log("cambia")
+  };
 
   return (
     <section className={styles.selector}>
       <h1 className={styles.title}>Cristales</h1>
+      <label className={styles.browser}>
+        <input type="text" placeholder="Buscar" onInput={handlerInputSearch} />
+      </label>
       <form action="" className={styles.form}>
         <ul className={styles.crystalsList}>
           {crystalList?.map((crystal: CrystalFav, i: number) => {
