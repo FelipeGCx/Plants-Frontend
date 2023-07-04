@@ -2,18 +2,34 @@ import ThePayMethods from "./components/ThePayMethods";
 import TheProductCard from "./components/TheProductCard";
 import styles from "./style.module.scss";
 import { useEffect, useState } from "react";
-import { Cart, CrystalStock, PlantStock, Pot, Product } from "../../types";
+import {
+  Cart,
+  CrystalStock,
+  PlantStock,
+  Pot,
+  Product,
+  ProductTicket,
+} from "../../types";
+import TheProductList from "./components/TheProductList";
 
 export default function TheCart() {
   const [cart, setCart] = useState<Product[]>();
+  const [ticketCart, setTicketCart] = useState<ProductTicket[]>([]);
   const handlerDelete = (id: number, idPot: number, idCrystal: number) => {
     if (localStorage.getItem("cart")) {
       const oldCart: Cart[] = JSON.parse(localStorage.getItem("cart") || "");
-      const newCart = oldCart.filter(item => !(item.plant === id && item.pot === idPot && item.crystal === idCrystal));
+      const newCart = oldCart.filter(
+        (item) =>
+          !(
+            item.plant === id &&
+            item.pot === idPot &&
+            item.crystal === idCrystal
+          )
+      );
       localStorage.setItem("cart", JSON.stringify(newCart));
       fetchCart();
     }
-  }
+  };
   async function fetchCart() {
     const cart = JSON.parse(localStorage.getItem("cart") || "");
     const cartFill = await Promise.all(
@@ -32,7 +48,8 @@ export default function TheCart() {
           plantPrice: plant.price - (plant.price / 100) * plant.discount,
           potPrice: pot.price,
           crystalPrice: crystal.price,
-          price: plant.price -
+          price:
+            plant.price -
             (plant.price / 100) * plant.discount +
             pot.price +
             crystal.price,
@@ -62,8 +79,36 @@ export default function TheCart() {
   }
   useEffect(() => {
     fetchCart();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  useEffect(() => {
+    function createTicket() {
+      if (cart) {
+        let result: ProductTicket[] = [];
+        const keys = ["name","potName","crystalName"]
+        for (const obj of cart) {
+          for (let index = 0; index < keys.length; index++) {
+            const key = keys[index];
+            const existingObj = result.find((item) => item.name === obj[key]);
+            if (existingObj) {
+              existingObj.quantity += obj.quantity;
+            } else {
+              result.push({
+                name: obj[key],
+                price: obj.price,
+                quantity: obj.quantity,
+              });
+            }
+          }
+        }
+        result.sort((a, b) => a.name.localeCompare(b.name));
+        console.log(result);
+        setTicketCart(result);
+      }
+    }
+    createTicket();
+  }, [cart]);
 
   return (
     <main className={styles.cart}>
@@ -71,13 +116,11 @@ export default function TheCart() {
       <ul className={styles.products}>
         {cart?.map((product: Product, i: number) => {
           return (
-            <TheProductCard
-              key={i}
-              product={product} delete={handlerDelete} />
+            <TheProductCard key={i} product={product} delete={handlerDelete} />
           );
         })}
       </ul>
-      {/* <TheProductList /> */}
+      <TheProductList products={ticketCart} />
     </main>
   );
 }
