@@ -6,7 +6,7 @@
   justify-content: flex-end;
   &::before {
     content: "";
-    border-radius: var(--radius);
+    border-radius: var(--radius-2x);
     background-color: var(--card-color);
     position: absolute;
     width: 28rem;
@@ -57,7 +57,7 @@
     flex-direction: column;
     justify-content: flex-start;
     background-color: var(--opacity-color);
-    border-radius: var(--radius);
+    border-radius: var(--radius-2x);
     padding: 3rem 3rem 3rem 10rem;
     margin: 2rem 0 2rem 0;
     gap: 0.5rem;
@@ -65,16 +65,16 @@
     // height: 30rem;
     z-index: 1;
     h1 {
-      font-size: 1.7rem;
+      font-size: var(--font-1_5x);
       font-weight: 500;
     }
     h2 {
-      font-size: 1.4rem;
+      font-size: var(--font-1_3x);
       font-weight: 300;
     }
     p {
       text-align: justify;
-      font-size: 1.1rem;
+      font-size: var(--font-1x);
       border-top: solid 0.01rem var(--font-color);
       padding-top: 1rem;
       max-height: 12rem;

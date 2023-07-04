@@ -4,10 +4,11 @@
   padding: 2rem;
   display: flex;
   flex-direction: column;
-  gap: 1rem; 
+  gap: 1rem;
   justify-content: space-between;
   h1 {
     font-weight: 500;
+    font-size: var(--font-1_5x);
   }
   .container {
     width: 100%;
@@ -17,7 +18,7 @@
       width: 100%;
       position: relative;
       th {
-        font-size: 1.4rem;
+        font-size: var(--font-1_2x);
         font-weight: 500;
         text-align: start;
         text-transform: uppercase;
@@ -32,7 +33,7 @@
         }
       }
       td {
-        font-size: 1.2rem;
+        font-size: var(--font-1x);
         font-weight: 400;
         text-transform: uppercase;
         &:nth-child(2) {
@@ -51,11 +52,14 @@
     h2 {
       display: inline-flex;
       justify-content: space-between;
+      font-size: var(--font-1_3x);
+      font-weight: 600;
     }
     .button {
       text-align: center;
       width: 100%;
       display: block;
+      font-size: var(--font-1_2x);
     }
   }
 }

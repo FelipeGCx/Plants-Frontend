@@ -2,7 +2,7 @@
 
 .benefits {
   background-color: var(--box-color);
-  border-radius: var(--radius);
+  border-radius: var(--radius-2x);
   padding: 2rem;
   width: calc(100% - 2rem);
   height: 23rem;
@@ -38,7 +38,7 @@
   &::after {
     content: "";
     position: absolute;
-    border-radius: var(--radius);
+    border-radius: var(--radius-2x);
     background-color: var(--opacity-color);
     width: 37%;
     height: 177%;
@@ -50,7 +50,7 @@
   &::before {
     content: "";
     position: absolute;
-    border-radius: var(--radius);
+    border-radius: var(--radius-2x);
     background-color: var(--opacity-color);
     width: 87%;
     height: 195%;
@@ -79,7 +79,7 @@
         text-transform: capitalize;
         text-align: center;
         font-weight: 300;
-        font-size: 1rem;
+        font-size: var(--font-1x);
       }
     }
   }

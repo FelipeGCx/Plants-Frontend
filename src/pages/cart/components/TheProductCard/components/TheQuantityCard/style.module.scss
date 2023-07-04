@@ -17,11 +17,11 @@
   h1 {
     text-transform: capitalize;
     font-weight: 500;
-    font-size: 1.4rem;
+    font-size: var(--font-1_2x);
   }
   p {
     font-weight: 500;
-    font-size: 1.3rem;
+    font-size: var(--font-1_1x);
     width: 1.5rem;
     text-align: center;
   }

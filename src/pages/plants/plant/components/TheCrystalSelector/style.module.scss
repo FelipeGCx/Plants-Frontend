@@ -11,6 +11,7 @@
     text-transform: capitalize;
     text-align: start;
     font-weight: 500;
+    font-size: var(--font-1_2x);
     display: flex;
     align-items: center;
     margin-top: 0.03rem;
@@ -24,7 +25,7 @@
     height: 3rem;
     justify-content: space-between;
     align-items: center;
-    padding: 0 .2rem;
+    padding: 0 0.2rem;
     position: relative;
     // box-shadow: var(--shadow);
     grid-area: 1/2/2/2;
@@ -34,7 +35,7 @@
       width: 100%;
       border: none;
       background-color: transparent;
-      font-size: 1.2rem;
+      font-size: var(--font-1x);
       text-indent: 1rem;
       &:focus {
         border: none;
@@ -53,9 +54,8 @@
       gap: 10rem 1rem;
       flex-wrap: wrap;
       li {
-        --radius: 15px;
         background-color: var(--card-color);
-        border-radius: var(--radius);
+        border-radius: var(--radius-2x);
         padding: 1rem;
         width: 9rem;
         height: 9rem;
@@ -94,7 +94,7 @@
           }
           h1 {
             font-weight: 400;
-            font-size: 1rem;
+            font-size: var(--font-01x);
             text-transform: capitalize;
           }
         }

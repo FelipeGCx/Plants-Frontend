@@ -1,13 +1,13 @@
 .selector {
   background-color: var(--box-color);
   padding: 2rem;
-  border-radius: var(--radius);
+  border-radius: var(--radius-2x);
   .title {
     text-transform: capitalize;
     width: 100%;
     text-align: start;
     font-weight: 500;
-    font-size: 1.3rem;
+    font-size: var(--font-1_2x);
     margin-bottom: 0.5rem;
   }
   form {
@@ -19,9 +19,8 @@
       justify-content: space-between;
       gap: 0.5rem;
       li {
-        --radius: 15px;
         background-color: var(--card-color);
-        border-radius: var(--radius);
+        border-radius: var(--radius-2x);
         padding: 1rem;
         width: 9rem;
         height: 9rem;
@@ -57,7 +56,7 @@
           }
           h1 {
             font-weight: 400;
-            font-size: 1.3rem;
+            font-size: var(--font-1_1x);
           }
         }
         &::before {

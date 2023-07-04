@@ -1,7 +1,7 @@
 .card {
   background-color: var(--box-color);
   overflow: hidden;
-  border-radius: var(--radius);
+  border-radius: var(--radius-2x);
   padding: 1rem;
   display: flex;
   flex-direction: column;
@@ -11,7 +11,7 @@
   &::after {
     content: "";
     position: absolute;
-    border-radius: var(--radius);
+    border-radius: var(--radius-2x);
     background-color: var(--page-color);
     opacity: 45%;
     width: 10rem;
@@ -24,7 +24,7 @@
   &::before {
     content: "";
     position: absolute;
-    border-radius: var(--radius);
+    border-radius: var(--radius-2x);
     background-color: var(--page-color);
     opacity: 45%;
     width: 10rem;
@@ -68,7 +68,7 @@
     h2 {
       font-weight: 500;
       text-transform: capitalize;
-      font-size: 1.3rem;
+      font-size: var(--font-1_2x);
     }
     .elements {
       display: flex;
@@ -91,10 +91,10 @@
         display: flex;
         background-color: var(--font-color);
         color: var(--contrast-font-color);
-        border-radius: var(--radius);
+        border-radius: var(--radius-2x);
         gap: 0.5rem;
         padding: 0.2rem 3rem 0.2rem 1rem;
-        font-size: 1.3rem;
+        font-size: var(--font-1x);
         font-weight: 500;
         position: absolute;
         right: -22%;

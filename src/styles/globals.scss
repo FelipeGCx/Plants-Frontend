@@ -13,6 +13,17 @@ body {
   --radius-1x: calc(1rem * var(--radius-scale));
   --radius-2x: calc(2rem * var(--radius-scale));
   --radius-3x: calc(3rem * var(--radius-scale));
+  --font-scale: 1.2;
+  --font-01x: 1rem;
+  --font-1x: calc(1rem * var(--font-scale));
+  --font-1_1x: calc(1.1rem * var(--font-scale));
+  --font-1_2x: calc(1.2rem * var(--font-scale));
+  --font-1_3x: calc(1.3rem * var(--font-scale));
+  --font-1_4x: calc(1.4rem * var(--font-scale));
+  --font-1_5x: calc(1.5rem * var(--font-scale));
+  --font-2x: calc(2rem * var(--font-scale));
+  --font-2_5x: calc(2.5rem * var(--font-scale));
+  --font-3x: calc(3rem * var(--font-scale));
   --color-scheme: light;
   --shadow: 0px 0.4rem 0.4rem 0px rgb(0 0 0 / 25%);
   --drop-shadow: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));

@@ -13,7 +13,7 @@
     flex-direction: row;
     align-items: center;
     justify-content: flex-start;
-    font-size: 1.1rem;
+    font-size: var(--font-1x);
     width: 100%;
     span {
       white-space: nowrap;
@@ -23,8 +23,7 @@
       position: relative;
       padding: 0.6rem 1.4rem;
       background-color: var(--page-color);
-      --radius: 1rem;
-      border-radius: var(--radius);
+      border-radius: var(--radius-1x);
       width: calc(50% - var(--gap) / 2);
     }
   }

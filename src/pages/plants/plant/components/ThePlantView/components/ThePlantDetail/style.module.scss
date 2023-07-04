@@ -1,8 +1,7 @@
 .plantDetail {
-  --radius: 1.5rem;
   background-color: var(--opacity-color);
-  border-bottom-left-radius: var(--radius);
-  border-bottom-right-radius: var(--radius);
+  border-bottom-left-radius: var(--radius-2x);
+  border-bottom-right-radius: var(--radius-2x);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -10,16 +9,16 @@
   padding: 3rem;
   width: fit-content;
   min-width: 33rem;
-  gap:1rem;
+  gap: 1rem;
   h1 {
     text-transform: capitalize;
-    font-size: 1.4rem;
+    font-size: var(--font-1_2x);
     font-weight: 500;
   }
-  ul{
-    li{
+  ul {
+    li {
       list-style: disc;
-      font-size: 1.2rem;
+      font-size: var(--font-1x);
     }
   }
 }

@@ -3,24 +3,26 @@
   display: flex;
   align-items: flex-start;
   justify-content: center;
-  position:relative;
-  .prices{
+  position: relative;
+  h1 {
+    font-size: var(--font-1_3x);
+  }
+  .prices {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: flex-start;
     font-size: 1.1rem;
     width: 100%;
-    span{
+    span {
       white-space: nowrap;
     }
-    
   }
-  .slider{
-position: relative;
-      width: 96%;
-      height: 2rem;
-    .thumb{
+  .slider {
+    position: relative;
+    width: 96%;
+    height: 2rem;
+    .thumb {
       width: 100%;
       outline: none;
       position: absolute;
@@ -28,14 +30,13 @@ position: relative;
       height: inherit;
       -webkit-appearance: none;
       appearance: none;
-      .left{
-    z-index: 3;
-  
+      .left {
+        z-index: 3;
       }
-      .right{
-    z-index: 4;
+      .right {
+        z-index: 4;
       }
-  }
+    }
   }
 }
 
@@ -50,10 +51,10 @@ position: relative;
   z-index: 99;
   pointer-events: all;
   position: relative;
-    -webkit-appearance: none;
-    appearance: none;
-        -webkit-tap-highlight-color: transparent;
-        margin-top: -0.5rem;
+  -webkit-appearance: none;
+  appearance: none;
+  -webkit-tap-highlight-color: transparent;
+  margin-top: -0.5rem;
 }
 
 .thumb:focus {
@@ -61,7 +62,7 @@ position: relative;
 }
 .thumb::-webkit-slider-runnable-track {
   width: 100%;
-  height: .3rem;
+  height: 0.3rem;
   cursor: pointer;
   background: var(--contrast-color);
   // background: #ff00dd;

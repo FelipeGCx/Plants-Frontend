@@ -11,6 +11,7 @@
     h1 {
       text-transform: capitalize;
       font-weight: 500;
+      font-size: var(--font-1_3x);
     }
     .item {
       display: flex;
@@ -43,14 +44,14 @@
         }
       }
       span {
-        font-size: 1.1rem;
+        font-size: var(--font-1x);
         text-transform: capitalize;
       }
     }
   }
   &::-webkit-scrollbar-thumb {
-  background-clip: padding-box;
-  background-color: var(--contrast-color);
-  border-radius: var(--radius);
-}
+    background-clip: padding-box;
+    background-color: var(--contrast-color);
+    border-radius: var(--radius-2x);
+  }
 }
