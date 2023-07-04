@@ -6,25 +6,33 @@ import clean from "./assets/delete.svg";
 import TheQuantityCard from "./components/TheQuantityCard";
 import { Cart, Product } from "../../../../types";
 
-
-export default function TheProductCard(props: { product: Product, delete(id: number, idPot: number, idCrystal: number): void }) {
+export default function TheProductCard(props: {
+  product: Product;
+  delete(id: number, idPot: number, idCrystal: number): void;
+  update(): void;
+}) {
   const formatter = new Intl.NumberFormat("es-CO", {
     style: "currency",
     currency: "COP",
     maximumFractionDigits: 0,
   });
-  const [total, setTotal] = useState(props.product.price * props.product.quantity);
+  const [total, setTotal] = useState(
+    props.product.price * props.product.quantity
+  );
   const [quantity, setQuantity] = useState(props.product.quantity);
 
   const handleSubstract = () => {
     if (quantity > 1) {
       setQuantity(quantity - 1);
       setTotal(quantity * props.product.price);
+      props.update();
     }
   };
   const handleAdd = () => {
     if (quantity < 10) {
       setQuantity(quantity + 1);
+      setTotal(quantity * props.product.price);
+      props.update();
     }
   };
 
@@ -35,25 +43,27 @@ export default function TheProductCard(props: { product: Product, delete(id: num
       crystal: props.product.idCrystal,
       pot: props.product.idPot,
       quantity: quantity,
-    }
+    };
     if (localStorage.getItem("cart")) {
       let actualCart: string = localStorage.getItem("cart") || "";
       oldCart = JSON.parse(actualCart);
       oldCart = oldCart.map((item: Cart) => {
-        if (item.plant === newItem.plant &&
+        if (
+          item.plant === newItem.plant &&
           item.crystal === newItem.crystal &&
-          item.pot === newItem.pot) {
+          item.pot === newItem.pot
+        ) {
           item.quantity = quantity;
         }
         return item;
-      })
+      });
       localStorage.setItem("cart", JSON.stringify(oldCart));
     }
-  },[quantity,props])
+  }, [quantity, props]);
 
   useEffect(() => {
     setTotal(quantity * props.product.price);
-  },[props.product.price, quantity])
+  }, [props.product.price, quantity]);
   return (
     <div className={styles.productCard}>
       <div className={styles.images}>
@@ -69,10 +79,9 @@ export default function TheProductCard(props: { product: Product, delete(id: num
             src={props.product.renderPot}
             alt={`image pot ${props.product.potName}`}
             sizes="100%"
-
           />
         </div>
-        
+
         <Image
           src={props.product.imageCrystal}
           alt={`image crystal ${props.product.crystalName}`}
@@ -84,7 +93,9 @@ export default function TheProductCard(props: { product: Product, delete(id: num
         <h1>{props.product.name.toLowerCase()}</h1>
         <p>Matera Céramica {props.product.potName}</p>
         <p>Cristal {props.product.crystalName}</p>
-        <div className={styles.pill}>{formatter.format(props.product.price)}</div>
+        <div className={styles.pill}>
+          {formatter.format(props.product.price)}
+        </div>
       </div>
       <TheQuantityCard
         quantity={quantity}
@@ -93,7 +104,15 @@ export default function TheProductCard(props: { product: Product, delete(id: num
       />
       <div className={styles.info}>
         <div className={styles.actions}>
-          <button onClick={() => props.delete(props.product.id, props.product.idPot, props.product.idCrystal)}>
+          <button
+            onClick={() =>
+              props.delete(
+                props.product.id,
+                props.product.idPot,
+                props.product.idCrystal
+              )
+            }
+          >
             <Image src={clean} width={48} height={48} alt="icon delete" />
           </button>
         </div>

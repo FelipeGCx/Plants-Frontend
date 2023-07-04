@@ -14,6 +14,7 @@ import TheProductList from "./components/TheProductList";
 
 export default function TheCart() {
   const [cart, setCart] = useState<Product[]>();
+  const [isChange, setIsChange] = useState(false);
   const [ticketCart, setTicketCart] = useState<ProductTicket[]>([]);
   const handlerDelete = (id: number, idPot: number, idCrystal: number) => {
     if (localStorage.getItem("cart")) {
@@ -29,6 +30,9 @@ export default function TheCart() {
       localStorage.setItem("cart", JSON.stringify(newCart));
       fetchCart();
     }
+  };
+  const handlerUpdate = () => { 
+    setIsChange(!isChange);
   };
   async function fetchCart() {
     const cart = JSON.parse(localStorage.getItem("cart") || "");
@@ -80,35 +84,36 @@ export default function TheCart() {
   useEffect(() => {
     fetchCart();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [isChange]);
 
   useEffect(() => {
     function createTicket() {
       if (cart) {
         let result: ProductTicket[] = [];
-        const keys = ["name","potName","crystalName"]
+        const keys = ["name", "potName", "crystalName"];
+        const priceKeys = ["price", "potPrice", "crystalPrice"];
         for (const obj of cart) {
           for (let index = 0; index < keys.length; index++) {
             const key = keys[index];
+            const keyPrice = priceKeys[index];
             const existingObj = result.find((item) => item.name === obj[key]);
             if (existingObj) {
               existingObj.quantity += obj.quantity;
             } else {
               result.push({
                 name: obj[key],
-                price: obj.price,
+                price: obj[keyPrice],
                 quantity: obj.quantity,
               });
             }
           }
         }
-        result.sort((a, b) => a.name.localeCompare(b.name));
-        console.log(result);
+        // result.sort((a, b) => a.name.localeCompare(b.name));
         setTicketCart(result);
       }
     }
     createTicket();
-  }, [cart]);
+  }, [cart, isChange]);
 
   return (
     <main className={styles.cart}>
@@ -116,7 +121,7 @@ export default function TheCart() {
       <ul className={styles.products}>
         {cart?.map((product: Product, i: number) => {
           return (
-            <TheProductCard key={i} product={product} delete={handlerDelete} />
+            <TheProductCard key={i} product={product} delete={handlerDelete} update={handlerUpdate} />
           );
         })}
       </ul>
