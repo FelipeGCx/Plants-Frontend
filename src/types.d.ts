@@ -116,6 +116,12 @@ interface Product {
   imagePlant: string;
   imageCrystal: string;
   quantity: number;
+  [key: string]: any;
+}
+interface ProductTicket {
+  name: string;
+  quantity: number;
+  price: number;
 }
 
 interface Cart {
