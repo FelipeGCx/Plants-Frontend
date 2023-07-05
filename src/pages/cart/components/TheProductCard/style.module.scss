@@ -99,12 +99,16 @@
       text-transform: capitalize;
       font-size: var(--font-1_1x);
     }
-    .pill {
-      border-radius: var(--radius-1x);
-      background-color: var(--font-color);
-      color: var(--contrast-font-color);
-      padding: 0.2rem 1rem;
-      font-size: var(--font-1_1x);
+    .priceTags {
+      display: flex;
+      gap: 1rem;
+      .pill {
+        border-radius: var(--radius-1x);
+        background-color: var(--font-color);
+        color: var(--contrast-font-color);
+        padding: 0.2rem 1rem;
+        font-size: var(--font-01x);
+      }
     }
   }
   .info {
