@@ -53,8 +53,8 @@ export default function TheCrystalSelect(props: { crystal: CrystalFavorite }) {
           })}
         </ul>
         <ul className={styles.zodiac}>
-          {zodiac.map((z, zi: number) => {
-            if (props.crystal.zodiac.includes(z.name)) {
+          {zodiac.map((z:any, zi: number) => {
+            if (props.crystal.zodiac.includes(z.value)) {
               return (
                 <li key={zi}>
                   <Image src={z.icon} alt={z.alt} width={48} height={48} />
