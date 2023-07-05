@@ -72,7 +72,7 @@ interface CrystalStock extends Crystal {
   state: boolean;
 }
 
-interface CrystalFav extends CrystalStock {
+interface CrystalFavorite extends CrystalStock {
   favorite: boolean;
 }
 

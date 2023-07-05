@@ -1,18 +1,19 @@
 import styles from "./style.module.scss";
 import React, { useEffect, useState } from "react";
-import { CrystalFav, CrystalsQParams } from "../../types";
+import { CrystalFavorite, CrystalsQParams } from "../../types";
 import TheCrystalView from "./components/TheCrystalView";
 import TheFilter from "./components/TheFilter";
 import { useRouter } from "next/router";
 import { ProductionService } from "../../api/ProductionService";
 import { HttpService } from "../../api/HttpService";
+import { toArrayCrystalFavorite } from "../../utils/parsings/Crystal";
 
 export default function Crystals() {
   const [idUser, setIdUser] = useState(1);
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
-  const [crystals, setCrystals] = useState<CrystalFav[]>([]);
+  const [crystals, setCrystals] = useState<CrystalFavorite[]>([]);
   const [totalItems, setTotalItems] = useState(30);
   const router = useRouter();
   const [crystalParams, setCrystalParams] = useState<CrystalsQParams>({
@@ -67,7 +68,7 @@ export default function Crystals() {
         const httpProvider = new ProductionService();
         const httpService = new HttpService(httpProvider);
         const data = await httpService.getRequest(url);
-        setCrystals(data.results);
+        setCrystals(toArrayCrystalFavorite(data.results));
         setTotalItems(+data.totalItems);
         setLoading(false);
       } catch (err) {
