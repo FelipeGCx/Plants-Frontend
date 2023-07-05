@@ -50,7 +50,7 @@ module.exports = {
       "/crystals/components/TheFilter/assets/elements",
       "/crystals/components/TheFilter/assets/planets",
       "/crystals/components/TheFilter/assets/zodiac",
-      "/plants/plant/components/ThePlantView/components/TheCrystalSelect/zodiac",
+      "/plants/plant/components/ThePlantView/components/TheCrystalSelect/lib/zodiac",
     ];
 
     const pathMap = {};
