@@ -1,12 +1,12 @@
 import styles from "./style.module.scss";
 import TheCrystalSelect from "./components/TheCrystalSelect";
-import { CrystalFav, PlantStock } from "../../../../../types";
+import { CrystalFavorite, PlantStock } from "../../../../../types";
 import ThePlantPresentation from "./components/ThePlantPresentation";
 import ThePlantDetail from "./components/ThePlantDetail";
 
 export default function ThePlantView(props: {
   plant: PlantStock;
-  crystal: CrystalFav;
+  crystal: CrystalFavorite;
   renderPot: string;
   addToCart(): void;
 }) {

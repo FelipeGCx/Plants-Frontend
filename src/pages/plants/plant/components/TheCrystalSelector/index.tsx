@@ -6,7 +6,7 @@ import { useRouter } from "next/router";
 
 export default function TheCrystalSelector(props: {
   id: number;
-  selectedCrystal(crystal: CrystalFav): void;
+  selectedCrystal(crystal: CrystalFavorite): void;
 }) {
   const [selected, setSelected] = useState(props.id);
   const [crystalList, setCrystalList] = useState<CrystalFav[]>([]);
@@ -77,7 +77,7 @@ export default function TheCrystalSelector(props: {
       </label>
       <form action="" className={styles.form}>
         <ul className={styles.crystalsList}>
-          {crystalList?.map((crystal: CrystalFav, i: number) => {
+          {crystalList?.map((crystal: CrystalFavorite, i: number) => {
             return (
               <li key={i}>
                 <label htmlFor={crystal.name} className={styles.card}>

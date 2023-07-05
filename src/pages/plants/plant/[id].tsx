@@ -3,14 +3,14 @@ import ThePotSelector from "./components/ThePotSelector";
 import TheCrystalSelector from "./components/TheCrystalSelector";
 import ThePlantView from "./components/ThePlantView";
 import { useRouter } from "next/router";
-import { Cart, Crystal, CrystalFav, PlantStock } from "../../../types";
+import { Cart, Crystal, CrystalFavorite, PlantStock } from "../../../types";
 import { useEffect, useState } from "react";
 
 const Plant = (props: { plant: PlantStock }) => {
   const router = useRouter();
   const [idPot, setIdPot] = useState(router.query["pot"] || 1);
   const [idCrystal, setIdCrystal] = useState(router.query["crystal"] || 1);
-  const [crystal, setCrystal] = useState<CrystalFav>({
+  const [crystal, setCrystal] = useState<CrystalFavorite>({
     favorite: false,
     quantity: 0,
     price: 0,
@@ -69,7 +69,7 @@ const Plant = (props: { plant: PlantStock }) => {
     localStorage.setItem("cart", JSON.stringify(oldCart));
     router.push("/cart");
   };
-  const handlerCrystal = (crystal: CrystalFav) => {
+  const handlerCrystal = (crystal: CrystalFavorite) => {
     setCrystal(crystal);
   };
   const handlerPot = (pot: string) => {
