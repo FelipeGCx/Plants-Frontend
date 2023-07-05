@@ -133,14 +133,7 @@ interface Cart {
 
 interface Request {
   page: number;
-  results:
-    | Plant[]
-    | Crystal[]
-    | PlantFavorite[]
-    | CrystalFav[]
-    | CrystalStock[]
-    | PlantStock[]
-    | string[];
+  results: string[];
   totalItems: number;
   totalPages: number;
 }

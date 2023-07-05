@@ -6,16 +6,17 @@ import React, { useEffect, useState } from "react";
 import ThePlantCard from "./components/ThePlantCard";
 import TheFilters from "./components/TheFilters";
 import { useRouter } from "next/router";
-import { Plant, PlantsQParams } from "../../types";
+import { Plant, PlantFavorite, PlantsQParams } from "../../types";
 import { ProductionService } from "../../api/ProductionService";
 import { HttpService } from "../../api/HttpService";
 import Link from "next/link";
 import TheLoader from "./components/TheLoader";
+import { toArrayPlantFavorite } from "../../utils/parsings/Plant";
 
 export default function Plants() {
   const [page, setPage] = useState(1);
   const [idUser, setIdUser] = useState(1);
-  const [PlantsList, setPlantsList] = useState<Plant[]>([]);
+  const [PlantsList, setPlantsList] = useState<PlantFavorite[]>([]);
   const [plantParams, setPlantParams] = useState<PlantsQParams>({
     species: null,
     light: null,
@@ -104,12 +105,13 @@ export default function Plants() {
         const httpProvider = new ProductionService();
         const httpService = new HttpService(httpProvider);
         const data = await httpService.getRequest(url);
-        setPlantsList(data.results);
+        setPlantsList(toArrayPlantFavorite(data.results));
         setTotalItems(data.totalItems);
         setTotalPages(data.totalPages);
         setLoading(false);
       } catch (err) {
         setError("error");
+        console.log(err)
         setLoading(false);
       }
     }
@@ -166,7 +168,7 @@ export default function Plants() {
             </div>
           </div>
           <ul className={styles.items}>
-            {PlantsList?.map((plant: Plant, i: number) => {
+            {PlantsList?.map((plant: PlantFavorite, i: number) => {
               return <ThePlantCard key={i} plant={plant} />;
             })}
           </ul>
