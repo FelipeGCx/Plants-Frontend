@@ -44,5 +44,14 @@ module.exports = {
       },
     ],
   },
+  async redirects() {
+    return [
+      {
+        source: "/",
+        destination: "/plants",
+        permanent: true,
+      },
+    ];
+  },
   ...nextConfig,
 };
