@@ -1,15 +1,15 @@
-import ariesIcon from "./assets/zodiac/aries.svg";
-import taurusIcon from "./assets/zodiac/taurus.svg";
-import geminiIcon from "./assets/zodiac/gemini.svg";
-import cancerIcon from "./assets/zodiac/cancer.svg";
-import leoIcon from "./assets/zodiac/leo.svg";
-import virgoIcon from "./assets/zodiac/virgo.svg";
-import libraIcon from "./assets/zodiac/libra.svg";
-import scorpioIcon from "./assets/zodiac/scorpio.svg";
-import sagittariusIcon from "./assets/zodiac/sagittarius.svg";
-import capricornIcon from "./assets/zodiac/capricorn.svg";
-import aquariusIcon from "./assets/zodiac/aquarius.svg";
-import piscesIcon from "./assets/zodiac/pisces.svg";
+import ariesIcon from "./zodiac/aries.svg";
+import taurusIcon from "./zodiac/taurus.svg";
+import geminiIcon from "./zodiac/gemini.svg";
+import cancerIcon from "./zodiac/cancer.svg";
+import leoIcon from "./zodiac/leo.svg";
+import virgoIcon from "./zodiac/virgo.svg";
+import libraIcon from "./zodiac/libra.svg";
+import scorpioIcon from "./zodiac/scorpio.svg";
+import sagittariusIcon from "./zodiac/sagittarius.svg";
+import capricornIcon from "./zodiac/capricorn.svg";
+import aquariusIcon from "./zodiac/aquarius.svg";
+import piscesIcon from "./zodiac/pisces.svg";
 const zodiac = [
   {
     sign: "aries",

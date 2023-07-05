@@ -1,7 +1,7 @@
-import air from "./assets/elements/air.svg";
-import fire from "./assets/elements/fire.svg";
-import water from "./assets/elements/water.svg";
-import earth from "./assets/elements/earth.svg";
+import air from "./elements/air.svg";
+import fire from "./elements/fire.svg";
+import water from "./elements/water.svg";
+import earth from "./elements/earth.svg";
 
 const elements = [
   {

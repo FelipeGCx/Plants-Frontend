@@ -1,7 +1,7 @@
 import styles from "./style.module.scss";
 import Image from "next/image";
 import Link from "next/link";
-import zodiac from "./zodiac";
+import zodiac from "./assets/zodiac";
 import vibration from "./assets/vibration.svg";
 import link from "./assets/link.svg";
 import { useEffect, useState } from "react";

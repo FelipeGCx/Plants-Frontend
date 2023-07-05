@@ -1,8 +1,8 @@
 import Image from "next/image";
-import planets from "./planets";
-import chakras from "./chakras";
-import zodiac from "./zodiac";
-import elements from "./elements";
+import planets from "./assets/planets";
+import chakras from "./assets/chakras";
+import zodiac from "./assets/zodiac";
+import elements from "./assets/elements";
 import styles from "./style.module.scss";
 import { useRouter } from "next/router";
 import { CrystalsQParams } from "../../../../types";

@@ -1,14 +1,14 @@
-import sunIcon from "./assets/planets/sun.svg";
-import mercuryIcon from "./assets/planets/mercury.svg";
-import venusIcon from "./assets/planets/venus.svg";
-import earthIcon from "./assets/planets/earth.svg";
-import marsIcon from "./assets/planets/mars.svg";
-import jupiterIcon from "./assets/planets/jupiter.svg";
-import saturnIcon from "./assets/planets/saturn.svg";
-import uranusIcon from "./assets/planets/uranus.svg";
-import neptuneIcon from "./assets/planets/neptune.svg";
-import plutoIcon from "./assets/planets/pluto.svg";
-import moonIcon from "./assets/planets/pluto.svg";
+import sunIcon from "./planets/sun.svg";
+import mercuryIcon from "./planets/mercury.svg";
+import venusIcon from "./planets/venus.svg";
+import earthIcon from "./planets/earth.svg";
+import marsIcon from "./planets/mars.svg";
+import jupiterIcon from "./planets/jupiter.svg";
+import saturnIcon from "./planets/saturn.svg";
+import uranusIcon from "./planets/uranus.svg";
+import neptuneIcon from "./planets/neptune.svg";
+import plutoIcon from "./planets/pluto.svg";
+import moonIcon from "./planets/pluto.svg";
 
 const planets = [
   {
