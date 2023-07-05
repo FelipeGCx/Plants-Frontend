@@ -3,7 +3,7 @@ import Image from "next/image";
 import { PlantStock } from "../../../../../../../types";
 import renderPot from "./assets/doisu-render.webp";
 
-export default function ThePlantPresentation(props: { plant: PlantStock, renderPot?: string, addToCart(): void }) {
+export default function ThePlantPresentation(props: { plant: PlantStock, renderPot: string, addToCart(): void }) {
   const formatter = new Intl.NumberFormat("es-CO", {
     style: "currency",
     currency: "COP",
