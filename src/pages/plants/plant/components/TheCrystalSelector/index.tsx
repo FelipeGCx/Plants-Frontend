@@ -9,7 +9,7 @@ export default function TheCrystalSelector(props: {
   selectedCrystal(crystal: CrystalFavorite): void;
 }) {
   const [selected, setSelected] = useState(props.id);
-  const [crystalList, setCrystalList] = useState<CrystalFav[]>([]);
+  const [crystalList, setCrystalList] = useState<CrystalFavorite[]>([]);
   const [error, setError] = useState("");
   const [nameToFilter, setNameToFilter] = useState("");
   const router = useRouter();
