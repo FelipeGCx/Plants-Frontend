@@ -6,9 +6,9 @@ import vibration from "./assets/vibration.svg";
 import link from "./assets/link.svg";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
-import { CrystalFav } from "../../../../../../../types";
+import { CrystalFavorite } from "../../../../../../../types";
 
-export default function TheCrystalSelect(props: { crystal: CrystalFav }) {
+export default function TheCrystalSelect(props: { crystal: CrystalFavorite }) {
   const router = useRouter();
   return (
     <section className={styles.crystalCard}>

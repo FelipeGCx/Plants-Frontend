@@ -1,7 +1,7 @@
 import Image from "next/image";
 import styles from "./style.module.scss";
 import React, { useEffect, useState } from "react";
-import { CrystalFav } from "../../../../../types";
+import { CrystalFavorite } from "../../../../../types";
 import { useRouter } from "next/router";
 
 export default function TheCrystalSelector(props: {
@@ -32,7 +32,7 @@ export default function TheCrystalSelector(props: {
   }, [nameToFilter]);
 
   useEffect(() => {
-    let item: CrystalFav = {
+    let item: CrystalFavorite = {
       favorite: false,
       quantity: 0,
       price: 0,
