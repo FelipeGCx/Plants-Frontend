@@ -1,6 +1,6 @@
 import Link from "next/link";
 import styles from "./style.module.scss";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ProductTicket } from "../../../../types";
 
 export default function TheProductList(props: { products: ProductTicket[] }) {
@@ -10,10 +10,25 @@ export default function TheProductList(props: { products: ProductTicket[] }) {
     currency: "COP",
     maximumFractionDigits: 0,
   });
+  useEffect(() => {
+    const calculateTotal = () => {
+      let subtotals = props.products.map((product: ProductTicket) => {
+        return product.quantity * product.price;
+      });
+      const subtotalsCalculates = subtotals.reduce(
+        (accumulator, currentValue) => accumulator + currentValue,
+        0
+      );
+      setTotal(subtotalsCalculates);
+    };
+    calculateTotal();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [props]);
+
   return (
     <div className={styles.list}>
       <h1>Resumen de tu compra</h1>
-      <div className={ styles.container}>
+      <div className={styles.container}>
         <table>
           <tr>
             <th>Descripción</th>
@@ -37,7 +52,7 @@ export default function TheProductList(props: { products: ProductTicket[] }) {
       <div className={styles.info}>
         <h2>
           <span>Total Compra:</span>
-          <span>{100000}</span>
+          <span>{formatter.format(total)}</span>
         </h2>
         <span>* El costo de envio no esta incluido en el total</span>
         <Link href={"d"} className={`button ${styles.button}`}>
