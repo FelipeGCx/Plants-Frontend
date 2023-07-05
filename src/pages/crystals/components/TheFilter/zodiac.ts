@@ -1,75 +1,86 @@
-const directory = "./assets";
+import ariesIcon from "./assets/zodiac/aries.svg";
+import taurusIcon from "./assets/zodiac/taurus.svg";
+import geminiIcon from "./assets/zodiac/gemini.svg";
+import cancerIcon from "./assets/zodiac/cancer.svg";
+import leoIcon from "./assets/zodiac/leo.svg";
+import virgoIcon from "./assets/zodiac/virgo.svg";
+import libraIcon from "./assets/zodiac/libra.svg";
+import scorpioIcon from "./assets/zodiac/scorpio.svg";
+import sagittariusIcon from "./assets/zodiac/sagittarius.svg";
+import capricornIcon from "./assets/zodiac/capricorn.svg";
+import aquariusIcon from "./assets/zodiac/aquarius.svg";
+import piscesIcon from "./assets/zodiac/pisces.svg";
 const zodiac = [
   {
     sign: "aries",
-    icon: require(`${directory}/zodiac/aries.svg`).default.src,
+    icon: ariesIcon,
     value: "aries",
     alt: "aries icon",
   },
   {
     sign: "taurus",
-    icon: require(`${directory}/zodiac/taurus.svg`).default.src,
+    icon: taurusIcon,
     value: "tauro",
     alt: "taurus icon",
   },
   {
     sign: "gemini",
-    icon: require(`${directory}/zodiac/gemini.svg`).default.src,
+    icon: geminiIcon,
     value: "geminis",
     alt: "gemini icon",
   },
   {
     sign: "cancer",
-    icon: require(`${directory}/zodiac/cancer.svg`).default.src,
+    icon: cancerIcon,
     value: "cancer",
     alt: "cancer icon",
   },
   {
     sign: "leo",
-    icon: require(`${directory}/zodiac/leo.svg`).default.src,
+    icon: leoIcon,
     value: "leo",
     alt: "leo icon",
   },
   {
     sign: "virgo",
-    icon: require(`${directory}/zodiac/virgo.svg`).default.src,
+    icon: virgoIcon,
     value: "virgo",
     alt: "virgo icon",
   },
 
   {
     sign: "libra",
-    icon: require(`${directory}/zodiac/libra.svg`).default.src,
+    icon: libraIcon,
     value: "libra",
     alt: "libra icon",
   },
   {
     sign: "scorpio",
-    icon: require(`${directory}/zodiac/scorpio.svg`).default.src,
+    icon: scorpioIcon,
     value: "escorpio",
     alt: "scorpio icon",
   },
   {
     sign: "sagittarius",
-    icon: require(`${directory}/zodiac/sagittarius.svg`).default.src,
+    icon: sagittariusIcon,
     value: "sagitario",
     alt: "sagittarius icon",
   },
   {
     sign: "capricorn",
-    icon: require(`${directory}/zodiac/capricorn.svg`).default.src,
+    icon: capricornIcon,
     value: "capricornio",
     alt: "capricorn icon",
   },
   {
     sign: "aquarius",
-    icon: require(`${directory}/zodiac/aquarius.svg`).default.src,
+    icon: aquariusIcon,
     value: "acuario",
     alt: "aquarius icon",
   },
   {
     sign: "pisces",
-    icon: require(`${directory}/zodiac/pisces.svg`).default.src,
+    icon: piscesIcon,
     value: "piscis",
     alt: "pisces icon",
   },

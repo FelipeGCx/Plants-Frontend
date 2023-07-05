@@ -1,27 +1,30 @@
-const directory = "./assets";
+import air from "./assets/elements/air.svg";
+import fire from "./assets/elements/fire.svg";
+import water from "./assets/elements/water.svg";
+import earth from "./assets/elements/earth.svg";
 
 const elements = [
   {
     name: "air",
-    icon: require(`${directory}/elements/air.svg`).default.src,
+    icon: air,
     value: "aire",
     alt: "air icon",
   },
   {
     name: "fire",
-    icon: require(`${directory}/elements/fire.svg`).default.src,
+    icon: fire,
     value: "fuego",
     alt: "fire icon",
   },
   {
     name: "water",
-    icon: require(`${directory}/elements/water.svg`).default.src,
+    icon: water,
     value: "agua",
     alt: "water icon",
   },
   {
     name: "earth",
-    icon: require(`${directory}/elements/earth.svg`).default.src,
+    icon: earth,
     value: "tierra",
     alt: "earth icon",
   },

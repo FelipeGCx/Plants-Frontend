@@ -1,68 +1,79 @@
-const directory = "./assets";
+import sunIcon from "./assets/planets/sun.svg";
+import mercuryIcon from "./assets/planets/mercury.svg";
+import venusIcon from "./assets/planets/venus.svg";
+import earthIcon from "./assets/planets/earth.svg";
+import marsIcon from "./assets/planets/mars.svg";
+import jupiterIcon from "./assets/planets/jupiter.svg";
+import saturnIcon from "./assets/planets/saturn.svg";
+import uranusIcon from "./assets/planets/uranus.svg";
+import neptuneIcon from "./assets/planets/neptune.svg";
+import plutoIcon from "./assets/planets/pluto.svg";
+import moonIcon from "./assets/planets/pluto.svg";
+
 const planets = [
   {
     name: "sun",
-    icon: require(`${directory}/planets/sun.svg`).default.src,
+    icon: sunIcon,
     value: "sol",
     alt: "sun icon",
   },
   {
     name: "mercury",
-    icon: require(`${directory}/planets/mercury.svg`).default.src,
+    icon: mercuryIcon,
     value: "mercurio",
     alt: "mercury icon",
   },
   {
     name: "venus",
-    icon: require(`${directory}/planets/venus.svg`).default.src,
+    icon: venusIcon,
     value: "venus",
     alt: "venus icon",
   },
   {
     name: "earth",
-    icon: require(`${directory}/planets/earth.svg`).default.src,
+    icon: earthIcon,
     value: "tierra",
     alt: "earth icon",
   },
   {
     name: "mars",
-    icon: require(`${directory}/planets/mars.svg`).default.src,
+    icon: marsIcon,
     value: "marte",
     alt: "mars icon",
   },
   {
     name: "jupiter",
-    icon: require(`${directory}/planets/jupiter.svg`).default.src,
+    icon: jupiterIcon,
     value: "jupiter",
     alt: "jupiter icon",
   },
   {
     name: "saturn",
-    icon: require(`${directory}/planets/saturn.svg`).default.src,
+    icon: saturnIcon,
     value: "saturno",
     alt: "saturn icon",
   },
   {
     name: "uranus",
-    icon: require(`${directory}/planets/uranus.svg`).default.src,
+    icon: uranusIcon,
     value: "urano",
     alt: "uranus icon",
   },
   {
     name: "neptune",
-    icon: require(`${directory}/planets/neptune.svg`).default.src,
+    icon: neptuneIcon,
     value: "neptuno",
     alt: "neptune icon",
   },
   {
     name: "pluto",
-    icon: require(`${directory}/planets/pluto.svg`).default.src,
+    icon: plutoIcon,
     value: "pluton",
     alt: "pluto icon",
   },
   {
     name: "moon",
-    icon: require(`${directory}/planets/moon.svg`).default.src,
+    icon: moonIcon,
     value: "luna",
     alt: "moon icon",
   },

@@ -1,44 +1,50 @@
-const directory = "./assets";
+import crownIcon from "./assets/chakras/crown.svg";
+import heartIcon from "./assets/chakras/heart.svg";
+import rootIcon from "./assets/chakras/root.svg";
+import sacralIcon from "./assets/chakras/sacral.svg";
+import solarIcon from "./assets/chakras/root.svg";
+import thirdEyeIcon from "./assets/chakras/third_eye.svg";
+import throatIcon from "./assets/chakras/throat.svg";
 const chakras = [
   {
     name: "crown",
-    icon: require(`${directory}/chakras/crown.svg`).default.src,
+    icon: crownIcon,
     value: "crown chakra",
     alt: "crown icon",
   },
   {
     name: "heart",
-    icon: require(`${directory}/chakras/heart.svg`).default.src,
+    icon: heartIcon,
     value: "heart chakra",
     alt: "heart icon",
   },
   {
     name: "root",
-    icon: require(`${directory}/chakras/root.svg`).default.src,
+    icon: rootIcon,
     value: "root chakra",
     alt: "root icon",
   },
   {
     name: "sacral",
-    icon: require(`${directory}/chakras/sacral.svg`).default.src,
+    icon: sacralIcon,
     value: "sacral chakra",
     alt: "sacral icon",
   },
   {
     name: "solar",
-    icon: require(`${directory}/chakras/solar.svg`).default.src,
+    icon: solarIcon,
     value: "solar plexus chakra",
     alt: "solar icon",
   },
   {
     name: "third eye",
-    icon: require(`${directory}/chakras/third_eye.svg`).default.src,
+    icon: thirdEyeIcon,
     value: "third eye chakra",
     alt: "third eye icon",
   },
   {
     name: "throat",
-    icon: require(`${directory}/chakras/throat.svg`).default.src,
+    icon: throatIcon,
     value: "throat chakra",
     alt: "throat icon",
   },
