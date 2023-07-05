@@ -16,22 +16,18 @@ export default function TheProductCard(props: {
     currency: "COP",
     maximumFractionDigits: 0,
   });
-  const [total, setTotal] = useState(
-    props.product.price * props.product.quantity
-  );
+  const [total, setTotal] = useState(0);
   const [quantity, setQuantity] = useState(props.product.quantity);
 
   const handleSubstract = () => {
     if (quantity > 1) {
       setQuantity(quantity - 1);
-      setTotal(quantity * props.product.price);
       props.update();
     }
   };
   const handleAdd = () => {
     if (quantity < 10) {
       setQuantity(quantity + 1);
-      setTotal(quantity * props.product.price);
       props.update();
     }
   };
@@ -62,8 +58,16 @@ export default function TheProductCard(props: {
   }, [quantity, props]);
 
   useEffect(() => {
-    setTotal(quantity * props.product.price);
-  }, [props.product.price, quantity]);
+    const calculateTotal = () => {
+      const itemPrice =
+        props.product.price +
+        props.product.potPrice +
+        props.product.crystalPrice;
+      setTotal(quantity * itemPrice);
+    };
+    calculateTotal();
+  }, [props.product, quantity]);
+
   return (
     <div className={styles.productCard}>
       <div className={styles.images}>
@@ -93,8 +97,16 @@ export default function TheProductCard(props: {
         <h1>{props.product.name.toLowerCase()}</h1>
         <p>Matera Céramica {props.product.potName}</p>
         <p>Cristal {props.product.crystalName}</p>
-        <div className={styles.pill}>
-          {formatter.format(props.product.price)}
+        <div className={styles.priceTags}>
+          <span className={styles.pill}>
+            {formatter.format(props.product.price)}
+          </span>
+          <span className={styles.pill}>
+            {formatter.format(props.product.potPrice)}
+          </span>
+          <span className={styles.pill}>
+            {formatter.format(props.product.crystalPrice)}
+          </span>
         </div>
       </div>
       <TheQuantityCard
