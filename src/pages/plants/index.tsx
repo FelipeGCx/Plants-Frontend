@@ -1,16 +1,16 @@
 import styles from "./style.module.scss";
 import Image from "next/image";
-import iconArrowLeft from "./assets/arrow-left.svg";
-import iconArrowRight from "./assets/arrow-right.svg";
-import React, { useEffect, useState } from "react";
-import ThePlantCard from "./components/ThePlantCard";
-import TheFilters from "./components/TheFilters";
+import Link from "next/link";
 import { useRouter } from "next/router";
+import React, { useEffect, useState } from "react";
+import iconArrowRight from "../../components/commonPlants/assets/arrow-right.svg";
+import iconArrowLeft from "../../components/commonPlants/assets/arrow-left.svg";
+import ThePlantCard from "../../components/commonPlants/components/ThePlantCard";
+import TheFilters from "../../components/commonPlants/components/TheFilters";
+import TheLoader from "../../components/commonPlants/components/TheLoader";
 import { Plant, PlantFavorite, PlantsQParams } from "../../types";
 import { ProductionService } from "../../api/ProductionService";
 import { HttpService } from "../../api/HttpService";
-import Link from "next/link";
-import TheLoader from "./components/TheLoader";
 import { toArrayPlantFavorite } from "../../utils/parsings/Plant";
 
 export default function Plants() {

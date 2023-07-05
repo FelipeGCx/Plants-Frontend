@@ -44,23 +44,5 @@ module.exports = {
       },
     ],
   },
-  exportPathMap: async function () {
-    const excludedPaths = [
-      "/crystals/components/TheFilter/assets/chakras",
-      "/crystals/components/TheFilter/assets/elements",
-      "/crystals/components/TheFilter/assets/planets",
-      "/crystals/components/TheFilter/assets/zodiac",
-      "/plants/plant/components/ThePlantView/components/TheCrystalSelect/lib/zodiac",
-    ];
-
-    const pathMap = {};
-
-    // Genera el mapa de rutas excluyendo los archivos especificados
-    for (const path of excludedPaths) {
-      pathMap[path] = { page: "/_error" }; // Puedes redirigir a una página de error o a cualquier otra página
-    }
-
-    return pathMap;
-  },
   ...nextConfig,
 };

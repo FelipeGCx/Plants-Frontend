@@ -1,8 +1,8 @@
 import styles from "./style.module.scss";
 import React, { useEffect, useState } from "react";
 import { CrystalFavorite, CrystalsQParams } from "../../types";
-import TheCrystalView from "./components/TheCrystalView";
-import TheFilter from "./components/TheFilter";
+import TheCrystalView from "../../components/commonCrystals/components/TheCrystalView";
+import TheFilter from "../../components/commonCrystals/components/TheFilter";
 import { useRouter } from "next/router";
 import { ProductionService } from "../../api/ProductionService";
 import { HttpService } from "../../api/HttpService";

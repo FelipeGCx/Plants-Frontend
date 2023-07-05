@@ -1,0 +1,10 @@
+.zodiac {
+  align-self: flex-end;
+  display: flex;
+  gap: 0.5rem;
+  img {
+    width: 1.8rem;
+    height: 1.8rem;
+    filter: var(--icon-filter);
+  }
+}

@@ -1,7 +1,7 @@
 import styles from "./style.module.scss";
-import ThePotSelector from "./components/ThePotSelector";
-import TheCrystalSelector from "./components/TheCrystalSelector";
-import ThePlantView from "./components/ThePlantView";
+import ThePotSelector from "../../../components/commonPlants/commonPlant/components/ThePotSelector";
+import TheCrystalSelector from "../../../components/commonPlants/commonPlant/components/TheCrystalSelector";
+import ThePlantView from "../../../components/commonPlants/commonPlant/components/ThePlantView";
 import { useRouter } from "next/router";
 import { Cart, Crystal, CrystalFavorite, PlantStock } from "../../../types";
 import { useEffect, useState } from "react";

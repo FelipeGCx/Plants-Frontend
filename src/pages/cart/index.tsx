@@ -1,5 +1,6 @@
-import ThePayMethods from "./components/ThePayMethods";
-import TheProductCard from "./components/TheProductCard";
+import ThePayMethods from "../../components/commonCart/components/ThePayMethods";
+import TheProductCard from "../../components/commonCart/components/TheProductCard";
+import TheProductList from "../../components/commonCart/components/TheProductList";
 import styles from "./style.module.scss";
 import { useEffect, useState } from "react";
 import {
@@ -10,7 +11,6 @@ import {
   Product,
   ProductTicket,
 } from "../../types";
-import TheProductList from "./components/TheProductList";
 
 export default function TheCart() {
   const [cart, setCart] = useState<Product[]>();
@@ -31,7 +31,7 @@ export default function TheCart() {
       fetchCart();
     }
   };
-  const handlerUpdate = () => { 
+  const handlerUpdate = () => {
     setIsChange(!isChange);
   };
   async function fetchCart() {
@@ -121,7 +121,12 @@ export default function TheCart() {
       <ul className={styles.products}>
         {cart?.map((product: Product, i: number) => {
           return (
-            <TheProductCard key={i} product={product} delete={handlerDelete} update={handlerUpdate} />
+            <TheProductCard
+              key={i}
+              product={product}
+              delete={handlerDelete}
+              update={handlerUpdate}
+            />
           );
         })}
       </ul>
