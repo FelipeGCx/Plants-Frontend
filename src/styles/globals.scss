@@ -127,11 +127,25 @@ img {
   --active-icon-filter: brightness(0) invert(1) contrast(1);
   --icon-brightness: brightness(2);
   --icon-br: brightness(6);
+  --planets-filter: var(--active-icon-filter);
+  --chakras-filter: drop-shadow(2px 4px 6px #000000a8);
   --gradient-loading: linear-gradient(
     to right,
     #ffffff23 0%,
     var(--box-color) 50%,
     #ffffff56 100%
+  );
+  --gradient-active-zodiac: radial-gradient(
+    78.75% 59.46% at 50% 50%,
+    #9820c2 13.28%,
+    rgba(152, 32, 194, 0.45) 70.58%,
+    #9820c2 100%
+  );
+  --gradient-inactive-zodiac: radial-gradient(
+    82.27% 61.61% at 50% 46.79%,
+    #5d5962 0%,
+    #b597e7 64.85%,
+    rgba(102, 110, 118, 0.85) 100%
   );
 }
 .app-light {
@@ -156,11 +170,25 @@ img {
   --active-icon-filter: brightness(0) invert(1) contrast(1);
   --icon-brightness: brightness(0);
   --icon-br: brightness(6);
+  --planets-filter: grayscale(1) brightness(0) contrast(0.6);
+  --chakras-filter: drop-shadow(2px 4px 6px #ffffffa8);
   --gradient-loading: linear-gradient(
     to right,
     #ffffff23 0%,
     var(--box-color) 50%,
     #ffffff56 100%
+  );
+  --gradient-active-zodiac: radial-gradient(
+    78.75% 59.46% at 50% 50%,
+    #9820c2 13.28%,
+    rgba(152, 32, 194, 0.45) 70.58%,
+    #9820c2 100%
+  );
+  --gradient-inactive-zodiac: radial-gradient(
+    82.27% 61.61% at 50% 46.79%,
+    #5d5962 0%,
+    #b597e7 64.85%,
+    rgba(102, 110, 118, 0.85) 100%
   );
 }
 // @media (prefers-color-scheme: dark) {

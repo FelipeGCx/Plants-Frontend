@@ -47,24 +47,20 @@ export default function TheCrystalCard(props: {
   order: number;
   totalItems: number;
   onFavorite: () => void;
-  onNewOrder: (oldOrder: number) => void;
   onDisplay: (display: string) => void;
-  onOrder: (order: number) => void;
 }) {
   const [state, setState] = useState(false);
   const handlerClick = () => {
     if (!state) {
-      // props.onNewOrder(props.idx + 1);
       props.onDisplay("grid");
       setState(true);
     } else {
+      props.onDisplay("none");
       handlerClose();
-      setState(false);
     }
   };
   const handlerClose = () => {
-    props.onOrder((props.totalItems - props.idx) * -1);
-    props.onDisplay("none");
+    setState(false);
   };
   return (
     <li

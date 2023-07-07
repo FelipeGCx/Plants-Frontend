@@ -1,0 +1,28 @@
+.zodiac {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+  li {
+    display: flex;
+    flex-direction: column;
+    border-radius: var(--radius-1x);
+    justify-content: center;
+    background: var(--gradient-inactive-zodiac);
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    filter: blur(1px);
+    img:first-child {
+      filter: var(--icon-br);
+    }
+    img:last-child {
+      filter: var(--icon-br);
+    }
+    &.include {
+      background: var(--gradient-active-zodiac);
+      filter: none !important;
+    }
+  }
+}

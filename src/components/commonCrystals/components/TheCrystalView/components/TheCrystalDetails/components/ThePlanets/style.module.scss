@@ -1,0 +1,12 @@
+.planets {
+  display: inline-flex;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
+  li {
+    filter: var(--planets-filter);
+    &.active {
+      filter: none;
+    }
+  }
+}

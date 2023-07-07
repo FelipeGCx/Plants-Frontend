@@ -3,20 +3,22 @@ import { CrystalFavorite } from "../../../../types";
 import { useState } from "react";
 import TheCrystalCard from "./components/TheCrystalCard";
 import TheCrystalDetails from "./components/TheCrystalDetails";
-import TheCrystalPropertiesCard from "./components/TheCrystalPropertiesCard";
-import TheCrystalBenefitsCard from "./components/TheCrystalBenefitsCard";
 
 export default function TheCrystalView(props: {
   crystals: CrystalFavorite[];
   totalItems: number;
 }) {
   const [crystal, setCrystal] = useState<CrystalFavorite>();
-  const handlerDisplay = (crystalId: number) => {
-    console.log(crystalId);
+  const [display, setDisplay] = useState("none");
+  const handlerDisplay = (display: string, crystalId: number) => {
+    console.table({
+      display: display,
+      crystalId: crystalId,
+    });
+    setDisplay(display);
     const crystalSelected = props.crystals.find(
       (crystal) => crystal.id === crystalId
     );
-    console.log(crystalSelected);
     if (crystalSelected) setCrystal(crystalSelected);
   };
   return (
@@ -74,18 +76,12 @@ export default function TheCrystalView(props: {
               onFavorite={function (): void {
                 throw new Error("Function not implemented.");
               }}
-              onNewOrder={function (oldOrder: number): void {
-                // getNewOrder(oldOrder, 5);
-              }}
-              onDisplay={() => handlerDisplay(crystal.id)}
-              onOrder={function (order: number): void {
-                // setOrder(order);
-              }}
+              onDisplay={(display) => handlerDisplay(display, crystal.id)}
             />
           );
         })}
       </ul>
-      <TheCrystalDetails crystal={crystal} />
+      <TheCrystalDetails crystal={crystal} display={display} />
     </section>
   );
 }
