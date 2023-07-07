@@ -54,7 +54,7 @@ export default function TheCrystalCard(props: {
   const [state, setState] = useState(false);
   const handlerClick = () => {
     if (!state) {
-      props.onNewOrder(props.idx + 1);
+      // props.onNewOrder(props.idx + 1);
       props.onDisplay("grid");
       setState(true);
     } else {

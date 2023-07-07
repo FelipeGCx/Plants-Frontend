@@ -2,6 +2,7 @@ import styles from "./style.module.scss";
 import { CrystalFavorite } from "../../../../types";
 import { useState } from "react";
 import TheCrystalCard from "./components/TheCrystalCard";
+import TheCrystalDetails from "./components/TheCrystalDetails";
 import TheCrystalPropertiesCard from "./components/TheCrystalPropertiesCard";
 import TheCrystalBenefitsCard from "./components/TheCrystalBenefitsCard";
 
@@ -9,6 +10,15 @@ export default function TheCrystalView(props: {
   crystals: CrystalFavorite[];
   totalItems: number;
 }) {
+  const [crystal, setCrystal] = useState<CrystalFavorite>();
+  const handlerDisplay = (crystalId: number) => {
+    console.log(crystalId);
+    const crystalSelected = props.crystals.find(
+      (crystal) => crystal.id === crystalId
+    );
+    console.log(crystalSelected);
+    if (crystalSelected) setCrystal(crystalSelected);
+  };
   return (
     <section className={styles.view}>
       <ul className={styles.items}>
@@ -67,9 +77,7 @@ export default function TheCrystalView(props: {
               onNewOrder={function (oldOrder: number): void {
                 // getNewOrder(oldOrder, 5);
               }}
-              onDisplay={function (display: string): void {
-                // setDisplay(display);
-              }}
+              onDisplay={() => handlerDisplay(crystal.id)}
               onOrder={function (order: number): void {
                 // setOrder(order);
               }}
@@ -77,6 +85,7 @@ export default function TheCrystalView(props: {
           );
         })}
       </ul>
+      <TheCrystalDetails crystal={crystal} />
     </section>
   );
 }

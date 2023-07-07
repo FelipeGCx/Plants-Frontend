@@ -1,9 +1,12 @@
 .view {
   overflow-y: scroll;
+  display: flex;
+  gap: 1rem;
   .items {
     display: flex;
     flex-wrap: wrap;
     gap: 3rem;
     justify-content: center;
+    width: 100%;
   }
 }
