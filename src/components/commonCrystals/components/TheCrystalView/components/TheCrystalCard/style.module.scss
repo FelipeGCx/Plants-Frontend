@@ -8,31 +8,47 @@
   align-items: center;
   height: fit-content;
   position: relative;
+  &:hover {
+    background-color: var(--card-hover-color);
+    &::after {
+      top: 45%;
+      right: 3%;
+      transform: rotate(225deg);
+      width: 29rem;
+      height: 16rem;
+    }
+    &::before {
+      top: -7%;
+      left: 60%;
+      transform: rotate(185deg);
+    }
+  }
   &::after {
     content: "";
     position: absolute;
     border-radius: var(--radius-2x);
-    background-color: var(--page-color);
-    opacity: 45%;
+    background-color: var(--opacity-color);
     width: 10rem;
     height: 10rem;
     z-index: 0;
     top: 52%;
     right: -13%;
     transform: rotate(45deg);
+    transition: transform 0.5s ease, top 0.5s ease, left 0.5s ease,
+      width 0.5s ease, height 0.5s ease;
   }
   &::before {
     content: "";
     position: absolute;
     border-radius: var(--radius-2x);
-    background-color: var(--page-color);
-    opacity: 45%;
+    background-color: var(--opacity-color);
     width: 10rem;
     height: 10rem;
     z-index: 0;
     top: 34%;
     left: -11%;
     transform: rotate(45deg);
+    transition: transform 0.5s ease, top 0.5s ease, left 0.5s ease;
   }
   .input {
     width: 100%;

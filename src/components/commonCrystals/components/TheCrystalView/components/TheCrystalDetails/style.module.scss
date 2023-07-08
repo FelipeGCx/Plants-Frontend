@@ -14,7 +14,7 @@
   display: flex;
   flex-direction: column;
   gap: 2rem;
-  transition: all 1s ease;
+  transition: max-width 1s ease, padding 1s ease;
   transition-delay: 0.5s;
   & > * {
     transition: all 1s ease;
@@ -22,10 +22,7 @@
   }
   &.display {
     max-width: 39rem;
-
-    // width: 100%;
     padding: 2rem;
-    transition: all 1s ease;
     & > * {
       transition: all 1s ease;
       opacity: 1;
@@ -144,7 +141,17 @@
     top: -3rem;
     left: -10rem;
     transform: rotate(40deg);
-    // transition: transform 0.5s ease, top 0.5s ease, left 0.5s ease,
-    // width 0.5s ease, height 0.5s ease;
   }
+  // &::before {
+  //   content: "";
+  //   position: absolute;
+  //   border-radius: var(--radius-2x);
+  //   background-color: var(--opacity-color);
+  //   width: 54rem;
+  //   height: 36rem;
+  //   z-index: -2;
+  //   bottom: -25rem;
+  //   left: -10rem;
+  //   transform: rotate(40deg);
+  // }
 }
