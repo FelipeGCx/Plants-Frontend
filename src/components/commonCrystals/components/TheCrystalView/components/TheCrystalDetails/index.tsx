@@ -21,16 +21,12 @@ export default function TheCrystalDetails(props: {
       }
     };
     scroll();
-  }, [props.crystal]);
+  }, [props.crystal])
 
   return (
     <section
       ref={containerRef}
-      className={styles.details}
-      style={{
-        width: props.display == "none" ? "0px" : "100%",
-        padding: props.display == "none" ? "0px" : "2rem",
-      }}
+      className={`${styles.details} ${props.display == "grid" ? styles.display : ""}`}
     >
       <div className={styles.data}>
         <h1>{props.crystal?.name}</h1>
