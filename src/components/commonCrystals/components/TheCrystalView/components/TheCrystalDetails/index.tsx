@@ -1,6 +1,6 @@
 import Image from "next/image";
 import styles from "./style.module.scss";
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { CrystalFavorite } from "../../../../../../types";
 import TheZodiacCards from "./components/TheZodiacCards";
 import ThePlanets from "./components/ThePlanets";
@@ -10,8 +10,22 @@ export default function TheCrystalDetails(props: {
   crystal?: CrystalFavorite;
   display: string;
 }) {
+  const containerRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    const scroll = () => {
+      if (containerRef.current) {
+        containerRef.current.scrollTo({
+          top: 0,
+          behavior: "smooth",
+        });
+      }
+    };
+    scroll();
+  }, [props.crystal]);
+
   return (
     <section
+      ref={containerRef}
       className={styles.details}
       style={{
         width: props.display == "none" ? "0px" : "100%",
