@@ -34,6 +34,10 @@ export default function Crystals() {
         url += `?page=${page}`;
         setPage(+page);
       }
+      const name = router.query["name"] || null;
+      if (name != null) {
+        url += `&name=${name}`;
+      }
       const zodiac = router.query["zodiac"] || null;
       if (zodiac != null) {
         url += `&zodiac=${zodiac}`;
