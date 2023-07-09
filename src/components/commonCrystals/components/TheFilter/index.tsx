@@ -15,7 +15,7 @@ export default function TheFilter(props: { params: CrystalsQParams }) {
   const pushPath = (filter: string, value: string) => {
     let updatedQuery: any = null;
     const { query, pathname } = router;
-    const { [filter]: filterParam, ...restQuery } = query;
+    const { [filter]: filterParam, name,...restQuery } = query;
     if (value != "") {
       updatedQuery = {
         ...restQuery,
