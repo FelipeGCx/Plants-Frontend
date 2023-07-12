@@ -3,13 +3,15 @@ import Link from "next/link";
 import styles from "./style.module.scss";
 import search from "./assets/search.svg";
 import arrow from "./assets/arrow-right.svg";
-import React, { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { useRouter } from "next/router";
 
 export default function TheHeader() {
   const [valueSearch, setValue] = useState("");
   const [displayDrop, setDisplay] = useState("none");
   const router = useRouter();
+  const inputRef = useRef<HTMLInputElement>(null);
+
   const handlerState = (event: any) => {
     let value = event.target.value;
     setValue(value.toString());
@@ -34,6 +36,14 @@ export default function TheHeader() {
       setDisplay("none");
     }
   };
+  useEffect(() => {
+    document.addEventListener("keydown", (event) => {
+      if (event.ctrlKey && event.code === "KeyK" && inputRef.current) {
+        inputRef.current.focus();
+      }
+    });
+  }, []);
+
   return (
     <div
       className={styles.search}
@@ -45,6 +55,7 @@ export default function TheHeader() {
     >
       <div className={styles.input}>
         <input
+          ref={inputRef}
           type="text"
           name="buscador"
           placeholder="Buscar"
