@@ -1,13 +1,16 @@
 import styles from "./style.module.scss";
-import { CrystalFavorite } from "../../../../types";
+import { CrystalFavorite, CrystalsQParams } from "../../../../types";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import TheCrystalCard from "./components/TheCrystalCard";
 import TheCrystalDetails from "./components/TheCrystalDetails";
+import TheCrystalPagination from "./components/TheCrystalPagination";
 
 export default function TheCrystalView(props: {
   crystals: CrystalFavorite[];
-  totalItems: number;
+  totalPages: number;
+  page: number;
+  crystalParams: CrystalsQParams;
 }) {
   const [crystal, setCrystal] = useState<CrystalFavorite>();
   const [display, setDisplay] = useState("none");
@@ -40,15 +43,17 @@ export default function TheCrystalView(props: {
 
   return (
     <section className={styles.view}>
+      <TheCrystalPagination
+        totalPages={props.totalPages}
+        page={props.page}
+        crystalParams={props.crystalParams}
+      />
       <ul className={styles.items}>
         {props.crystals.map((crystal: CrystalFavorite) => {
           return (
             <TheCrystalCard
               key={crystal.id}
               crystal={crystal}
-              idx={crystal.id}
-              totalItems={props.totalItems}
-              order={0}
               onFavorite={function (): void {
                 throw new Error("Function not implemented.");
               }}

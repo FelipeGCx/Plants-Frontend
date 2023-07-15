@@ -15,6 +15,7 @@ export default function Crystals() {
   const [error, setError] = useState("");
   const [crystals, setCrystals] = useState<CrystalFavorite[]>([]);
   const [totalItems, setTotalItems] = useState(30);
+  const [totalPages, setTotalPages] = useState(3);
   const router = useRouter();
   const [crystalParams, setCrystalParams] = useState<CrystalsQParams>({
     zodiac: null,
@@ -74,6 +75,7 @@ export default function Crystals() {
         const data = await httpService.getRequest(url);
         setCrystals(toArrayCrystalFavorite(data.results));
         setTotalItems(+data.totalItems);
+        setTotalPages(data.totalPages);
         setLoading(false);
       } catch (err) {
         setError("error");
@@ -92,7 +94,12 @@ export default function Crystals() {
     return (
       <main className={styles.main}>
         <TheFilter params={crystalParams} />
-        <TheCrystalView crystals={crystals} totalItems={totalItems} />
+        <TheCrystalView
+          crystals={crystals}
+          totalPages={totalPages}
+          page={page}
+          crystalParams={crystalParams}
+        />
       </main>
     );
   }

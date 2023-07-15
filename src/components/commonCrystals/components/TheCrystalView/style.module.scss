@@ -1,14 +1,14 @@
 .view {
   display: grid;
   grid-template-columns: 1fr auto;
-  grid-template-rows: 1fr 1fr;
-  gap: 3rem;
+  grid-template-rows: auto 1fr 1fr;
+  gap: 0rem 3rem ;
   width: 100%;
   .items {
     overflow: hidden;
     overflow-y: auto;
     transition: flex-wrap 1s ease;
-    grid-area: 1/1/3/1;
+    grid-area: 2/2/4/2;
     display: flex;
     flex-wrap: wrap;
     gap: 3rem;

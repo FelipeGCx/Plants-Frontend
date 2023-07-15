@@ -43,9 +43,6 @@ function elementsDisplay(list: Array<string>) {
 
 export default function TheCrystalCard(props: {
   crystal: CrystalFavorite;
-  idx: number;
-  order: number;
-  totalItems: number;
   onFavorite: () => void;
   onDisplay: (display: string) => void;
 }) {
@@ -63,12 +60,7 @@ export default function TheCrystalCard(props: {
     setState(false);
   };
   return (
-    <li
-      key={props.idx}
-      className={styles.card}
-      id={props.crystal.name}
-      style={{ order: props.order }}
-    >
+    <li key={props.crystal.id} className={styles.card} id={props.crystal.name}>
       <input
         className={styles.input}
         type="radio"
