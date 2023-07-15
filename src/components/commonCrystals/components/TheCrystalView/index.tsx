@@ -29,12 +29,13 @@ export default function TheCrystalView(props: {
       const crystalSelected = props.crystals.find(
         (crystal) => crystal.name === name
       );
-      console.log(crystalSelected);
       if (crystalSelected) {
         handlerDisplay("grid", crystalSelected?.id);
+      } else {
+        setDisplay("none");
       }
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [router.query]);
 
   return (
