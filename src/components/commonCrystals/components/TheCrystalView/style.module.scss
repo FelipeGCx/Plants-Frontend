@@ -2,17 +2,6 @@
   display: grid;
   grid-template-columns: 1fr auto;
   grid-template-rows: auto 1fr 1fr;
-  gap: 0rem 3rem ;
+  gap: 0rem 3rem;
   width: 100%;
-  .items {
-    overflow: hidden;
-    overflow-y: auto;
-    transition: flex-wrap 1s ease;
-    grid-area: 2/2/4/2;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 3rem;
-    justify-content: space-evenly;
-    width: 100%;
-  }
 }

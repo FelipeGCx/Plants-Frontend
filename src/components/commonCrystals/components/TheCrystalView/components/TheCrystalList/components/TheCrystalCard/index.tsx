@@ -8,7 +8,7 @@ import vibrationIcon from "./assets/vibration.svg";
 import favoriteOutline from "./assets/favorite_outline.svg";
 import favoriteFilled from "./assets/favorite_filled.svg";
 import React, { useState } from "react";
-import { CrystalFavorite } from "../../../../../../types";
+import { CrystalFavorite } from "../../../../../../../../types";
 
 function icon(element: string) {
   switch (element) {

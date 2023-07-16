@@ -1,0 +1,11 @@
+.items {
+  overflow: hidden;
+  overflow-y: auto;
+  transition: flex-wrap 1s ease;
+  grid-area: 2/1/4/3;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3rem;
+  justify-content: space-evenly;
+  width: 100%;
+}

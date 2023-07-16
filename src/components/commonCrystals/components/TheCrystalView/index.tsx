@@ -2,9 +2,9 @@ import styles from "./style.module.scss";
 import { CrystalFavorite, CrystalsQParams } from "../../../../types";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
-import TheCrystalCard from "./components/TheCrystalCard";
 import TheCrystalDetails from "./components/TheCrystalDetails";
 import TheCrystalPagination from "./components/TheCrystalPagination";
+import TheCrystalList from "./components/TheCrystalList";
 
 export default function TheCrystalView(props: {
   crystals: CrystalFavorite[];
@@ -16,10 +16,6 @@ export default function TheCrystalView(props: {
   const [display, setDisplay] = useState("none");
   const router = useRouter();
   const handlerDisplay = (display: string, crystalId: number) => {
-    console.table({
-      display: display,
-      crystalId: crystalId,
-    });
     setDisplay(display);
     const crystalSelected = props.crystals.find(
       (crystal) => crystal.id === crystalId
@@ -48,20 +44,7 @@ export default function TheCrystalView(props: {
         page={props.page}
         crystalParams={props.crystalParams}
       />
-      <ul className={styles.items}>
-        {props.crystals.map((crystal: CrystalFavorite) => {
-          return (
-            <TheCrystalCard
-              key={crystal.id}
-              crystal={crystal}
-              onFavorite={function (): void {
-                throw new Error("Function not implemented.");
-              }}
-              onDisplay={(display) => handlerDisplay(display, crystal.id)}
-            />
-          );
-        })}
-      </ul>
+      <TheCrystalList onDisplay={handlerDisplay} crystals={props.crystals} />
       <TheCrystalDetails crystal={crystal} display={display} />
     </section>
   );
