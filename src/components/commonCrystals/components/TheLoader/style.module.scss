@@ -1,0 +1,138 @@
+@mixin shineEffect {
+  transform: skewX(-20deg);
+  content: "";
+  position: absolute;
+  height: 100%;
+  width: 50%;
+  animation: shine 1s linear infinite;
+  opacity: 1;
+  background: var(--gradient-loading);
+}
+.main {
+  border-radius: var(--radius-3x);
+  background-color: var(--page-color);
+  margin: 0 4rem 4rem 0;
+  padding: 3rem 3.5rem;
+  box-shadow: var(--shadow);
+  display: flex;
+  gap: 3rem;
+  .filter {
+    background-color: var(--box-color);
+    height: 100%;
+    border-radius: var(--radius-2x);
+    width: 23.7rem;
+    min-width: 23.7rem;
+    padding: 2.2rem 3.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.6rem;
+    overflow: hidden;
+    --gap: 0.8rem;
+
+    .items {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      gap: 2rem;
+      .card {
+        display: flex;
+        flex-direction: column;
+        height: fit-content;
+        gap: 1rem;
+        .title {
+          width: 40%;
+          height: 1.5rem;
+          border-radius: var(--radius-3x);
+          background-color: var(--opacity-color);
+          display: block;
+          overflow: hidden;
+          position: relative;
+
+          &::after {
+            @include shineEffect();
+          }
+        }
+        .tag {
+          width: 100%;
+          height: 1.5rem;
+          border-radius: var(--radius-3x);
+          background-color: var(--opacity-color);
+          display: block;
+          overflow: hidden;
+          position: relative;
+
+          &::after {
+            @include shineEffect();
+          }
+          &:nth-child(even) {
+            width: max(random(90) + 0%, 60%);
+          }
+          &:nth-child(odd)::after {
+            animation-delay: 0.3s;
+          }
+        }
+      }
+    }
+  }
+
+  .view {
+    overflow-y: scroll;
+    position: relative;
+    width: 100%;
+    .navsref {
+      display: flex;
+      position: sticky;
+      top: 0;
+      background: var(--page-color);
+      z-index: 5;
+      padding: 0.6rem;
+      gap: 0.5rem;
+      align-items: center;
+      justify-content: space-between;
+      .pagination {
+        width: 100%;
+        border-radius: var(--radius-3x);
+        background-color: var(--box-color);
+        height: 2rem;
+        overflow: hidden;
+        position: relative;
+        $randomNumber: random(5);
+        &::after {
+          @include shineEffect();
+        }
+        &:nth-child(odd)::after {
+          animation-delay: 0.5s;
+        }
+      }
+    }
+    .items {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4rem;
+      justify-content: space-evenly;
+      padding:1rem;
+      .card {
+        background-color: var(--box-color);
+        overflow: hidden;
+        border-radius: var(--radius-2x);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        height: 24rem;
+        width: 17.1rem;
+        position: relative;
+        &::after {
+          @include shineEffect();
+        }
+      }
+    }
+  }
+}
+@keyframes shine {
+  0% {
+    left: -100%;
+  }
+  100% {
+    left: 200%;
+  }
+}

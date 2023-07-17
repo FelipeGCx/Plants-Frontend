@@ -10,8 +10,7 @@
 }
 
 .main {
-  --radius: 2.5rem;
-  border-radius: var(--radius);
+  border-radius: var(--radius-3x);
   background-color: var(--page-color);
   margin: 0 4rem 4rem 0;
   padding: 3rem 3.5rem;
@@ -67,7 +66,6 @@
     flex-wrap: wrap;
     gap: 3rem;
     justify-content: center;
-    --radius: 1.5rem;
     .card {
       background-color: var(--box-color);
       overflow: hidden;

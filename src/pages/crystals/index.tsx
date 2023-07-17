@@ -7,6 +7,7 @@ import { useRouter } from "next/router";
 import { ProductionService } from "../../api/ProductionService";
 import { HttpService } from "../../api/HttpService";
 import { toArrayCrystalFavorite } from "../../utils/parsings/Crystal";
+import TheLoader from "../../components/commonCrystals/components/TheLoader";
 
 export default function Crystals() {
   const [idUser, setIdUser] = useState(1);
@@ -86,7 +87,7 @@ export default function Crystals() {
   }, [router, idUser]);
 
   if (loading) {
-    return <p>Loading...</p>;
+    return (<TheLoader/>)
   }
   if (error) {
     return <p>An error occurred: {error}</p>;
