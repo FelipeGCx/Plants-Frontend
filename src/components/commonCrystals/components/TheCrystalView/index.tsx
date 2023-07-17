@@ -23,19 +23,22 @@ export default function TheCrystalView(props: {
     if (crystalSelected) setCrystal(crystalSelected);
   };
   useEffect(() => {
-    const name = router.query["name"];
-    if (name) {
-      const crystalSelected = props.crystals.find(
-        (crystal) => crystal.name === name
-      );
-      if (crystalSelected) {
-        handlerDisplay("grid", crystalSelected?.id);
-      } else {
-        setDisplay("none");
+    const setCrystalSelected = () => {
+      const name = router.query["name"]?.toString();
+      if (name) {
+        const crystalSelected = props.crystals.find(
+          (crystal) => crystal.name.toLowerCase() === name.toLowerCase()
+        );
+        if (crystalSelected) {
+          handlerDisplay("grid", crystalSelected?.id);
+        } else {
+          setDisplay("none");
+        }
       }
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [router.query]);
+    };
+    setCrystalSelected();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [ props.crystals, router.query]);
 
   return (
     <section className={styles.view}>
