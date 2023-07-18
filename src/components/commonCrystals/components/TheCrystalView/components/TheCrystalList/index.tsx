@@ -1,13 +1,26 @@
 import { CrystalFavorite } from "../../../../../../types";
 import TheCrystalCard from "./components/TheCrystalCard";
 import styles from "./style.module.scss";
+import { useEffect, useRef } from "react";
 
 export default function TheCrystalList(props: {
   crystals: CrystalFavorite[];
-  onDisplay: (display: string, id:number) => void;
+  onDisplay: (display: string, id: number) => void;
 }) {
+  const containerRef = useRef<HTMLUListElement>(null);
+  useEffect(() => {
+    const scroll = () => {
+      if (containerRef.current) {
+        containerRef.current.scrollTo({
+          top: 0,
+          behavior: "smooth",
+        });
+      }
+    };
+    scroll();
+  }, [props.crystals]);
   return (
-    <ul className={styles.items}>
+    <ul className={styles.items} ref={containerRef}>
       {props.crystals.map((crystal: CrystalFavorite) => {
         return (
           <TheCrystalCard
