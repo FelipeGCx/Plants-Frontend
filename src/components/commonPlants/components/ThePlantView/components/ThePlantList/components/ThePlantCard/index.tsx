@@ -3,7 +3,7 @@ import Image from "next/image";
 import favoriteFilled from "./assets/favorite_filled.svg";
 import favoriteOutline from "./assets/favorite_outline.svg";
 import Link from "next/link";
-import { PlantFavorite } from "../../../../types";
+import { PlantFavorite } from "../../../../../../../../types";
 
 const formatter = new Intl.NumberFormat("es-CO", {
   style: "currency",

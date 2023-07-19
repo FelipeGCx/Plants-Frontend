@@ -1,22 +1,18 @@
 import styles from "./style.module.scss";
-import Image from "next/image";
-import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
-import iconArrowRight from "../../components/commonPlants/assets/arrow-right.svg";
-import iconArrowLeft from "../../components/commonPlants/assets/arrow-left.svg";
-import ThePlantCard from "../../components/commonPlants/components/ThePlantCard";
-import TheFilters from "../../components/commonPlants/components/TheFilters";
+import TheFilter from "../../components/commonPlants/components/TheFilter";
 import TheLoader from "../../components/commonPlants/components/TheLoader";
-import { Plant, PlantFavorite, PlantsQParams } from "../../types";
+import { PlantFavorite, PlantsQParams } from "../../types";
 import { ProductionService } from "../../api/ProductionService";
 import { HttpService } from "../../api/HttpService";
 import { toArrayPlantFavorite } from "../../utils/parsings/Plant";
+import ThePlantView from "../../components/commonPlants/components/ThePlantView";
 
 export default function Plants() {
   const [page, setPage] = useState(1);
   const [idUser, setIdUser] = useState(1);
-  const [PlantsList, setPlantsList] = useState<PlantFavorite[]>([]);
+  const [plants, setPlants] = useState<PlantFavorite[]>([]);
   const [plantParams, setPlantParams] = useState<PlantsQParams>({
     species: null,
     light: null,
@@ -30,22 +26,6 @@ export default function Plants() {
   const [totalItems, setTotalItems] = useState(30);
   const [totalPages, setTotalPages] = useState(3);
   const router = useRouter();
-
-  const handlePageChange = (newPage: number) => {
-    const { query, pathname } = router;
-    const updatedQuery = { ...query, page: newPage.toString() };
-    router.push({ pathname, query: updatedQuery });
-  };
-
-  const changePage = (direction: number) => {
-    let newPage = 1;
-    if (direction === 0) {
-      newPage = page - 1 <= 0 ? 1 : page - 1;
-    } else {
-      newPage = page + 1 > totalPages ? totalPages : page + 1;
-    }
-    handlePageChange(newPage);
-  };
 
   useEffect(() => {
     async function fetchData() {
@@ -105,74 +85,33 @@ export default function Plants() {
         const httpProvider = new ProductionService();
         const httpService = new HttpService(httpProvider);
         const data = await httpService.getRequest(url);
-        setPlantsList(toArrayPlantFavorite(data.results));
+        setPlants(toArrayPlantFavorite(data.results));
         setTotalItems(data.totalItems);
         setTotalPages(data.totalPages);
         setLoading(false);
       } catch (err) {
         setError("error");
-        console.log(err)
-        setLoading(false);
+          setLoading(false);
       }
     }
     fetchData();
   }, [router, idUser]);
 
   if (loading) {
-    return <TheLoader/>;
+    return <TheLoader />;
   }
   if (error) {
     return <p>An error occurred: {error}</p>;
   } else {
     return (
       <main className={styles.main}>
-        <section className={styles.filter}>
-          <TheFilters params={plantParams} />
-        </section>
-        <section className={styles.view}>
-          <div className={styles.navsref}>
-            <div>
-              <Link
-                href={{
-                  pathname: "/plants",
-                }}
-              >
-                Plantas
-              </Link>
-              {Object.entries(plantParams).map(([key, value]) => {
-                if (value) {
-                  return (
-                    <Link
-                      key={key}
-                      href={{
-                        pathname: "/plants",
-                        query: { [key]: value },
-                      }}
-                    >
-                      {value}
-                    </Link>
-                  );
-                } else {
-                  return null;
-                }
-              })}
-            </div>
-            <div>
-              <button onClick={() => changePage(0)}>
-                <Image src={iconArrowLeft} alt="icon arrow left" />
-              </button>
-              <span>{`${page}/${totalPages}`}</span>
-              <button onClick={() => changePage(1)}>
-                <Image src={iconArrowRight} alt="icon arrow right" />
-              </button>
-            </div>
-          </div>
-          <ul className={styles.items}>
-            {PlantsList?.map((plant: PlantFavorite, i: number) => {
-              return <ThePlantCard key={i} plant={plant} />;
-            })}
-          </ul>
-        </section>
+        <TheFilter params={plantParams} />
+        <ThePlantView
+          plants={plants}
+          totalPages={totalPages}
+          page={page}
+          plantParams={plantParams}
+        />
       </main>
     );
   }
