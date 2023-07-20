@@ -58,12 +58,13 @@ input {
   font-family: "Poppins";
 }
 .button {
-  padding: 0.6rem;
+  padding: 0.8rem;
   color: var(--contrast-font-color);
   background-color: var(--active-color);
   text-transform: uppercase;
   font-weight: 500;
   border-radius: 1rem;
+  font-size: var(--font-1x);
 }
 input[type="number"] {
   -webkit-appearance: none;
