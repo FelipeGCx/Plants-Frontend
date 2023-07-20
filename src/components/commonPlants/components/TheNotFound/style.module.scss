@@ -1,0 +1,55 @@
+.notFound {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  width: 100%;
+  height: 100%;
+  border-radius: var(--radius-2x);
+  background-color: var(--box-color);
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+  img {
+    width: 15rem;
+    height: auto;
+    z-index: 1;
+  }
+  h1 {
+    z-index: 1;
+    text-transform: uppercase;
+    font-size: var(--font-1_5x);
+    font-weight: 500;
+  }
+  a {
+    z-index: 1;
+    width: 20%;
+    justify-content: center;
+  }
+  &::before {
+    display: block;
+    content: "";
+    border-radius: var(--radius-2x);
+    background-color: var(--opacity-color);
+    width: 71rem;
+    height: 48rem;
+    position: absolute;
+    bottom: 5rem;
+    left: -40rem;
+    z-index: 0;
+    rotate: 30deg;
+  }
+  &::after {
+    display: block;
+    content: "";
+    border-radius: var(--radius-2x);
+    background-color: var(--opacity-color);
+    width: 71rem;
+    height: 48rem;
+    position: absolute;
+    top: -15rem;
+    right: -10rem;
+    z-index: 0;
+    rotate: 30deg;
+  }
+}

@@ -8,6 +8,7 @@ import { ProductionService } from "../../api/ProductionService";
 import { HttpService } from "../../api/HttpService";
 import { toArrayPlantFavorite } from "../../utils/parsings/Plant";
 import ThePlantView from "../../components/commonPlants/components/ThePlantView";
+import TheNotFound from "../../components/commonPlants/components/TheNotFound";
 
 export default function Plants() {
   const [page, setPage] = useState(1);
@@ -91,7 +92,7 @@ export default function Plants() {
         setLoading(false);
       } catch (err) {
         setError("error");
-          setLoading(false);
+        setLoading(false);
       }
     }
     fetchData();
@@ -106,12 +107,16 @@ export default function Plants() {
     return (
       <main className={styles.main}>
         <TheFilter params={plantParams} />
-        <ThePlantView
-          plants={plants}
-          totalPages={totalPages}
-          page={page}
-          plantParams={plantParams}
-        />
+        {plants.length > 0 ? (
+          <ThePlantView
+            plants={plants}
+            totalPages={totalPages}
+            page={page}
+            plantParams={plantParams}
+          />
+        ) : (
+          <TheNotFound />
+        )}{" "}
       </main>
     );
   }
