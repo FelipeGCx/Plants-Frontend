@@ -1,7 +1,7 @@
 import styles from "./style.module.scss";
 export default function TheFormData() {
   return (
-    <form className={styles.form}>
+    <div className={styles.data}>
       <label htmlFor="gift" className={styles.labelCheck}>
         <input type="checkbox" name="gift" id="gift" />
         <label htmlFor="gift">¿enviar como regalo?</label>
@@ -56,6 +56,6 @@ export default function TheFormData() {
         <label htmlFor="post">nota (optional)</label>
         <textarea name="post" id="post"></textarea>
       </label>
-    </form>
+    </div>
   );
 }
