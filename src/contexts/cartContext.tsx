@@ -11,12 +11,13 @@ import {
 interface ICartContext {
   cart: Array<Product>;
   ticketCart: Array<ProductTicket>;
-  addItemCart?: (item: Cart) => void;
+  addItemCart: (item: Cart) => void;
 }
 
 const defaultState = {
   cart: [],
   ticketCart: [],
+  addItemCart: (item: Cart) => {},
 };
 
 type Props = {
@@ -114,12 +115,6 @@ const CartProvider = (props: Props) => {
 
   function addItemCart(newItem: Cart) {
     let oldCart: Cart[] = [];
-    // let newItem: Cart = {
-    //   plant: props.plant.id,
-    //   crystal: +(router.query["crystal"] || 1),
-    //   pot: +(router.query["pot"] || 1),
-    //   quantity: 1,
-    // };
     let check = null;
     if (localStorage.getItem("cart")) {
       let actualCart: string = localStorage.getItem("cart") || "";
