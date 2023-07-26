@@ -5,6 +5,7 @@ import TheHeader from "../components/TheHeader";
 import styles from "../styles/app.module.scss";
 import { useEffect, useState } from "react";
 import { ThemeProvider } from "../contexts/themeContext";
+import { CartProvider } from "../contexts/cartContext";
 
 export default function App({ Component, pageProps }: AppProps) {
   // const [theme, setTheme] = useState("light");
@@ -31,11 +32,13 @@ export default function App({ Component, pageProps }: AppProps) {
   // }
   return (
     <div className={styles.body}>
-      <ThemeProvider>
-        <TheHeader/>
-        <TheNavigation />
-        <Component {...pageProps} />
-      </ThemeProvider>
+      <CartProvider>
+        <ThemeProvider>
+          <TheHeader />
+          <TheNavigation />
+          <Component {...pageProps} />
+        </ThemeProvider>
+      </CartProvider>
     </div>
   );
 }
