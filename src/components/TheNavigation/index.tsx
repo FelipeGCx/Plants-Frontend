@@ -2,24 +2,20 @@ import Image from "next/image";
 import Link from "next/link";
 import styles from "./style.module.scss";
 import shop from "./assets/shop.svg";
-import cart from "./assets/cart.svg";
+import cartIcon from "./assets/cart.svg";
 import crystals from "./assets/crystals.svg";
 import favorite from "./assets/favorite.svg";
 import settings from "./assets/settings.svg";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useRouter } from "next/router";
+import cartContext from "../../contexts/cartContext";
 
 export default function TheNavigation() {
   const [itemsInCart, setItems] = useState(0);
+  const { cart } = useContext(cartContext);
   const [active, setActive] = useState("plants");
   const router = useRouter();
   useEffect(() => {
-    if (localStorage.getItem("cart")) {
-      const cart = JSON.parse(localStorage.getItem("cart") || "");
-      setItems(cart.length);
-    } else {
-      setItems(0);
-    }
     if (router.route.includes("plants")) {
       setActive("plants");
     }
@@ -35,7 +31,12 @@ export default function TheNavigation() {
     if (router.route.includes("settings")) {
       setActive("settings");
     }
-  },[router]);
+  }, [router]);
+
+  useEffect(() => {
+    setItems(cart.length);
+  }, [cart]);
+
   return (
     <nav className={styles.nav}>
       <ul>
@@ -49,7 +50,7 @@ export default function TheNavigation() {
           data-items={itemsInCart}
         >
           <Link href="/cart">
-            <Image className={styles.navicon} src={cart} alt="cart icon" />
+            <Image className={styles.navicon} src={cartIcon} alt="cart icon" />
           </Link>
         </li>
         <li className={active == "crystals" ? styles.active : ""}>
