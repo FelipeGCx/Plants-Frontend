@@ -9,7 +9,7 @@ import { Cart, Product } from "../../../../types";
 export default function TheProductCard(props: {
   product: Product;
   delete(id: number, idPot: number, idCrystal: number): void;
-  update(): void;
+  update(item: Cart): void;
 }) {
   const formatter = new Intl.NumberFormat("es-CO", {
     style: "currency",
@@ -17,45 +17,45 @@ export default function TheProductCard(props: {
     maximumFractionDigits: 0,
   });
   const [total, setTotal] = useState(0);
-  const [quantity, setQuantity] = useState(props.product.quantity || 1);
 
   const handleSubstract = () => {
-    if (quantity > 1) {
-      setQuantity(quantity - 1);
-      props.update();
+    if (props.product.quantity > 1) {
+      const item: Cart = {
+        plant: props.product.id,
+        pot: props.product.idPot,
+        crystal: props.product.idCrystal,
+        quantity: props.product.quantity - 1,
+      };
+      props.update(item);
     }
   };
   const handleAdd = () => {
-    if (quantity < 10) {
-      setQuantity(quantity + 1);
-      props.update();
+    if (props.product.quantity < 10) {
+      const item: Cart = {
+        plant: props.product.id,
+        pot: props.product.idPot,
+        crystal: props.product.idCrystal,
+        quantity: props.product.quantity + 1,
+      };
+      props.update(item);
     }
   };
 
-  useEffect(() => {
-    let oldCart: Cart[] = [];
-    let newItem: Cart = {
-      plant: props.product.id,
-      crystal: props.product.idCrystal,
-      pot: props.product.idPot,
-      quantity: quantity,
-    };
-    if (localStorage.getItem("cart")) {
-      let actualCart: string = localStorage.getItem("cart") || "";
-      oldCart = JSON.parse(actualCart);
-      oldCart = oldCart.map((item: Cart) => {
-        if (
-          item.plant === newItem.plant &&
-          item.crystal === newItem.crystal &&
-          item.pot === newItem.pot
-        ) {
-          item.quantity = quantity;
-        }
-        return item;
-      });
-      localStorage.setItem("cart", JSON.stringify(oldCart));
-    }
-  }, [quantity, props]);
+  // useEffect(() => {
+  //   let newItem: Cart = {
+  //     plant: props.product.id,
+  //     crystal: props.product.idCrystal,
+  //     pot: props.product.idPot,
+  //     quantity: quantity,
+  //   };
+  //   setItemQuantity(newItem);
+  // }, [
+  //   props.product.id,
+  //   props.product.idCrystal,
+  //   props.product.idPot,
+  //   quantity,
+  //   setItemQuantity,
+  // ]);
 
   useEffect(() => {
     const calculateTotal = () => {
@@ -63,10 +63,10 @@ export default function TheProductCard(props: {
         props.product.price +
         props.product.potPrice +
         props.product.crystalPrice;
-      setTotal(quantity * itemPrice);
+      setTotal(props.product.quantity * itemPrice);
     };
     calculateTotal();
-  }, [props.product, quantity]);
+  }, [props.product]);
 
   return (
     <div className={styles.productCard}>
@@ -110,7 +110,7 @@ export default function TheProductCard(props: {
         </div>
       </div>
       <TheQuantityCard
-        quantity={quantity}
+        quantity={props.product.quantity}
         onSubstract={handleSubstract}
         onAdd={handleAdd}
       />

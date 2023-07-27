@@ -54,7 +54,7 @@ export default function TheProductList(props: { products: ProductTicket[] }) {
           <span>{formatter.format(total)}</span>
         </h2>
         <span>* El costo de envio no esta incluido en el total</span>
-        <Link href={"d"} className={`button ${styles.button}`}>
+        <Link href="/cart/checkout/" className={`button ${styles.button}`}>
           continuar
         </Link>
       </div>
