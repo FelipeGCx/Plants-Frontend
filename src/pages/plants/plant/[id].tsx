@@ -3,10 +3,12 @@ import ThePotSelector from "../../../components/commonPlants/commonPlant/compone
 import TheCrystalSelector from "../../../components/commonPlants/commonPlant/components/TheCrystalSelector";
 import ThePlantView from "../../../components/commonPlants/commonPlant/components/ThePlantView";
 import { useRouter } from "next/router";
+import cartContext from "../../../contexts/cartContext";
 import { Cart, Crystal, CrystalFavorite, PlantStock } from "../../../types";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 
 const Plant = (props: { plant: PlantStock }) => {
+  const { addItemCart } = useContext(cartContext);
   const router = useRouter();
   const [idPot, setIdPot] = useState(router.query["pot"] || 1);
   const [idCrystal, setIdCrystal] = useState(router.query["crystal"] || 1);
@@ -33,40 +35,13 @@ const Plant = (props: { plant: PlantStock }) => {
   );
 
   const addToCart = () => {
-    let oldCart: Cart[] = [];
     let newItem: Cart = {
       plant: props.plant.id,
       crystal: +(router.query["crystal"] || 1),
       pot: +(router.query["pot"] || 1),
       quantity: 1,
     };
-    let check = null;
-    if (localStorage.getItem("cart")) {
-      let actualCart: string = localStorage.getItem("cart") || "";
-      oldCart = JSON.parse(actualCart);
-      check = oldCart.find((item: Cart) => {
-        return (
-          item.plant === newItem.plant &&
-          item.crystal === newItem.crystal &&
-          item.pot === newItem.pot
-        );
-      });
-    }
-    if (check) {
-      oldCart = oldCart.map((item: Cart) => {
-        if (
-          item.plant === newItem.plant &&
-          item.crystal === newItem.crystal &&
-          item.pot === newItem.pot
-        ) {
-          item.quantity++;
-        }
-        return item;
-      });
-    } else {
-      oldCart.push(newItem);
-    }
-    localStorage.setItem("cart", JSON.stringify(oldCart));
+    addItemCart(newItem);
     router.push("/cart");
   };
   const handlerCrystal = (crystal: CrystalFavorite) => {
@@ -92,11 +67,9 @@ const Plant = (props: { plant: PlantStock }) => {
 
 Plant.getInitialProps = async (context: { query: { id: any } }) => {
   const { id } = context.query;
-  console.log("°°°THE ID°°°", id);
   let uri = `https://plants-api-production.up.railway.app/api/v1/stock/plants/${id}/`;
   const response = await fetch(uri);
   const plant = await response.json();
-  console.log("°°°THE PLANT°°°", plant);
   return { plant };
 };
 
