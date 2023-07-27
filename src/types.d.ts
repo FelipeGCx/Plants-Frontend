@@ -130,6 +130,11 @@ interface Cart {
   crystal: number;
   quantity: number;
 }
+interface CartDrop {
+  plant: number;
+  pot: number;
+  crystal: number;
+}
 
 interface Request {
   page: number;
