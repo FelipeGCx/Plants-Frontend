@@ -1,6 +1,7 @@
 import { createContext, useEffect, useState } from "react";
 import {
   Cart,
+  CartDrop,
   CrystalStock,
   PlantStock,
   Pot,
@@ -12,12 +13,16 @@ interface ICartContext {
   cart: Array<Product>;
   ticketCart: Array<ProductTicket>;
   addItemCart: (item: Cart) => void;
+  setItemQuantity: (item: Cart) => void;
+  removeItemCart: (item: CartDrop) => void;
 }
 
 const defaultState = {
   cart: [],
   ticketCart: [],
   addItemCart: (item: Cart) => {},
+  setItemQuantity: (item: Cart) => {},
+  removeItemCart: (item: CartDrop) => {},
 };
 
 type Props = {
@@ -144,8 +149,49 @@ const CartProvider = (props: Props) => {
     localStorage.setItem("cart", JSON.stringify(oldCart));
     setRefetch(!refetch);
   }
+  function setItemQuantity(quantityItem: Cart) {
+    let oldCart: Cart[] = [];
+    if (localStorage.getItem("cart")) {
+      let actualCart: string = localStorage.getItem("cart") || "";
+      oldCart = JSON.parse(actualCart);
+      oldCart = oldCart.map((item: Cart) => {
+        if (
+          item.plant === quantityItem.plant &&
+          item.crystal === quantityItem.crystal &&
+          item.pot === quantityItem.pot
+        ) {
+          item.quantity = quantityItem.quantity;
+        }
+        return item;
+      });
+      localStorage.setItem("cart", JSON.stringify(oldCart));
+      setRefetch(!refetch);
+    }
+  }
 
-  const data = { cart, ticketCart, addItemCart };
+  function removeItemCart(dropItem: CartDrop) {
+    if (localStorage.getItem("cart")) {
+      const oldCart: Cart[] = JSON.parse(localStorage.getItem("cart") || "");
+      const newCart = oldCart.filter(
+        (item) =>
+          !(
+            item.plant === dropItem.plant &&
+            item.pot === dropItem.pot &&
+            item.crystal === dropItem.crystal
+          )
+      );
+      localStorage.setItem("cart", JSON.stringify(newCart));
+      setRefetch(!refetch);
+    }
+  }
+
+  const data = {
+    cart,
+    ticketCart,
+    addItemCart,
+    setItemQuantity,
+    removeItemCart,
+  };
   return (
     <ThemeContext.Provider value={data}>{props.children}</ThemeContext.Provider>
   );
