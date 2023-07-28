@@ -24,10 +24,13 @@ export default function TheFormData() {
         <label htmlFor="lastname">apellidos*</label>
         <input required type="text" name="lastname" id="lastname" />
       </label>
-      <label htmlFor="type" className={styles.label}>
-        <label htmlFor="type">tipo de documento*</label>
-        <select name="type" id="type">
-          <option value=""></option>
+      <label htmlFor="typeDocument" className={styles.label}>
+        <label htmlFor="typeDocument">tipo de documento*</label>
+        <select name="typeDocument" id="typeDocument">
+          <option value="">cédula de ciudadanía</option>
+          <option value="">tarjeta de extranjería</option>
+          <option value="">cédula de extranjería</option>
+          <option value="">pasaporte</option>
         </select>
       </label>
       <label htmlFor="document" className={styles.label}>
