@@ -11,25 +11,30 @@ export default function TheProductList(props: { products: ProductTicket[] }) {
     currency: "COP",
     maximumFractionDigits: 0,
   });
-  // useEffect(() => {
-  //   const calculateTotal = () => {
-  //     let subtotals = props.products.map((product: ProductTicket) => {
-  //       return product.quantity * product.price;
-  //     });
-  //     const subtotalsCalculates = subtotals.reduce(
-  //       (accumulator, currentValue) => accumulator + currentValue,
-  //       0
-  //     );
-  //     setTotal(subtotalsCalculates);
-  //   };
-  //   calculateTotal();
-  // }, [props.products]);
+  const transportPrices = {
+    bogota: 15000,
+    primaryCities: 18000,
+    secundaryCities: 21000,
+  };
+  useEffect(() => {
+    const calculateTotal = () => {
+      let subtotals = props.products.map((product: ProductTicket) => {
+        return product.quantity * product.price;
+      });
+      const subtotalsCalculates = subtotals.reduce(
+        (accumulator, currentValue) => accumulator + currentValue,
+        0
+      );
+      setTotal(subtotalsCalculates + transportPrices.bogota);
+    };
+    calculateTotal();
+  }, [props.products, transportPrices.bogota]);
 
   return (
     <div className={styles.list}>
       <h1>tu pedido</h1>
       <div className={styles.container}>
-        {/* <table>
+        <table>
           <tr>
             <th>Descripción</th>
             <th>Cantidad</th>
@@ -44,11 +49,8 @@ export default function TheProductList(props: { products: ProductTicket[] }) {
               </tr>
             );
           })}
-        </table> */}
+        </table>
       </div>
-      {/* <ul>
-        
-      </ul> */}
       <div className={styles.pay}>
         <h2>metodo de pago</h2>
         <ThePayMethods />
@@ -57,13 +59,13 @@ export default function TheProductList(props: { products: ProductTicket[] }) {
         <h2>costos de envio</h2>
         <ul>
           <li>
-            bogotá <p>$15.000</p>
+            bogotá <p>{transportPrices.bogota}</p>
           </li>
           <li>
-            ciudades principales <p>$18.000</p>
+            ciudades principales <p>{transportPrices.primaryCities}</p>
           </li>
           <li>
-            ciudades secundarias <p>$21.000</p>
+            ciudades secundarias <p>{transportPrices.secundaryCities}</p>
           </li>
         </ul>
       </div>
@@ -72,9 +74,9 @@ export default function TheProductList(props: { products: ProductTicket[] }) {
           <span>Total A Pagar:</span>
           <span>{formatter.format(total)}</span>
         </h2>
-        <Link href={"d"} className={`button ${styles.button}`}>
+        <button type="submit" className={`button ${styles.button}`}>
           continuar
-        </Link>
+        </button>
       </div>
     </div>
   );
