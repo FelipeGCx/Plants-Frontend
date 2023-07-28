@@ -25,6 +25,23 @@
       border: 0.1rem solid var(--contrast-color);
       height: 3rem;
       font-size: var(--font-1x);
+      padding: 0 1rem;
+    }
+    .error {
+      border: none;
+      outline: 0.3rem solid red;
+      outline-offset: -0.3rem;
+    }
+    &:has(.error) {
+      position: relative;
+      &::after {
+        content: "*" attr(data-msg);
+        text-transform: lowercase;
+        position: absolute;
+        display: block;
+        color: red;
+        bottom: -2rem;
+      }
     }
     select {
       border-radius: var(--radius-1x);
@@ -32,6 +49,7 @@
       height: 3rem;
       background-color: var(--clear-color);
       font-size: var(--font-1x);
+      text-transform: capitalize;
     }
   }
   .labelArea {

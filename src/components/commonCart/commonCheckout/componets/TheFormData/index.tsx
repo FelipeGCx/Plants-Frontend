@@ -1,5 +1,15 @@
 import styles from "./style.module.scss";
+import { validateEmail } from "../../../../../utils/validators/email";
+import { ChangeEvent, useState } from "react";
 export default function TheFormData() {
+  const handlerChangeEmail = (event: ChangeEvent<HTMLInputElement>) => {
+    if (event.target.value) {
+      setInvalidEmail(!validateEmail(event.target.value));
+    } else {
+      setInvalidEmail(false);
+    }
+  };
+  const [isInvalidEmail, setInvalidEmail] = useState(false);
   return (
     <div className={styles.data}>
       <label htmlFor="gift" className={styles.labelCheck}>
@@ -24,9 +34,20 @@ export default function TheFormData() {
         <label htmlFor="document">número de documento*</label>
         <input required type="number" name="document" id="document" />
       </label>
-      <label htmlFor="email" className={styles.label}>
+      <label
+        htmlFor="email"
+        className={styles.label}
+        data-msg="correo electronico erroneo"
+      >
         <label htmlFor="email">correo electronico*</label>
-        <input required type="text" name="email" id="email" />
+        <input
+          required
+          className={isInvalidEmail ? styles.error : ""}
+          type="text"
+          name="email"
+          id="email"
+          onChange={(event) => handlerChangeEmail(event)}
+        />
       </label>
       <label htmlFor="phone" className={styles.label}>
         <label htmlFor="phone">telefono*</label>
