@@ -6,6 +6,8 @@ import { useRouter } from "next/router";
 import cartContext from "../../../contexts/cartContext";
 import { Cart, Crystal, CrystalFavorite, PlantStock } from "../../../types";
 import { useContext, useEffect, useState } from "react";
+import { ProductionService } from "../../../api/ProductionService";
+import { HttpService } from "../../../api/HttpService";
 
 const Plant = (props: { plant: PlantStock }) => {
   const { addItemCart } = useContext(cartContext);
@@ -66,10 +68,11 @@ const Plant = (props: { plant: PlantStock }) => {
 };
 
 Plant.getInitialProps = async (context: { query: { id: any } }) => {
+  const httpProvider = new ProductionService();
+  const httpService = new HttpService(httpProvider);
   const { id } = context.query;
-  let uri = `https://plants-api-production.up.railway.app/api/v1/stock/plants/${id}/`;
-  const response = await fetch(uri);
-  const plant = await response.json();
+  let url = `https://plants-api-production.up.railway.app/api/v1/stock/plants/${id}/`;
+  const plant = await httpService.getRequest(url);
   return { plant };
 };
 
