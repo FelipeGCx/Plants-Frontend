@@ -25,9 +25,6 @@ export default function TheNavigation() {
     if (router.route.includes("crystals")) {
       setActive("crystals");
     }
-    if (router.route.includes("whislist")) {
-      setActive("whislist");
-    }
     if (router.route.includes("settings")) {
       setActive("settings");
     }
@@ -59,15 +56,6 @@ export default function TheNavigation() {
               className={styles.navicon}
               src={crystals}
               alt="crystals icon"
-            />
-          </Link>
-        </li>
-        <li className={active == "whislist" ? styles.active : ""}>
-          <Link href="/plants">
-            <Image
-              className={styles.navicon}
-              src={favorite}
-              alt="whishlist icon"
             />
           </Link>
         </li>
