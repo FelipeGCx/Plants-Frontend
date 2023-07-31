@@ -16,7 +16,7 @@ export default function TheCrystalSelector(props: {
 
   useEffect(() => {
     async function fetchData() {
-      let url = `https://plants-api-production.up.railway.app/api/v1/crystalis/1/?page=1&page_size=13`;
+      let url = `https://plants-api-production.up.railway.app/api/v1/crystalis/1/?page=1&page_size=30`;
       if (nameToFilter.length > 0) {
         url += `&named=${nameToFilter}`;
       }
