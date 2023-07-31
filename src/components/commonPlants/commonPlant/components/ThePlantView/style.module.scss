@@ -7,11 +7,12 @@
 }
 .plantView > :nth-child(1) {
   grid-area: 1 / 1 / 3 / 2;
-  margin:auto 5rem auto auto;
+  // margin:auto 5rem auto auto;
+  margin:auto;
 }
 .plantView > :nth-child(2) {
   grid-area: 1/2/2/2;
-  margin:auto;
+  margin:0 auto auto;
 }
 .plantView > :nth-child(3) {
   grid-area: 2/2/2/2;
