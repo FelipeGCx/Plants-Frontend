@@ -116,6 +116,9 @@ export default function ThePlanets(props: {
             className={
               props.planets?.includes(planet.value) ? styles.active : ""
             }
+            data-tooltip={planet.value}
+            data-flow="top"
+            data-show={props.planets?.includes(planet.value)}
           >
             <Image
               src={planet.icon}
