@@ -1,19 +1,26 @@
-import styles from "./style.module.scss";
-import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
+import { useRouter } from "next/router";
+import styles from "./style.module.scss";
 import TheFilter from "../../components/commonPlants/components/TheFilter";
 import TheLoader from "../../components/commonPlants/components/TheLoader";
-import { PlantFavorite, PlantsQParams } from "../../types";
-import { ProductionService } from "../../services/ProductionService";
-import { HttpService } from "../../services/HttpService";
-import { toArrayPlantFavorite } from "../../utils/parsings/Plant";
 import ThePlantView from "../../components/commonPlants/components/ThePlantView";
 import TheNotFound from "../../components/commonPlants/components/TheNotFound";
-import { PLANTSFAVORITE } from "../../constants";
+import { PlantFavorite, PlantsQParams } from "../../types";
+import { toArrayPlantFavorite } from "../../utils/parsings/Plant";
+import { HttpService } from "../../services/HttpService";
+// import { ProductionService } from "../../services/ProductionService";
 import { DevelopmentService } from "../../services/DevelopmentService";
+import {
+  ERROR,
+  INFO,
+  PLANTSFAVORITE,
+  PLANTSSTOCK,
+  SUCCESS,
+} from "../../constants";
 
 export default function Plants() {
   const [page, setPage] = useState(1);
+  //ToDo set id user in a context
   const [idUser, setIdUser] = useState(1);
   const [plants, setPlants] = useState<PlantFavorite[]>([]);
   const [plantParams, setPlantParams] = useState<PlantsQParams>({
@@ -24,14 +31,14 @@ export default function Plants() {
     priceFirst: null,
     priceSecond: null,
   });
-  const [loading, setLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
+  const [isEmpty, setIsEmpty] = useState(false);
   const [error, setError] = useState("");
-  const [totalItems, setTotalItems] = useState(30);
-  const [totalPages, setTotalPages] = useState(3);
+  const [totalPages, setTotalPages] = useState(1);
   const router = useRouter();
 
   useEffect(() => {
-    async function fetchData() {
+    const getFilters = () => {
       // declare the url to fetch
       let url = `https://plants-api-production.up.railway.app/api/v1/plantis/${idUser}/`;
       // let url = `https://plants-api-production.up.railway.app/api/v1/stock/plants/?`;
@@ -84,27 +91,40 @@ export default function Plants() {
         priceSecond: priceSecond,
       };
       setPlantParams(params);
-      try {
-        // const httpProvider = new ProductionService();
-        // const httpService = new HttpService(httpProvider);
-        // const httpResponse = await httpService.getRequest(url);
-        const httpProvider = new DevelopmentService();
-        const httpService = new HttpService(httpProvider);
-        const httpResponse = await httpService.getRequest(PLANTSFAVORITE);
-        setPlants(toArrayPlantFavorite(httpResponse.data.results));
-        setTotalItems(httpResponse.data.pagination.totalItems);
-        setTotalPages(httpResponse.data.pagination.totalPages);
-        setLoading(false);
-      } catch (err) {
-        setError("error");
-        setLoading(false);
+      url = idUser ? PLANTSFAVORITE : PLANTSSTOCK;
+      fetchData(url);
+    };
+    const fetchData = async (url:string) => {
+      // const httpProvider = new ProductionService();
+      // const httpService = new HttpService(httpProvider);
+      // const httpResponse = await httpService.getRequest(url);
+      const httpProvider = new DevelopmentService();
+      const httpService = new HttpService(httpProvider);
+      const httpResponse = await httpService.getRequest(url);
+      switch (httpResponse.status) {
+        case SUCCESS:
+          setPlants(toArrayPlantFavorite(httpResponse.data.results));
+          setTotalPages(httpResponse.data.pagination.totalPages);
+          setIsLoading(false);
+          break;
+        case INFO:
+          setIsEmpty(true);
+          setIsLoading(false);
+        case ERROR:
+          setError(httpResponse.message);
+          setIsLoading(false);
+        default:
+          break;
       }
-    }
-    fetchData();
+    };
+    getFilters();
   }, [router, idUser]);
 
-  if (loading) {
+  if (isLoading) {
     return <TheLoader />;
+  }
+  if (isEmpty) {
+    return <TheNotFound />;
   }
   if (error) {
     return <p>An error occurred: {error}</p>;
@@ -112,16 +132,12 @@ export default function Plants() {
     return (
       <main className={styles.main}>
         <TheFilter params={plantParams} />
-        {plants.length > 0 ? (
-          <ThePlantView
-            plants={plants}
-            totalPages={totalPages}
-            page={page}
-            plantParams={plantParams}
-          />
-        ) : (
-          <TheNotFound />
-        )}{" "}
+        <ThePlantView
+          plants={plants}
+          totalPages={totalPages}
+          page={page}
+          plantParams={plantParams}
+        />
       </main>
     );
   }
