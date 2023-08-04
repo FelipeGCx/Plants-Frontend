@@ -1,5 +1,5 @@
 {
-  "status": "succes",
+  "status": "success",
   "message": "the request is succesfully done",
   "data": {
     "pagination": {
@@ -26,9 +26,9 @@
         "created_at": "2022-12-29",
         "zone": "both",
         "state": true,
-        "quantity": 1,
-        "discount": 1,
-        "price": 1,
+        "quantity": 100,
+        "discount": 15,
+        "price": 65000,
         "favorite": true
       },
       {
@@ -49,10 +49,10 @@
         "created_at": "2022-12-30",
         "zone": "both",
         "state": true,
-        "quantity": 1,
-        "discount": 1,
-        "price": 1,
-        "favorite": true
+        "quantity": 100,
+        "discount": 0,
+        "price": 57000,
+        "favorite": false
       },
       {
         "id": 106,
@@ -72,10 +72,10 @@
         "created_at": "2022-12-30",
         "zone": "both",
         "state": true,
-        "quantity": 1,
-        "discount": 1,
-        "price": 1,
-        "favorite": true
+        "quantity": 50,
+        "discount": 0,
+        "price": 86000,
+        "favorite": false
       },
       {
         "id": 68,
@@ -95,10 +95,10 @@
         "created_at": "2022-12-30",
         "zone": "both",
         "state": true,
-        "quantity": 1,
-        "discount": 1,
-        "price": 1,
-        "favorite": true
+        "quantity": 10,
+        "discount": 0,
+        "price": 63000,
+        "favorite": false
       }
     ]
   }
