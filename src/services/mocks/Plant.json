@@ -1,0 +1,28 @@
+{
+  "status": "succes",
+  "message": "the request is succesfully done",
+  "data": {
+    "results": {
+      "id": 31,
+      "name": "CRASSULA CAPITELLA",
+      "other_names": "CRASSULA RED PAGODA,CRASSULA CAMPFIRE,CRASSULA SHARK'S TOOTH",
+      "description": "La Crassula Red Pagoda es una planta suculenta de crecimiento vertical que presenta hojas triangulares y apretadas que se asemejan a una pagoda o a los dientes de un tiburón. Las hojas tienen un color verde oscuro en la base y se vuelven rojas en los bordes cuando la planta está expuesta a una luz intensa. En verano, la planta puede desarrollar pequeñas flores blancas o rosadas en forma de estrella, aunque estas no son su característica más destacada.",
+      "species": "crassulaceae",
+      "group": "succulent",
+      "light": "pleno sol, sol parcial",
+      "irrigation": "escaso",
+      "temperature": "18°C - 24°C",
+      "precautions": "exceso de humedad",
+      "flowering": true,
+      "size": "15cm - 30cm",
+      "image_front": "https://firebasestorage.googleapis.com/v0/b/simple-a5eec.appspot.com/o/plantsImage%2FCRASSULA%20RED%20PAGODA.webp?alt=media&token=7184edfe-3d56-4988-b329-709bbcbdf77e",
+      "render": "https://firebasestorage.googleapis.com/v0/b/simple-a5eec.appspot.com/o/plantsRenderImages%2FCRASSULA%20CAMPFIRE.webp?alt=media&token=605261e6-d063-4b2b-bf6d-1d3f5e4e2ddd",
+      "created_at": "2022-12-29",
+      "zone": "both",
+      "state": true,
+      "quantity": 5,
+      "discount": 0,
+      "price": 70000
+    }
+  }
+}
