@@ -1,4 +1,6 @@
-import { Interface } from "readline";
+//*||||||||||||||||||*\\
+//* Plant Interfaces *\\
+//*||||||||||||||||||*\\
 
 interface Plant {
   id: number;
@@ -15,24 +17,19 @@ interface Plant {
   size: string;
   imageFront: string;
   render: string;
+  zone: string;
   createdAt: string;
-  inside: boolean;
-}
-interface PlantFavorite extends Plant {
-  state: boolean;
-  quantity: number;
-  discount: number;
-  price: number;
-  favorite: boolean;
 }
 
-interface PlantStock {
-  id: number;
-  plant: Plant;
-  quantity: number;
-  price: number;
-  discount: number;
+interface PlantStock extends Plant {
   state: boolean;
+  quantity: number;
+  discount: number;
+  price: number;
+}
+
+interface PlantFavorite extends PlantStock {
+  favorite: boolean;
 }
 
 interface PlantPresentation {
@@ -41,16 +38,22 @@ interface PlantPresentation {
   description: string;
   imageFront: string;
   price: number;
+  discount: number;
 }
 
-interface CrystalView {
-  id: number;
-  name: string;
-  properties: Array<string>;
-  vibration: number;
-  zodiac: Array<string>;
-  imageCrystal: string;
+interface PlantsQParams {
+  species: string | string[] | null;
+  light: string | string[] | null;
+  irrigation: string | string[] | null;
+  zone: string | string[] | null;
+  priceFirst: string | string[] | null;
+  priceSecond: string | string[] | null;
 }
+
+//*||||||||||||||||||||*\\
+//* Crystal Interfaces *\\
+//*||||||||||||||||||||*\\
+
 interface Crystal {
   id: number;
   name: string;
@@ -67,22 +70,22 @@ interface Crystal {
 }
 
 interface CrystalStock extends Crystal {
+  state: boolean;
   quantity: number;
   price: number;
-  state: boolean;
 }
 
 interface CrystalFavorite extends CrystalStock {
   favorite: boolean;
 }
 
-interface PlantsQParams {
-  species: string | string[] | null;
-  light: string | string[] | null;
-  irrigation: string | string[] | null;
-  zone: string | string[] | null;
-  priceFirst: string | string[] | null;
-  priceSecond: string | string[] | null;
+interface CrystalPresentation {
+  id: number;
+  name: string;
+  properties: Array<string>;
+  vibration: number;
+  zodiac: Array<string>;
+  imageCrystal: string;
 }
 
 interface CrystalsQParams {
@@ -92,12 +95,31 @@ interface CrystalsQParams {
   chakras: string | string[] | null;
 }
 
+//*|||||||||||||||||*\\
+//* Cart Interfaces *\\
+//*|||||||||||||||||*\\
+
 interface Pot {
   id: number;
   name: string;
   price: number;
   image: string;
   render: string;
+  quantity: number;
+  size: string;
+}
+
+//*|||||||||||||||||*\\
+//* Cart Interfaces *\\
+//*|||||||||||||||||*\\
+
+interface SimpleCart {
+  plant: number;
+  pot: number;
+  crystal: number;
+}
+
+interface Cart extends SimpleCart {
   quantity: number;
 }
 
@@ -118,27 +140,32 @@ interface Product {
   quantity: number;
   [key: string]: any;
 }
+
 interface ProductTicket {
   name: string;
   quantity: number;
   price: number;
 }
 
-interface Cart {
-  plant: number;
-  pot: number;
-  crystal: number;
-  quantity: number;
-}
-interface CartDrop {
-  plant: number;
-  pot: number;
-  crystal: number;
+//*|||||||||||||||||||||*\\
+//* Response Interfaces *\\
+//*|||||||||||||||||||||*\\
+
+interface Response {
+  status: string;
+  message: string;
+  data: DataResponse;
+  code?: number;
+  meta?: Object;
 }
 
-interface Request {
+interface DataResponse {
+  pagination?: PaginationResponse;
+  results?: Object | Array;
+}
+
+interface PaginationResponse {
   page: number;
-  results: string[];
-  totalItems: number;
   totalPages: number;
+  totalItems: number;
 }
