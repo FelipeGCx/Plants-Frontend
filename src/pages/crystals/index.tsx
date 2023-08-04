@@ -4,8 +4,8 @@ import { CrystalFavorite, CrystalsQParams } from "../../types";
 import TheCrystalView from "../../components/commonCrystals/components/TheCrystalView";
 import TheFilter from "../../components/commonCrystals/components/TheFilter";
 import { useRouter } from "next/router";
-import { ProductionService } from "../../api/ProductionService";
-import { HttpService } from "../../api/HttpService";
+import { ProductionService } from "../../services/ProductionService";
+import { HttpService } from "../../services/HttpService";
 import { toArrayCrystalFavorite } from "../../utils/parsings/Crystal";
 import TheLoader from "../../components/commonCrystals/components/TheLoader";
 

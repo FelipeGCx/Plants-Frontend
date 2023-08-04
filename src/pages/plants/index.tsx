@@ -4,11 +4,13 @@ import React, { useEffect, useState } from "react";
 import TheFilter from "../../components/commonPlants/components/TheFilter";
 import TheLoader from "../../components/commonPlants/components/TheLoader";
 import { PlantFavorite, PlantsQParams } from "../../types";
-import { ProductionService } from "../../api/ProductionService";
-import { HttpService } from "../../api/HttpService";
+import { ProductionService } from "../../services/ProductionService";
+import { HttpService } from "../../services/HttpService";
 import { toArrayPlantFavorite } from "../../utils/parsings/Plant";
 import ThePlantView from "../../components/commonPlants/components/ThePlantView";
 import TheNotFound from "../../components/commonPlants/components/TheNotFound";
+import { PLANTSFAVORITE } from "../../constants";
+import { DevelopmentService } from "../../services/DevelopmentService";
 
 export default function Plants() {
   const [page, setPage] = useState(1);
@@ -83,12 +85,15 @@ export default function Plants() {
       };
       setPlantParams(params);
       try {
-        const httpProvider = new ProductionService();
+        // const httpProvider = new ProductionService();
+        // const httpService = new HttpService(httpProvider);
+        // const httpResponse = await httpService.getRequest(url);
+        const httpProvider = new DevelopmentService();
         const httpService = new HttpService(httpProvider);
-        const data = await httpService.getRequest(url);
-        setPlants(toArrayPlantFavorite(data.results));
-        setTotalItems(data.totalItems);
-        setTotalPages(data.totalPages);
+        const httpResponse = await httpService.getRequest(PLANTSFAVORITE);
+        setPlants(toArrayPlantFavorite(httpResponse.data.results));
+        setTotalItems(httpResponse.data.pagination.totalItems);
+        setTotalPages(httpResponse.data.pagination.totalPages);
         setLoading(false);
       } catch (err) {
         setError("error");

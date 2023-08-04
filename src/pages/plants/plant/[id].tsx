@@ -6,8 +6,8 @@ import { useRouter } from "next/router";
 import cartContext from "../../../contexts/cartContext";
 import { Cart, Crystal, CrystalFavorite, PlantStock } from "../../../types";
 import { useContext, useEffect, useState } from "react";
-import { ProductionService } from "../../../api/ProductionService";
-import { HttpService } from "../../../api/HttpService";
+import { ProductionService } from "../../../services/ProductionService";
+import { HttpService } from "../../../services/HttpService";
 
 const Plant = (props: { plant: PlantStock }) => {
   const { addItemCart } = useContext(cartContext);
