@@ -2,7 +2,7 @@
 //* Pot Interfaces *\\
 //*||||||||||||||||*\\
 
-interface Pot {
+export interface Pot {
   id: number;
   name: string;
   price: number;

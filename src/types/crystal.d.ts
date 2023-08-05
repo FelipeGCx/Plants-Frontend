@@ -2,7 +2,7 @@
 //* Crystal Interfaces *\\
 //*||||||||||||||||||||*\\
 
-interface Crystal {
+export interface Crystal {
   id: number;
   name: string;
   description: string;
@@ -17,17 +17,17 @@ interface Crystal {
   imageGemstone: string;
 }
 
-interface CrystalStock extends Crystal {
+export interface CrystalStock extends Crystal {
   state: boolean;
   quantity: number;
   price: number;
 }
 
-interface CrystalFavorite extends CrystalStock {
+export interface CrystalFavorite extends CrystalStock {
   favorite: boolean;
 }
 
-interface CrystalPresentation {
+export interface CrystalPresentation {
   id: number;
   name: string;
   properties: Array<string>;
@@ -36,10 +36,9 @@ interface CrystalPresentation {
   imageCrystal: string;
 }
 
-interface CrystalsQParams {
+export interface CrystalsQParams {
   zodiac: string | string[] | null;
   elements: string | string[] | null;
   planets: string | string[] | null;
   chakras: string | string[] | null;
 }
-
