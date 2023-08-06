@@ -1,6 +1,6 @@
 import { Response } from "../types";
 import { HttpProvider } from "./HttpProvider";
-import { plant, plants, plantsFavorite, plantsStock } from "./mocks";
+import { error, plant, plants, plantsFavorite, plantsStock } from "./mocks";
 import { PLANT, PLANTS, PLANTSFAVORITE, PLANTSSTOCK } from "../constants";
 
 export class DevelopmentService implements HttpProvider {
@@ -15,11 +15,7 @@ export class DevelopmentService implements HttpProvider {
       case PLANTSSTOCK:
         return plantsStock;
       default:
-        return {
-          status: "error",
-          message: "some failed",
-          data: {},
-        };
+        return error;
     }
   }
 }
