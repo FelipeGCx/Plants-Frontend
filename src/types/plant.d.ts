@@ -9,7 +9,7 @@ export interface Plant {
   description: string;
   species: string;
   group: string;
-  light: Array<string>;
+  light: string;
   irrigation: string;
   temperature: string;
   precautions: Array<string>;
