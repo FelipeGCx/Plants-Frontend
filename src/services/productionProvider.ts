@@ -1,7 +1,7 @@
 import { Response } from "../types";
-import { HttpProvider } from "./HttpProvider";
+import { RequestProvider } from "./requestProvider";
 
-export class ProductionService implements HttpProvider {
+export class ProductionProvider implements RequestProvider {
   async getRequest(url: string): Promise<Response> {
     const response = await fetch(url);
     return await response.json();
