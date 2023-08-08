@@ -7,5 +7,6 @@ import pot from "./Pot.json";
 import pots from "./Pots.json";
 import crystal from "./Crystal.json";
 import plantStock from "./PlantStock.json";
+import species from "./Species.json";
 
-export { pot, pots, crystal, error, plant, plants, plantsFavorite, plantsStock , plantStock};
+export { pot, pots, species,  crystal, error, plant, plants, plantsFavorite, plantsStock , plantStock};
