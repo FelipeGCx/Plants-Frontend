@@ -1,0 +1,62 @@
+{
+  "status": "success",
+  "message": "the request is succesfully done",
+  "data": {
+    "results": [
+      {
+        "id": 1,
+        "name": "doisu",
+        "price": 15000,
+        "image": "https://firebasestorage.googleapis.com/v0/b/simple-a5eec.appspot.com/o/potsImage%2Fdoisu.webp?alt=media&token=f2016846-14bd-4ee7-a778-95f0dca115ab",
+        "render": "https://firebasestorage.googleapis.com/v0/b/simple-a5eec.appspot.com/o/potsImage%2Fdoisu-render.webp?alt=media&token=289ff965-53e9-4a78-b3c2-02edfb573c57   ",
+        "quantity": 50,
+        "size": "17x14"
+      },
+      {
+        "id": 2,
+        "name": "lirys",
+        "price": 15000,
+        "image": "https://firebasestorage.googleapis.com/v0/b/simple-a5eec.appspot.com/o/potsImage%2Flirys.webp?alt=media&token=4120bfc3-e26d-447b-b71f-c302b0db20a0",
+        "render": "https://firebasestorage.googleapis.com/v0/b/simple-a5eec.appspot.com/o/potsImage%2Flirys-render.webp?alt=media&token=39a64ff1-5491-42c8-a0e9-0785f55a7e18",
+        "quantity": 50,
+        "size": "17x14"
+      },
+      {
+        "id": 3,
+        "name": "mytz",
+        "price": 15000,
+        "image": "https://firebasestorage.googleapis.com/v0/b/simple-a5eec.appspot.com/o/potsImage%2Fmytz.webp?alt=media&token=c38e9f08-5acb-4bc5-bf17-f69669cb628c",
+        "render": "https://firebasestorage.googleapis.com/v0/b/simple-a5eec.appspot.com/o/potsImage%2Fmytz-render.webp?alt=media&token=ba305e5c-7155-4d2b-85a3-2d27d162bc0f",
+        "quantity": 50,
+        "size": "17x14"
+      },
+      {
+        "id": 4,
+        "name": "obqal",
+        "price": 15000,
+        "image": "https://firebasestorage.googleapis.com/v0/b/simple-a5eec.appspot.com/o/potsImage%2Fobqal.webp?alt=media&token=0a5d62de-d851-4c16-ab2c-4f9d602ec6f2",
+        "render": "https://firebasestorage.googleapis.com/v0/b/simple-a5eec.appspot.com/o/potsImage%2Fobqal-render.webp?alt=media&token=188b710c-e4aa-4493-a3c3-40d6ad24d383",
+        "quantity": 50,
+        "size": "17x14"
+      },
+      {
+        "id": 5,
+        "name": "retvu",
+        "price": 15000,
+        "image": "https://firebasestorage.googleapis.com/v0/b/simple-a5eec.appspot.com/o/potsImage%2Fretvu.webp?alt=media&token=28fcdf01-1dc6-450a-8cdb-6d348be1e503",
+        "render": "https://firebasestorage.googleapis.com/v0/b/simple-a5eec.appspot.com/o/potsImage%2Fretvu-render.webp?alt=media&token=799e3d79-b2af-4d40-9c20-1c3636ead075",
+        "quantity": 50,
+        "size": "17x14"
+      },
+      {
+        "id": 6,
+        "name": "zolek",
+        "price": 15000,
+        "image": "https://firebasestorage.googleapis.com/v0/b/simple-a5eec.appspot.com/o/potsImage%2Fzolek.webp?alt=media&token=75947ced-2c31-4cbf-8e9e-6065ed62faed",
+        "render": "https://firebasestorage.googleapis.com/v0/b/simple-a5eec.appspot.com/o/potsImage%2Fzolek-render.webp?alt=media&token=5e894d84-80e4-448c-86d8-5ba88b93b813",
+        "quantity": 50,
+        "size": "17x14"
+      }
+    ]
+  }
+}
