@@ -8,6 +8,7 @@ export const PLANTSFAVORITE = "plantsFavorite";
 export const PLANTSSTOCK = "plantsStock";
 export const PLANTSTOCK = "plantStock";
 export const POT = "pot";
+export const POTS = "pots";
 export const CRYSTAL = "crystal";
 export const CRYSTALS = "crystals";
 export const CRYSTALSFAVORITE = "crystalsFavorite";

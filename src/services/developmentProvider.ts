@@ -1,7 +1,7 @@
 import { Response } from "../types";
 import { RequestProvider } from "./requestProvider";
-import { crystal, error, plant, plantStock, plants, plantsFavorite, plantsStock, pot } from "./mocks";
-import { CRYSTAL, PLANT, PLANTS, PLANTSFAVORITE, PLANTSSTOCK, PLANTSTOCK, POT } from "../constants";
+import { crystal, error, plant, plantStock, plants, plantsFavorite, plantsStock, pot, pots } from "./mocks";
+import { CRYSTAL, PLANT, PLANTS, PLANTSFAVORITE, PLANTSSTOCK, PLANTSTOCK, POT, POTS } from "../constants";
 
 export class DevelopmentProvider implements RequestProvider {
   async getRequest(url: string): Promise<Response> {
@@ -18,6 +18,8 @@ export class DevelopmentProvider implements RequestProvider {
         return plantStock;
       case POT:
         return pot;
+      case POTS:
+        return pots;
       case CRYSTAL:
         return crystal;
       default:
