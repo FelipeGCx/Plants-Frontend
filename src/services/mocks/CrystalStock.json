@@ -14,7 +14,10 @@
       "elements": "fuego",
       "chakras": "solar plexus chakra",
       "imageCrystal": "https://firebasestorage.googleapis.com/v0/b/simple-a5eec.appspot.com/o/crystalsPoints%2Fambar.webp?alt=media&token=02a9d54b-4d9b-4ca8-b591-346645c71769",
-      "imageGemstone": "https://firebasestorage.googleapis.com/v0/b/simple-a5eec.appspot.com/o/crystalsGemstones%2Fambar.webp?alt=media&token=35fde139-acad-44b0-950c-1a3f81e71e33"
+      "imageGemstone": "https://firebasestorage.googleapis.com/v0/b/simple-a5eec.appspot.com/o/crystalsGemstones%2Fambar.webp?alt=media&token=35fde139-acad-44b0-950c-1a3f81e71e33",
+      "quantity]": 50,
+      "price": 23000,
+      "status": true
     }
   }
 }
