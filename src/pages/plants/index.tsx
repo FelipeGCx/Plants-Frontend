@@ -6,10 +6,9 @@ import TheLoader from "../../components/commonPlants/components/TheLoader";
 import ThePlantView from "../../components/commonPlants/components/ThePlantView";
 import TheNotFound from "../../components/commonPlants/components/TheNotFound";
 import { PlantFavorite, PlantsQParams } from "../../types";
-import { toArrayPlantFavorite } from "../../utils/parsings/Plant";
-import { HttpService } from "../../services/HttpService";
-// import { ProductionService } from "../../services/ProductionService";
-import { DevelopmentService } from "../../services/DevelopmentService";
+import { RequestService } from "../../services/requestService";
+// import { ProductionProvider } from "../../services/ProductionProvider";
+import { DevelopmentProvider } from "../../services/developmentProvider";
 import {
   ERROR,
   INFO,
@@ -94,24 +93,22 @@ export default function Plants() {
       url = idUser ? PLANTSFAVORITE : PLANTSSTOCK;
       fetchData(url);
     };
-    const fetchData = async (url:string) => {
-      // const httpProvider = new ProductionService();
-      // const httpService = new HttpService(httpProvider);
-      // const httpResponse = await httpService.getRequest(url);
-      const httpProvider = new DevelopmentService();
-      const httpService = new HttpService(httpProvider);
-      const httpResponse = await httpService.getRequest(url);
-      switch (httpResponse.status) {
+    const fetchData = async (url: string) => {
+      // const requestProvider = new ProductionProvider();
+      const requestProvider = new DevelopmentProvider();
+      const requestService = new RequestService(requestProvider);
+      const requestResponse = await requestService.getRequest(url);
+      switch (requestResponse.status) {
         case SUCCESS:
-          setPlants(toArrayPlantFavorite(httpResponse.data.results));
-          setTotalPages(httpResponse.data.pagination.totalPages);
+          setPlants(requestResponse.data.results);
+          setTotalPages(requestResponse.data.pagination?.totalPages || 0);
           setIsLoading(false);
           break;
         case INFO:
           setIsEmpty(true);
           setIsLoading(false);
         case ERROR:
-          setError(httpResponse.message);
+          setError(requestResponse.message);
           setIsLoading(false);
         default:
           break;
