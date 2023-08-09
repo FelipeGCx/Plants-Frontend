@@ -40,7 +40,7 @@
     .active {
       background-color: var(--active-color);
       .navicon {
-        filter: var(--active-icon-filter);
+        color: var(--font-color-button);
       }
     }
     li {
@@ -49,15 +49,15 @@
       cursor: pointer;
       a {
         .navicon {
-          width: 3.08rem;
-          height: 3.08rem;
-          filter: var(--icon-filter);
+          width: var(--icon-size-3x);
+          height: var(--icon-size-3x);
+          color: var(--contrast-color);
         }
       }
       &:hover {
         background-color: var(--active-color);
         .navicon {
-          filter: brightness(0.5) invert(1) contrast(1);
+          color: var(--font-color-button);
         }
       }
     }

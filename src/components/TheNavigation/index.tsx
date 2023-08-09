@@ -1,14 +1,9 @@
-import Image from "next/image";
 import Link from "next/link";
 import styles from "./style.module.scss";
-import shop from "./assets/shop.svg";
-import cartIcon from "./assets/cart.svg";
-import crystals from "./assets/crystals.svg";
-import favorite from "./assets/favorite.svg";
-import settings from "./assets/settings.svg";
 import { useContext, useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import cartContext from "../../contexts/cartContext";
+import { CartIcon, ShopIcon, CrystalsIcon, SettingsIcon } from "../../assets/icons";
 
 export default function TheNavigation() {
   const [itemsInCart, setItems] = useState(0);
@@ -39,7 +34,7 @@ export default function TheNavigation() {
       <ul>
         <li className={active == "plants" ? styles.active : ""}>
           <Link href="/plants">
-            <Image className={styles.navicon} src={shop} alt="shop icon" />
+            <ShopIcon className={styles.navicon} />
           </Link>
         </li>
         <li
@@ -47,27 +42,17 @@ export default function TheNavigation() {
           data-items={itemsInCart}
         >
           <Link href="/cart">
-            <Image className={styles.navicon} src={cartIcon} alt="cart icon" />
+            <CartIcon className={styles.navicon} />
           </Link>
         </li>
         <li className={active == "crystals" ? styles.active : ""}>
           <Link href="/crystals">
-            <Image
-              className={styles.navicon}
-              src={crystals}
-              alt="crystals icon"
-            />
+            <CrystalsIcon className={styles.navicon} />
           </Link>
         </li>
         <li className={active == "settings" ? styles.active : ""}>
           <Link href="/plants">
-            <Image
-              className={styles.navicon}
-              src={settings}
-              alt="settings icon"
-              width={48}
-              height={48}
-            />
+            <SettingsIcon className={styles.navicon} />
           </Link>
         </li>
       </ul>
