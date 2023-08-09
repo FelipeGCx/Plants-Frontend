@@ -28,9 +28,10 @@
         outline: none;
       }
     }
-    img {
-      width: 2rem;
-      height: 2rem;
+    .icon {
+      width: var(--icon-size-1_5x);
+      height: var(--icon-size-1_5x);
+      color: var(--font-color);
     }
   }
   .drop {
@@ -65,10 +66,10 @@
         // color: var(--page-color);
         align-items: center;
         gap: 0.5rem;
-        img {
-          width: 1.4rem;
-          height: 1.4rem;
-          filter: var(--icon-brightness);
+        svg {
+          width: var(--icon-size-0_5x);
+          height: var(--icon-size-0_5x);
+          color: var(--font-color);
         }
       }
     }

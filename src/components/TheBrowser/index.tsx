@@ -1,10 +1,8 @@
-import Image from "next/image";
 import Link from "next/link";
 import styles from "./style.module.scss";
-import search from "./assets/search.svg";
-import arrow from "./assets/arrow-right.svg";
 import { useState, useRef, useEffect } from "react";
 import { useRouter } from "next/router";
+import { ArrowRightIcon, SearchIcon } from "../../assets/icons";
 
 export default function TheHeader() {
   const [valueSearch, setValue] = useState("");
@@ -64,13 +62,7 @@ export default function TheHeader() {
           onChange={handlerState}
           onKeyDown={handlerInput}
         />
-        <Image
-          className="icon"
-          src={search}
-          alt="search icon"
-          width={48}
-          height={48}
-        />
+        <SearchIcon className={ styles.icon} />
       </div>
       <div className={styles.drop} style={{ display: displayDrop }}>
         <div
@@ -84,7 +76,7 @@ export default function TheHeader() {
           </p>
           <Link href={`/plants/?name=${valueSearch}`}>
             En Plantas
-            <Image src={arrow} alt="arrow right icon" width={48} height={48} />
+            <ArrowRightIcon/>
           </Link>
         </div>
         <div
@@ -98,7 +90,7 @@ export default function TheHeader() {
           </p>
           <Link href={`/crystals/?name=${valueSearch}`}>
             En Cristales
-            <Image src={arrow} alt="arrow right icon" width={48} height={48} />
+            <ArrowRightIcon/>
           </Link>
         </div>
       </div>
