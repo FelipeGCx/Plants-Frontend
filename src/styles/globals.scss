@@ -13,6 +13,10 @@ body {
   --radius-1x: calc(1rem * var(--radius-scale));
   --radius-2x: calc(2rem * var(--radius-scale));
   --radius-3x: calc(3rem * var(--radius-scale));
+  --icon-size-1x: 1.6rem;
+  --icon-size-1_5x: 2rem;
+  --icon-size-2x: 2.4rem;
+  --icon-size-3x: 3.2rem;
   --font-scale: 1.2;
   --font-01x: 1rem;
   --font-1x: calc(1rem * var(--font-scale));
