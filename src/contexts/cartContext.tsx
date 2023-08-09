@@ -1,20 +1,23 @@
 import { createContext, useEffect, useState } from "react";
 import {
   Cart,
-  CartDrop,
+  SimpleCart,
   CrystalStock,
   PlantStock,
   Pot,
   Product,
   ProductTicket,
 } from "../types";
+import { DevelopmentProvider } from "../services/developmentProvider";
+import { RequestService } from "../services/requestService";
+import { POT, CRYSTAL, PLANTSTOCK, CRYSTALSTOCK } from "../constants";
 
 interface ICartContext {
   cart: Array<Product>;
   ticketCart: Array<ProductTicket>;
   addItemCart: (item: Cart) => void;
   setItemQuantity: (item: Cart) => void;
-  removeItemCart: (item: CartDrop) => void;
+  removeItemCart: (item: SimpleCart) => void;
 }
 
 const defaultState = {
@@ -22,7 +25,7 @@ const defaultState = {
   ticketCart: [],
   addItemCart: (item: Cart) => {},
   setItemQuantity: (item: Cart) => {},
-  removeItemCart: (item: CartDrop) => {},
+  removeItemCart: (item: SimpleCart) => {},
 };
 
 type Props = {
@@ -76,7 +79,7 @@ const CartProvider = (props: Props) => {
             const crystal: CrystalStock = await fecthCrystal(element.crystal);
             const product: Product = {
               id: plant.id,
-              name: plant.plant.name,
+              name: plant.name,
               idPot: pot.id,
               potName: pot.name,
               renderPot: pot.render,
@@ -90,7 +93,7 @@ const CartProvider = (props: Props) => {
                 (plant.price / 100) * plant.discount +
                 pot.price +
                 crystal.price,
-              imagePlant: plant.plant.render,
+              imagePlant: plant.render,
               imageCrystal: crystal.imageCrystal,
               quantity: element.quantity,
             };
@@ -101,19 +104,27 @@ const CartProvider = (props: Props) => {
       }
     };
     const fecthPlant = async (id: number) => {
-      const url = `https://plants-api-production.up.railway.app/api/v1/stock/plants/${id}/`;
-      const response = await fetch(url);
-      return response.json();
+      // const url = `https://plants-api-production.up.railway.app/api/v1/stock/plants/${id}/`;
+      const url = PLANTSTOCK;
+      const response = await makeRequest(url);
+      return response.data.results;
     };
     const fecthPot = async (id: number) => {
-      const url = `https://plants-api-production.up.railway.app/api/v1/pots/${id}/`;
-      const response = await fetch(url);
-      return response.json();
+      // const url = `https://plants-api-production.up.railway.app/api/v1/pots/${id}/`;
+      const url = POT;
+      const response = await makeRequest(url);
+      return response.data.results;
     };
     const fecthCrystal = async (id: number) => {
-      const url = `https://plants-api-production.up.railway.app/api/v1/stock/crystals/${id}/`;
-      const response = await fetch(url);
-      return response.json();
+      // const url = `https://plants-api-production.up.railway.app/api/v1/stock/crystals/${id}/`;
+      const url = CRYSTALSTOCK;
+      const response = await makeRequest(url);
+      return response.data.results;
+    };
+    const makeRequest = async (url: string) => {
+      const requestProvider = new DevelopmentProvider();
+      const requestService = new RequestService(requestProvider);
+      return await requestService.getRequest(url);
     };
     fetchCart();
   }, [refetch]);
@@ -169,7 +180,7 @@ const CartProvider = (props: Props) => {
     }
   }
 
-  function removeItemCart(dropItem: CartDrop) {
+  function removeItemCart(dropItem: SimpleCart) {
     if (localStorage.getItem("cart")) {
       const oldCart: Cart[] = JSON.parse(localStorage.getItem("cart") || "");
       const newCart = oldCart.filter(
