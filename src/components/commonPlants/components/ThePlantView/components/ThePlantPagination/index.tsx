@@ -5,6 +5,7 @@ import iconArrowLeft from "./assets/arrow-left.svg";
 import styles from "./style.module.scss";
 import { PlantsQParams } from "../../../../../../types";
 import { useRouter } from "next/router";
+import { ArrowLeftIcon, ArrowRightIcon } from "../../../../../../assets/icons";
 
 export default function ThePlantPagination(props: {
   totalPages: number;
@@ -58,11 +59,11 @@ export default function ThePlantPagination(props: {
       </div>
       <div>
         <button onClick={() => changePage(0)}>
-          <Image src={iconArrowLeft} alt="icon arrow left" />
+          <ArrowLeftIcon className={styles.icon} />
         </button>
         <span>{`${props.page}/${props.totalPages}`}</span>
         <button onClick={() => changePage(1)}>
-          <Image src={iconArrowRight} alt="icon arrow right" />
+          <ArrowRightIcon className={styles.icon} />
         </button>
       </div>
     </div>

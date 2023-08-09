@@ -38,10 +38,13 @@
     button {
       width: 1.5rem;
       height: 1.5rem;
-      img {
-        width: 1.5rem;
-        height: 1.5rem;
-        filter: var(--icon-filter);
+      .icon {
+        width: var(--icon-size-1x);
+        height: var(--icon-size-1x);
+        color: var(--contrast-color);
+        &:hover{
+          color: var(--font-color);
+        }
       }
     }
   }
