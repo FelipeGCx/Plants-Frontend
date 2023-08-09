@@ -3,6 +3,9 @@ import TheDoubleSlider from "./components/TheDoubleSlider";
 import styles from "./style.module.scss";
 import { useRouter } from "next/router";
 import { PlantsQParams } from "../../../../types";
+import { SPECIES, SUCCESS } from "../../../../constants";
+import { DevelopmentProvider } from "../../../../services/developmentProvider";
+import { RequestService } from "../../../../services/requestService";
 
 export default function TheFilter(props: { params: PlantsQParams }) {
   const [species, setSpecies] = useState([]);
@@ -12,15 +15,17 @@ export default function TheFilter(props: { params: PlantsQParams }) {
 
   useEffect(() => {
     async function fetchData() {
-      // declare the url to fetch
-      let uri = `https://plants-api-production.up.railway.app/api/v1/species/`;
-
-      try {
-        const response = await fetch(uri);
-        const data = await response.json();
-        setSpecies(data);
-      } catch (err) {
-        console.log(err);
+      let url = `https://plants-api-production.up.railway.app/api/v1/species/`;
+      url = SPECIES;
+      const requestProvider = new DevelopmentProvider();
+      const requestService = new RequestService(requestProvider);
+      const requestResponse = await requestService.getRequest(url);
+      switch (requestResponse.status) {
+        case SUCCESS:
+          setSpecies(requestResponse.data.results);
+          break;
+        default:
+          break;
       }
     }
     fetchData();
