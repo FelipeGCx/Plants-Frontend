@@ -13,6 +13,7 @@ export const CRYSTAL = "crystal";
 export const CRYSTALS = "crystals";
 export const CRYSTALSFAVORITE = "crystalsFavorite";
 export const CRYSTALSSTOCK = "crystalsStock";
+export const SPECIES = "species";
 
 //*||||||||||||||*\\
 //* Status Const *\\
