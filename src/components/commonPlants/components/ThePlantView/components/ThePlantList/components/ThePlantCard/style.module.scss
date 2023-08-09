@@ -78,11 +78,15 @@
         font-weight: 500;
         z-index: 2;
       }
-      img {
+      .favorite {
         align-self: flex-end;
-        width: 2.4rem;
-        height: 2.4rem;
+        width: var(--icon-size-2x);
+        height: var(--icon-size-2x);
         z-index: 3;
+        color: var(--contrast-color);
+        &:hover {
+          color: var(--font-color);
+        }
       }
     }
     .point {

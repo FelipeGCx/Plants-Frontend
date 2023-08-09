@@ -4,6 +4,10 @@ import favoriteFilled from "./assets/favorite_filled.svg";
 import favoriteOutline from "./assets/favorite_outline.svg";
 import Link from "next/link";
 import { PlantFavorite } from "../../../../../../../../types";
+import {
+  FavoriteOffIcon,
+  FavoriteOnIcon,
+} from "../../../../../../../../assets/icons";
 
 const formatter = new Intl.NumberFormat("es-CO", {
   style: "currency",
@@ -14,7 +18,10 @@ const formatter = new Intl.NumberFormat("es-CO", {
 export default function ThePlantCard(props: { plant: PlantFavorite }) {
   return (
     <li key={props.plant.id} className={styles.card} id={props.plant.name}>
-      <Link href={`/plants/plant/${props.plant.id}/?pot=1`} className={styles.content} >
+      <Link
+        href={`/plants/plant/${props.plant.id}/?pot=1`}
+        className={styles.content}
+      >
         <div className={styles.details}>
           <div
             className={styles.detail}
@@ -35,20 +42,22 @@ export default function ThePlantCard(props: { plant: PlantFavorite }) {
               ? "Nuevo"
               : `${props.plant.discount}%`}
           </div>
-          <Image
+          {props.plant.favorite ? (
+            <FavoriteOnIcon className={styles.favorite} />
+          ) : (
+            <FavoriteOffIcon className={styles.favorite} />
+          )}
+          {/* <Image
             className={(styles.favorite, "icon")}
             src={props.plant.favorite ? favoriteFilled : favoriteOutline}
             alt="favorite icon plant"
             width={18}
             height={18}
-          />
+          /> */}
         </div>
         <Image
           className={styles.point}
-          src={
-            props.plant.imageFront ||
-            "https://firebasestorage.googleapis.com/v0/b/simple-a5eec.appspot.com/o/crystalsPoint%2Fnot%20found.png?alt=media&token=fd19155e-edb8-4e67-9e13-76a62cc59ce2"
-          }
+          src={props.plant.imageFront}
           alt={`${props.plant.name} plant frontal image`}
           width={300}
           height={300}
