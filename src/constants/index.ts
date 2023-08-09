@@ -11,6 +11,7 @@ export const POT = "pot";
 export const POTS = "pots";
 export const CRYSTAL = "crystal";
 export const CRYSTALS = "crystals";
+export const CRYSTALSTOCK = "crystalstock";
 export const CRYSTALSFAVORITE = "crystalsFavorite";
 export const CRYSTALSSTOCK = "crystalsStock";
 export const SPECIES = "species";
