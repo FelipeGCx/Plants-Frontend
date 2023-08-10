@@ -4,10 +4,12 @@ import TheCrystalSelector from "../../../components/commonPlants/commonPlant/com
 import ThePlantView from "../../../components/commonPlants/commonPlant/components/ThePlantView";
 import { useRouter } from "next/router";
 import cartContext from "../../../contexts/cartContext";
-import { Cart, Crystal, CrystalFavorite, PlantStock } from "../../../types";
-import { useContext, useEffect, useState } from "react";
-import { ProductionService } from "../../../services/ProductionService";
-import { HttpService } from "../../../services/HttpService";
+import { Cart, CrystalFavorite, PlantStock } from "../../../types";
+import { useContext, useState } from "react";
+// import { ProductionProvider } from "../../../services/productionProvider";
+import { RequestService } from "../../../services/requestService";
+import { DevelopmentProvider } from "../../../services/developmentProvider";
+import { PLANTSTOCK } from "../../../constants";
 
 const Plant = (props: { plant: PlantStock }) => {
   const { addItemCart } = useContext(cartContext);
@@ -32,9 +34,7 @@ const Plant = (props: { plant: PlantStock }) => {
     imageCrystal: "",
     imageGemstone: "",
   });
-  const [renderPot, setRenderPot] = useState(
-    "https://firebasestorage.googleapis.com/v0/b/simple-a5eec.appspot.com/o/potsImage/doisu-render.webp?alt=media&token=289ff965-53e9-4a78-b3c2-02edfb573c57"
-  );
+  const [renderPot, setRenderPot] = useState("");
 
   const addToCart = () => {
     let newItem: Cart = {
@@ -68,11 +68,14 @@ const Plant = (props: { plant: PlantStock }) => {
 };
 
 Plant.getInitialProps = async (context: { query: { id: any } }) => {
-  const httpProvider = new ProductionService();
-  const httpService = new HttpService(httpProvider);
+  // const requestProvider = new ProductionProvider();
+  const requestProvider = new DevelopmentProvider();
+  const requestService = new RequestService(requestProvider);
   const { id } = context.query;
-  let url = `https://plants-api-production.up.railway.app/api/v1/stock/plants/${id}/`;
-  const plant = await httpService.getRequest(url);
+  // let url = `https://plants-api-production.up.railway.app/api/v1/stock/plants/${id}/`;
+  let url = PLANTSTOCK;
+  const requestResponse = await requestService.getRequest(url);
+  const plant = requestResponse.data.results;
   return { plant };
 };
 
