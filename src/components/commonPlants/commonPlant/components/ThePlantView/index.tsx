@@ -16,7 +16,7 @@ export default function ThePlantView(props: {
       <ThePlantPresentation
         plant={props.plant} addToCart={props.addToCart} renderPot={ props.renderPot}
       />
-      <ThePlantDetail plant={props.plant.plant} />
+      <ThePlantDetail plant={props.plant} />
       <TheCrystalSelect crystal={ props.crystal} />
     </section>
   );

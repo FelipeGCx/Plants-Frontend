@@ -2,8 +2,8 @@ import styles from "./style.module.scss";
 import { Plant } from "../../../../../../../types";
 
 export default function ThePlantDetail(props: { plant: Plant }) {
-  const extractLight = (lights: Array<string>) => {
-    return lights.join(" - ");
+  const extractLight = (lights: string) => {
+    return lights.replace(/,/g, " -")
   }
   return (
     <section className={styles.plantDetail}>
