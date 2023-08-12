@@ -4,19 +4,25 @@ import { CrystalFavorite, CrystalsQParams } from "../../types";
 import TheCrystalView from "../../components/commonCrystals/components/TheCrystalView";
 import TheFilter from "../../components/commonCrystals/components/TheFilter";
 import { useRouter } from "next/router";
-import { ProductionService } from "../../services/ProductionService";
-import { HttpService } from "../../services/HttpService";
-import { toArrayCrystalFavorite } from "../../utils/parsings/Crystal";
 import TheLoader from "../../components/commonCrystals/components/TheLoader";
+import { DevelopmentProvider } from "../../services/developmentProvider";
+import { RequestService } from "../../services/requestService";
+import {
+  CRYSTALSFAVORITE,
+  CRYSTALSSTOCK,
+  ERROR,
+  INFO,
+  SUCCESS,
+} from "../../constants";
 
 export default function Crystals() {
-  const [idUser, setIdUser] = useState(1);
   const [page, setPage] = useState(1);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState("");
+  const [idUser, setIdUser] = useState(1);
   const [crystals, setCrystals] = useState<CrystalFavorite[]>([]);
-  const [totalItems, setTotalItems] = useState(30);
-  const [totalPages, setTotalPages] = useState(3);
+  const [isLoading, setIsLoading] = useState(true);
+  const [isEmpty, setIsEmpty] = useState(false);
+  const [error, setError] = useState("");
+  const [totalPages, setTotalPages] = useState(1);
   const router = useRouter();
   const [crystalParams, setCrystalParams] = useState<CrystalsQParams>({
     zodiac: null,
@@ -26,7 +32,7 @@ export default function Crystals() {
   });
 
   useEffect(() => {
-    async function fetchData() {
+    const getFilters = () => {
       let url = `https://plants-api-production.up.railway.app/api/v1/crystalis/${idUser}/`;
       const page = router.query["page"];
       if (page == null) {
@@ -70,24 +76,34 @@ export default function Crystals() {
         chakras: chakras,
       };
       setCrystalParams(params);
-      try {
-        const httpProvider = new ProductionService();
-        const httpService = new HttpService(httpProvider);
-        const data = await httpService.getRequest(url);
-        setCrystals(toArrayCrystalFavorite(data.results));
-        setTotalItems(+data.totalItems);
-        setTotalPages(data.totalPages);
-        setLoading(false);
-      } catch (err) {
-        setError("error");
-        setLoading(false);
+      url = idUser ? CRYSTALSFAVORITE : CRYSTALSSTOCK;
+      fetchData(url);
+    };
+    const fetchData = async (url: string) => {
+      const requestProvider = new DevelopmentProvider();
+      const requestService = new RequestService(requestProvider);
+      const requestResponse = await requestService.getRequest(url);
+      switch (requestResponse.status) {
+        case SUCCESS:
+          setCrystals(requestResponse.data.results);
+          setTotalPages(requestResponse.data.pagination?.totalPages || 0);
+          setIsLoading(false);
+          break;
+        case INFO:
+          setIsEmpty(true);
+          setIsLoading(false);
+        case ERROR:
+          setError(requestResponse.message);
+          setIsLoading(false);
+        default:
+          break;
       }
-    }
-    fetchData();
+    };
+    getFilters();
   }, [router, idUser]);
 
-  if (loading) {
-    return (<TheLoader/>)
+  if (isLoading) {
+    return <TheLoader />;
   }
   if (error) {
     return <p>An error occurred: {error}</p>;
@@ -104,6 +120,4 @@ export default function Crystals() {
       </main>
     );
   }
-
-  // );
 }
