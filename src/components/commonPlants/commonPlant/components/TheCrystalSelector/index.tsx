@@ -3,6 +3,9 @@ import styles from "./style.module.scss";
 import React, { useEffect, useState } from "react";
 import { CrystalFavorite } from "../../../../../types";
 import { useRouter } from "next/router";
+import { RequestService } from "../../../../../services/requestService";
+import { DevelopmentProvider } from "../../../../../services/developmentProvider";
+import { CRYSTALSSTOCK, ERROR, INFO, SUCCESS } from "../../../../../constants";
 
 export default function TheCrystalSelector(props: {
   id: number;
@@ -12,23 +15,39 @@ export default function TheCrystalSelector(props: {
   const [crystalList, setCrystalList] = useState<CrystalFavorite[]>([]);
   const [error, setError] = useState("");
   const [nameToFilter, setNameToFilter] = useState("");
+  const [isEmpty, setIsEmpty] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const router = useRouter();
 
   useEffect(() => {
-    async function fetchData() {
+    async function getUrl() {
       let url = `https://plants-api-production.up.railway.app/api/v1/crystalis/1/?page=1&page_size=30`;
       if (nameToFilter.length > 0) {
         url += `&named=${nameToFilter}`;
       }
-      try {
-        const response = await fetch(url);
-        const data = await response.json();
-        setCrystalList(data.results);
-      } catch (error) {
-        setError("error");
-      }
+      url = CRYSTALSSTOCK;
+      fetchData(url);
     }
-    fetchData();
+    const fetchData = async (url: string) => {
+      const requestProvider = new DevelopmentProvider();
+      const requestService = new RequestService(requestProvider);
+      const requestResponse = await requestService.getRequest(url);
+      switch (requestResponse.status) {
+        case SUCCESS:
+          setCrystalList(requestResponse.data.results);
+          setIsLoading(false);
+          break;
+        case INFO:
+          setIsEmpty(true);
+          setIsLoading(false);
+        case ERROR:
+          setError(requestResponse.message);
+          setIsLoading(false);
+        default:
+          break;
+      }
+    };
+    getUrl();
   }, [nameToFilter]);
 
   useEffect(() => {
@@ -66,7 +85,6 @@ export default function TheCrystalSelector(props: {
   const handlerInputSearch = (event: any) => {
     const value = event.target.value;
     setNameToFilter(value);
-    console.log("cambia")
   };
 
   return (
@@ -104,3 +122,4 @@ export default function TheCrystalSelector(props: {
     </section>
   );
 }
+
