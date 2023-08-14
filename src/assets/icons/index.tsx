@@ -225,9 +225,9 @@ export const SettingsIcon = ({ className }: IconProps): ReactElement => (
 export const AquariusIcon = ({ className }: IconProps): ReactElement => (
   <svg
     className={className}
-    width="48"
-    height="48"
-    viewBox="0 0 48 48"
+    width="100"
+    height="100"
+    viewBox="0 0 100 100"
     fill="currentColor"
     xmlns="http://www.w3.org/2000/svg"
   >
@@ -237,9 +237,9 @@ export const AquariusIcon = ({ className }: IconProps): ReactElement => (
 export const AriesIcon = ({ className }: IconProps): ReactElement => (
   <svg
     className={className}
-    width="48"
-    height="48"
-    viewBox="0 0 48 48"
+    width="100"
+    height="100"
+    viewBox="0 0 100 100"
     fill="currentColor"
     xmlns="http://www.w3.org/2000/svg"
   >
@@ -249,9 +249,9 @@ export const AriesIcon = ({ className }: IconProps): ReactElement => (
 export const CancerIcon = ({ className }: IconProps): ReactElement => (
   <svg
     className={className}
-    width="48"
-    height="48"
-    viewBox="0 0 48 48"
+    width="100"
+    height="100"
+    viewBox="0 0 100 100"
     fill="currentColor"
     xmlns="http://www.w3.org/2000/svg"
   >
@@ -261,9 +261,9 @@ export const CancerIcon = ({ className }: IconProps): ReactElement => (
 export const CapricornIcon = ({ className }: IconProps): ReactElement => (
   <svg
     className={className}
-    width="48"
-    height="48"
-    viewBox="0 0 48 48"
+    width="100"
+    height="100"
+    viewBox="0 0 100 100"
     fill="currentColor"
     xmlns="http://www.w3.org/2000/svg"
   >
@@ -273,9 +273,9 @@ export const CapricornIcon = ({ className }: IconProps): ReactElement => (
 export const GeminiIcon = ({ className }: IconProps): ReactElement => (
   <svg
     className={className}
-    width="48"
-    height="48"
-    viewBox="0 0 48 48"
+    width="100"
+    height="100"
+    viewBox="0 0 100 100"
     fill="currentColor"
     xmlns="http://www.w3.org/2000/svg"
   >
@@ -285,9 +285,9 @@ export const GeminiIcon = ({ className }: IconProps): ReactElement => (
 export const LeoIcon = ({ className }: IconProps): ReactElement => (
   <svg
     className={className}
-    width="48"
-    height="48"
-    viewBox="0 0 48 48"
+    width="100"
+    height="100"
+    viewBox="0 0 100 100"
     fill="currentColor"
     xmlns="http://www.w3.org/2000/svg"
   >
@@ -297,9 +297,9 @@ export const LeoIcon = ({ className }: IconProps): ReactElement => (
 export const LibraIcon = ({ className }: IconProps): ReactElement => (
   <svg
     className={className}
-    width="48"
-    height="48"
-    viewBox="0 0 48 48"
+    width="100"
+    height="100"
+    viewBox="0 0 100 100"
     fill="currentColor"
     xmlns="http://www.w3.org/2000/svg"
   >
@@ -309,9 +309,9 @@ export const LibraIcon = ({ className }: IconProps): ReactElement => (
 export const PiscesIcon = ({ className }: IconProps): ReactElement => (
   <svg
     className={className}
-    width="48"
-    height="48"
-    viewBox="0 0 48 48"
+    width="100"
+    height="100"
+    viewBox="0 0 100 100"
     fill="currentColor"
     xmlns="http://www.w3.org/2000/svg"
   >
@@ -321,9 +321,9 @@ export const PiscesIcon = ({ className }: IconProps): ReactElement => (
 export const SagittariusIcon = ({ className }: IconProps): ReactElement => (
   <svg
     className={className}
-    width="48"
-    height="48"
-    viewBox="0 0 48 48"
+    width="100"
+    height="100"
+    viewBox="0 0 100 100"
     fill="currentColor"
     xmlns="http://www.w3.org/2000/svg"
   >
@@ -333,9 +333,9 @@ export const SagittariusIcon = ({ className }: IconProps): ReactElement => (
 export const ScorpioIcon = ({ className }: IconProps): ReactElement => (
   <svg
     className={className}
-    width="48"
-    height="48"
-    viewBox="0 0 48 48"
+    width="100"
+    height="100"
+    viewBox="0 0 100 100"
     fill="currentColor"
     xmlns="http://www.w3.org/2000/svg"
   >
@@ -345,9 +345,9 @@ export const ScorpioIcon = ({ className }: IconProps): ReactElement => (
 export const TaurusIcon = ({ className }: IconProps): ReactElement => (
   <svg
     className={className}
-    width="48"
-    height="48"
-    viewBox="0 0 48 48"
+    width="100"
+    height="100"
+    viewBox="0 0 100 100"
     fill="currentColor"
     xmlns="http://www.w3.org/2000/svg"
   >
@@ -357,9 +357,9 @@ export const TaurusIcon = ({ className }: IconProps): ReactElement => (
 export const VirgoIcon = ({ className }: IconProps): ReactElement => (
   <svg
     className={className}
-    width="48"
-    height="48"
-    viewBox="0 0 48 48"
+    width="100"
+    height="100"
+    viewBox="0 0 100 100"
     fill="currentColor"
     xmlns="http://www.w3.org/2000/svg"
   >
