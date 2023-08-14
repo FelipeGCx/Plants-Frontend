@@ -39,10 +39,13 @@
       outline: none;
       cursor: pointer;
       user-select: none;
-      img {
-        width: 1.5rem;
-        height: 1.5rem;
-        filter: var(--invert-icon-filter);
+      .icon {
+        width: var(--icon-size-1x);
+        height: var(--icon-size-1x);
+        color: var(--icon-contrast-color);
+        &:hover{
+          color: var(--icon-contrast-hard-color);
+        }
       }
     }
   }

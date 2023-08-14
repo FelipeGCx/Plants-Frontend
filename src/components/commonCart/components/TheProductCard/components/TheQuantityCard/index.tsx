@@ -1,7 +1,5 @@
-import Image from "next/image";
 import styles from "./style.module.scss";
-import arrowLeft from "./assets/arrow-left.svg";
-import arrowRight from "./assets/arrow-right.svg";
+import { ArrowLeftIcon, ArrowRightIcon } from "../../../../../../assets/icons";
 
 export default function TheQuantityCard(props: {
   quantity: number;
@@ -13,16 +11,11 @@ export default function TheQuantityCard(props: {
       <h1>Cantidad</h1>
       <div className={styles.shift}>
         <a onClick={props.onSubstract}>
-          <Image src={arrowLeft} width={48} height={48} alt="arrow left icon" />
+          <ArrowLeftIcon className={styles.icon} />
         </a>
         <p>{props.quantity?.toString()}</p>
         <a onClick={props.onAdd}>
-          <Image
-            src={arrowRight}
-            width={48}
-            height={48}
-            alt="arrow right icon"
-          />
+          <ArrowRightIcon className={styles.icon} />
         </a>
       </div>
     </div>
