@@ -8,7 +8,8 @@ body {
 }
 
 :root {
-  font-size: 10px;
+  font-size: 0.625rem;
+  font-family: "Poppins", Roboto, sans-serif;
   --radius-scale: 0.8;
   --radius-1x: calc(1rem * var(--radius-scale));
   --radius-2x: calc(2rem * var(--radius-scale));
