@@ -2,16 +2,14 @@
   "status": "success",
   "message": "the request is succesfully done",
   "data": {
-    "results": [
-      {
-        "id": 6,
-        "name": "zolek",
-        "price": 15000,
-        "image": "https://firebasestorage.googleapis.com/v0/b/simple-a5eec.appspot.com/o/potsImage%2Fzolek.webp?alt=media&token=75947ced-2c31-4cbf-8e9e-6065ed62faed",
-        "render": "https://firebasestorage.googleapis.com/v0/b/simple-a5eec.appspot.com/o/potsImage%2Fzolek-render.webp?alt=media&token=5e894d84-80e4-448c-86d8-5ba88b93b813",
-        "quantity": 50,
-        "size": "17x14"
-      }
-    ]
+    "results": {
+      "id": 6,
+      "name": "zolek",
+      "price": 15000,
+      "image": "https://firebasestorage.googleapis.com/v0/b/simple-a5eec.appspot.com/o/potsImage%2Fzolek.webp?alt=media&token=75947ced-2c31-4cbf-8e9e-6065ed62faed",
+      "render": "https://firebasestorage.googleapis.com/v0/b/simple-a5eec.appspot.com/o/potsImage%2Fzolek-render.webp?alt=media&token=5e894d84-80e4-448c-86d8-5ba88b93b813",
+      "quantity": 50,
+      "size": "17x14"
+    }
   }
 }
