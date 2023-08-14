@@ -116,9 +116,9 @@
       .icon {
         width: var(--icon-size-2x);
         height: var(--icon-size-2x);
-        color: var(--clear-color);
+        color: var(--icon-clear-color);
         &:hover{
-          color: var(--font-color-button);
+          color: var(--icon-clear-hard-color);
         }
       }
       z-index: 1;
