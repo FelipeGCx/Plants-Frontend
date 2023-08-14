@@ -2,6 +2,11 @@
   "status": "success",
   "message": "the request is succesfully done",
   "data": {
+    "pagination": {
+      "page": 1,
+      "totalPages": 3,
+      "totalItems": 4
+    },
     "results": [
       {
         "id": 2,
