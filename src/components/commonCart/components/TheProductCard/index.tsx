@@ -1,10 +1,9 @@
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import styles from "./style.module.scss";
-// import edit from "./assets/edit.svg";
-import clean from "./assets/delete.svg";
 import TheQuantityCard from "./components/TheQuantityCard";
 import { Cart, Product } from "../../../../types";
+import { DeleteIcon } from "../../../../assets/icons";
 
 export default function TheProductCard(props: {
   product: Product;
@@ -40,22 +39,6 @@ export default function TheProductCard(props: {
       props.update(item);
     }
   };
-
-  // useEffect(() => {
-  //   let newItem: Cart = {
-  //     plant: props.product.id,
-  //     crystal: props.product.idCrystal,
-  //     pot: props.product.idPot,
-  //     quantity: quantity,
-  //   };
-  //   setItemQuantity(newItem);
-  // }, [
-  //   props.product.id,
-  //   props.product.idCrystal,
-  //   props.product.idPot,
-  //   quantity,
-  //   setItemQuantity,
-  // ]);
 
   useEffect(() => {
     const calculateTotal = () => {
@@ -125,7 +108,7 @@ export default function TheProductCard(props: {
               )
             }
           >
-            <Image src={clean} width={48} height={48} alt="icon delete" />
+            <DeleteIcon className={styles.icon} />
           </button>
         </div>
         <div className={styles.prices}>
