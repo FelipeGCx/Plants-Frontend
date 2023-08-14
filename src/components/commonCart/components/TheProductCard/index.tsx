@@ -82,7 +82,7 @@ export default function TheProductCard(props: {
         <p>Cristal {props.product.crystalName}</p>
         <div className={styles.priceTags}>
           <span className={styles.pill}>
-            {formatter.format(props.product.price)}
+            {formatter.format(props.product.plantPrice)}
           </span>
           <span className={styles.pill}>
             {formatter.format(props.product.potPrice)}
