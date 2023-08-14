@@ -5,19 +5,15 @@
   padding: 3rem 3.5rem;
   box-shadow: var(--shadow);
   display: grid;
-  grid-template-columns: auto 1fr;
+  grid-template-columns: 1.3fr 1fr;
   grid-template-rows: auto 1fr;
   gap: 3rem;
   overflow: hidden;
 
   & > :nth-child(1){
     grid-area: 1/1/2/2;
-    overflow: hidden;
   }
   & > :nth-child(2){
-    grid-area: 2/1/2/2;
-  }
-  & > :nth-child(3){
     grid-area: 1/2/3/3;
   }
   .products {

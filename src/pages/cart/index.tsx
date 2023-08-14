@@ -21,7 +21,6 @@ export default function TheCart() {
   };
   return (
     <main className={styles.cart}>
-      <ThePayMethods />
       <ul className={styles.products}>
         {cart?.map((product: Product, i: number) => {
           return (
