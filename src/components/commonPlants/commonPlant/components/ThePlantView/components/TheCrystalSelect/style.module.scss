@@ -49,17 +49,16 @@
             font-weight: 500;
             font-size: var(--font-1x);
           }
-          img {
-            width: 1.8rem;
-            height: 1.8rem;
+          .icon {
+            width: var(--icon-size-1_5x);
+            height: var(--icon-size-1_5x);
           }
         }
       }
       a {
-        img {
-          width: 1.8rem;
-          height: 1.8rem;
-          filter: var(--icon-filter);
+        .icon {
+          width: var(--icon-size-1_5x);
+          height: var(--icon-size-1_5x);
         }
       }
     }
@@ -73,6 +72,5 @@
         font-size: var(--font-1x);
       }
     }
-    
   }
 }

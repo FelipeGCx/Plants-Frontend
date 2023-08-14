@@ -1,21 +1,17 @@
 import styles from "./style.module.scss";
 import Image from "next/image";
 import Link from "next/link";
-
-import vibration from "./assets/vibration.svg";
-import link from "./assets/link.svg";
-import { useRouter } from "next/router";
-import { CrystalFavorite } from "../../../../../../../types";
 import TheZodiacList from "./components/TheZodiac";
+import { CrystalFavorite } from "../../../../../../../types";
+import { VibrationIcon, LinkIcon } from "../../../../../../../assets/icons";
 
 export default function TheCrystalSelect(props: { crystal: CrystalFavorite }) {
-  const router = useRouter();
   return (
     <section className={styles.crystalCard}>
       <Image
         className={styles.crystalImage}
         src={props.crystal.imageCrystal}
-        alt={`Image ${props.crystal.name} Double point Crystal`}
+        alt={`punta de crystal ${props.crystal.name}`}
         width={150}
         height={150}
       />
@@ -25,12 +21,7 @@ export default function TheCrystalSelect(props: { crystal: CrystalFavorite }) {
             <h1>{props.crystal.name}</h1>
             <div className={styles.vibration}>
               <span>{props.crystal.vibration}</span>
-              <Image
-                src={vibration}
-                alt="icon vibration"
-                width={48}
-                height={48}
-              />
+              <VibrationIcon className={styles.icon} />
             </div>
           </div>
           <Link
@@ -39,17 +30,12 @@ export default function TheCrystalSelect(props: { crystal: CrystalFavorite }) {
               query: { name: props.crystal.name },
             }}
           >
-            <Image
-              src={link}
-              alt="icon open reference"
-              width={48}
-              height={48}
-            />
+            <LinkIcon className={styles.icon} />
           </Link>
         </div>
         <ul className={styles.properties}>
-          {props.crystal.properties.map((c, ci: number) => {
-            return <li key={ci}>{c}</li>;
+          {props.crystal.properties.map((property, idx: number) => {
+            return <li key={idx}>{property}</li>;
           })}
         </ul>
         <TheZodiacList zodiacs={props.crystal.zodiac} />
