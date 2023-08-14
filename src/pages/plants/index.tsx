@@ -38,56 +38,19 @@ export default function Plants() {
 
   useEffect(() => {
     const getFilters = () => {
-      // declare the url to fetch
-      let url = `https://plants-api-production.up.railway.app/api/v1/plantis/${idUser}/`;
-      // let url = `https://plants-api-production.up.railway.app/api/v1/stock/plants/?`;
-      // get query params to filter
-      const page = router.query["page"];
-      if (page == null) {
-        url += `?page=1`;
-        setPage(1);
-      } else {
-        url += `?page=${page}`;
-        setPage(+page);
-      }
-      const name = router.query["name"];
-      if (name != null) {
-        url += `&name=${name}`;
-      }
-      const species = router.query["species"] || null;
-      if (species != null) {
-        url += `&species=${species}`;
-      }
-      const irrigation = router.query["irrigation"] || null;
-      if (irrigation != null) {
-        url += `&irrigation=${irrigation}`;
-      }
-      const zone = router.query["zone"] || null;
-      if (zone != null) {
-        url += `&inside=${zone == "interior"}`;
-      }
-      const priceFirst = router.query["priceFirst"] || null;
-      const priceSecond = router.query["priceSecond"] || null;
-      if (priceFirst != null) {
-        if (priceSecond != null) {
-          url += `&priceFirst=${priceFirst}&priceSecond=${priceSecond}`;
-        }
-      }
-      const order = router.query["order"];
-      if (order != null) {
-        url += `&order=${order}`;
-      }
-      const light = router.query["light"] || null;
-      if (light != null) {
-        url += `&light=${light}`;
-      }
+      let url = `/plantis/${idUser}/`;
+      let queryParams = "";
+      Object.keys(router.query).forEach((param) => {
+        const value = router.query[param];
+        queryParams += `&${param}=${value}`;
+      });
       const params = {
-        species: species,
-        light: light,
-        zone: zone,
-        irrigation: irrigation,
-        priceFirst: priceFirst,
-        priceSecond: priceSecond,
+        species: router.query["species"] || null,
+        light: router.query["light"] || null,
+        zone: router.query["zone"] || null,
+        irrigation: router.query["irrigation"] || null,
+        priceFirst: router.query["priceFirst"] || null,
+        priceSecond: router.query["priceSecond"] || null,
       };
       setPlantParams(params);
       url = idUser ? PLANTSFAVORITE : PLANTSSTOCK;
