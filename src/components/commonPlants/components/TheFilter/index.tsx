@@ -196,7 +196,7 @@ export default function TheFilter(props: { params: PlantsQParams }) {
           </label>
         </div>
         <div>
-          <h1>Uso</h1>
+          <h1>Ubicación</h1>
           <label htmlFor="interior" className={styles.item}>
             <input
               type="radio"
