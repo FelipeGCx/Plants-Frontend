@@ -9,7 +9,7 @@
       "description": "La Crassula Red Pagoda es una planta suculenta de crecimiento vertical que presenta hojas triangulares y apretadas que se asemejan a una pagoda o a los dientes de un tiburón. Las hojas tienen un color verde oscuro en la base y se vuelven rojas en los bordes cuando la planta está expuesta a una luz intensa. En verano, la planta puede desarrollar pequeñas flores blancas o rosadas en forma de estrella, aunque estas no son su característica más destacada.",
       "species": "crassulaceae",
       "group": "succulent",
-      "light": "pleno sol, sol parcial",
+      "light": ["pleno sol", "sol parcial"],
       "irrigation": "escaso",
       "temperature": "18°C - 24°C",
       "precautions": "exceso de humedad",
