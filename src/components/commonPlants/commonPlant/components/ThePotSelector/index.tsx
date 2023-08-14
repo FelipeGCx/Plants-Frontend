@@ -3,46 +3,69 @@ import styles from "./style.module.scss";
 import React, { useEffect, useState } from "react";
 import { Pot } from "../../../../../types";
 import { useRouter } from "next/router";
+import { DevelopmentProvider } from "../../../../../services/developmentProvider";
+import { RequestService } from "../../../../../services/requestService";
+import { ERROR, INFO, POTS, SUCCESS } from "../../../../../constants";
 
-export default function ThePotSelector(props: { id: number, selectedPot(pot:string):void }) {
+export default function ThePotSelector(props: {
+  id: number;
+  selectedPot(pot: string): void;
+}) {
   const [selected, setSelected] = useState(props.id);
-  const [potsList, setPotsList] = useState<Pot[]>([]);
+  const [pots, setPots] = useState<Pot[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [isEmpty, setIsEmpty] = useState(false);
   const [error, setError] = useState("");
   const router = useRouter();
 
   useEffect(() => {
-    async function fetchData() {
-      const url = "https://plants-api-production.up.railway.app/api/v1/pots/";
-      try {
-        const response = await fetch(url);
-        const data = await response.json();
-        setPotsList(data);
-      } catch (err) {
-        setError("error");
+    const getUrl = () => {
+      let url = "/pots";
+      url = POTS;
+      fetchData(url);
+    };
+    const fetchData = async (url: string) => {
+      // const requestProvider = new ProductionProvider();
+      const requestProvider = new DevelopmentProvider();
+      const requestService = new RequestService(requestProvider);
+      const requestResponse = await requestService.getRequest(url);
+      switch (requestResponse.status) {
+        case SUCCESS:
+          setPots(requestResponse.data.results);
+          setIsLoading(false);
+          break;
+        case INFO:
+          setIsEmpty(true);
+          setIsLoading(false);
+        case ERROR:
+          setError(requestResponse.message);
+          setIsLoading(false);
+        default:
+          break;
       }
-    }
-   
-    fetchData();
-  }, [])
+    };
+    getUrl();
+  }, []);
 
   useEffect(() => {
-    props.selectedPot(potsList.find(objeto => objeto.id === selected)?.render || "");
-  }, [potsList, props, selected])
-  
+    props.selectedPot(
+      pots.find((objeto) => objeto.id === selected)?.render || ""
+    );
+  }, [pots, props, selected]);
 
   const handlerChange = (id: number) => {
     setSelected(id);
     const { query, pathname } = router;
-    let updatedQuery = { ...query, pot: id.toString()};
+    let updatedQuery = { ...query, pot: id.toString() };
     router.push({ pathname, query: updatedQuery });
-  }
+  };
 
   return (
     <section className={styles.selector}>
       <h1 className={styles.title}>Materas</h1>
       <form action="">
         <ul>
-          {potsList?.map((pot:Pot, i:number) => {
+          {pots?.map((pot: Pot, i: number) => {
             return (
               <li key={i}>
                 <label htmlFor={pot.name} className={styles.card}>
