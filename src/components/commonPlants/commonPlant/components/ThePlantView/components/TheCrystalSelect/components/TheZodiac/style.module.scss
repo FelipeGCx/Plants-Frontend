@@ -2,9 +2,9 @@
   align-self: flex-end;
   display: flex;
   gap: 0.5rem;
-  img {
-    width: 1.8rem;
-    height: 1.8rem;
-    filter: var(--icon-filter);
+  .icon {
+    width: var(--icon-size-1_5x);
+    height: var(--icon-size-1_5x);
+    color: var(--contrast-color);
   }
 }
