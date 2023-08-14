@@ -4,7 +4,7 @@ import TheCrystalSelector from "../../../components/commonPlants/commonPlant/com
 import ThePlantView from "../../../components/commonPlants/commonPlant/components/ThePlantView";
 import { useRouter } from "next/router";
 import cartContext from "../../../contexts/cartContext";
-import { Cart, CrystalFavorite, PlantStock } from "../../../types";
+import { Cart, CrystalFavorite, PlantStock, Pot } from "../../../types";
 import { useContext, useState } from "react";
 // import { ProductionProvider } from "../../../services/productionProvider";
 import { RequestService } from "../../../services/requestService";
@@ -16,6 +16,15 @@ const Plant = (props: { plant: PlantStock }) => {
   const router = useRouter();
   const [idPot, setIdPot] = useState(router.query["pot"] || 1);
   const [idCrystal, setIdCrystal] = useState(router.query["crystal"] || 1);
+  const [pot, setPot] = useState<Pot>({
+    id: 1,
+    name: "",
+    price: 0,
+    image: "",
+    render: "",
+    quantity: 0,
+    size: "",
+  });
   const [crystal, setCrystal] = useState<CrystalFavorite>({
     favorite: false,
     quantity: 0,
@@ -34,7 +43,6 @@ const Plant = (props: { plant: PlantStock }) => {
     imageCrystal: "",
     imageGemstone: "",
   });
-  const [renderPot, setRenderPot] = useState("");
 
   const addToCart = () => {
     let newItem: Cart = {
@@ -49,8 +57,10 @@ const Plant = (props: { plant: PlantStock }) => {
   const handlerCrystal = (crystal: CrystalFavorite) => {
     setCrystal(crystal);
   };
-  const handlerPot = (pot: string) => {
-    setRenderPot(pot);
+  const handlerPot = (pot: Pot | undefined) => {
+    if (pot) {
+      setPot(pot);
+    }
   };
 
   return (
@@ -59,7 +69,7 @@ const Plant = (props: { plant: PlantStock }) => {
       <ThePlantView
         plant={props.plant}
         addToCart={addToCart}
-        renderPot={renderPot}
+        pot={pot}
         crystal={crystal}
       />
       <TheCrystalSelector id={+idCrystal} selectedCrystal={handlerCrystal} />

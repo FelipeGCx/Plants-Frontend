@@ -9,7 +9,7 @@ import { ERROR, INFO, POTS, SUCCESS } from "../../../../../constants";
 
 export default function ThePotSelector(props: {
   id: number;
-  selectedPot(pot: string): void;
+  selectedPot(pot: Pot | undefined ): void;
 }) {
   const [selected, setSelected] = useState(props.id);
   const [pots, setPots] = useState<Pot[]>([]);
@@ -48,9 +48,7 @@ export default function ThePotSelector(props: {
   }, []);
 
   useEffect(() => {
-    props.selectedPot(
-      pots.find((objeto) => objeto.id === selected)?.render || ""
-    );
+    props.selectedPot(pots.find((objeto) => objeto.id === selected));
   }, [pots, props, selected]);
 
   const handlerChange = (id: number) => {
