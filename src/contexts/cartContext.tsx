@@ -44,7 +44,7 @@ const CartProvider = (props: Props) => {
       if (cart) {
         let result: ProductTicket[] = [];
         const keys = ["name", "potName", "crystalName"];
-        const priceKeys = ["price", "potPrice", "crystalPrice"];
+        const priceKeys = ["plantPrice", "potPrice", "crystalPrice"];
         for (const obj of cart) {
           for (let index = 0; index < keys.length; index++) {
             const key = keys[index];

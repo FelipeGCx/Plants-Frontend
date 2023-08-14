@@ -42,11 +42,7 @@ export default function TheProductCard(props: {
 
   useEffect(() => {
     const calculateTotal = () => {
-      const itemPrice =
-        props.product.price +
-        props.product.potPrice +
-        props.product.crystalPrice;
-      setTotal(props.product.quantity * itemPrice);
+      setTotal(props.product.quantity * props.product.price);
     };
     calculateTotal();
   }, [props.product]);
