@@ -24,3 +24,10 @@ export const SUCCESS = "success";
 export const ERROR = "error";
 export const WARNING = "warning";
 export const INFO = "info";
+
+//*||||||||||||||*\\
+//* Display Const *\\
+//*||||||||||||||*\\
+
+export const GRID = "grid";
+export const NONE = "none";
