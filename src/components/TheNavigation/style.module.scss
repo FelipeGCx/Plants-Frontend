@@ -40,7 +40,7 @@
     .active {
       background-color: var(--active-color);
       .navicon {
-        color: var(--font-color-button);
+        color: var(--icon-hard-color);
       }
     }
     li {
@@ -51,13 +51,13 @@
         .navicon {
           width: var(--icon-size-3x);
           height: var(--icon-size-3x);
-          color: var(--contrast-color);
+          color: var(--icon-color);
         }
       }
       &:hover {
         background-color: var(--active-color);
         .navicon {
-          color: var(--font-color-button);
+          color: var(--icon-hard-color);
         }
       }
     }
