@@ -1,88 +1,89 @@
-import Image from "next/image";
-import ariesIcon from "./assets/zodiac/aries.svg";
-import taurusIcon from "./assets/zodiac/taurus.svg";
-import geminiIcon from "./assets/zodiac/gemini.svg";
-import cancerIcon from "./assets/zodiac/cancer.svg";
-import leoIcon from "./assets/zodiac/leo.svg";
-import virgoIcon from "./assets/zodiac/virgo.svg";
-import libraIcon from "./assets/zodiac/libra.svg";
-import scorpioIcon from "./assets/zodiac/scorpio.svg";
-import sagittariusIcon from "./assets/zodiac/sagittarius.svg";
-import capricornIcon from "./assets/zodiac/capricorn.svg";
-import aquariusIcon from "./assets/zodiac/aquarius.svg";
-import piscesIcon from "./assets/zodiac/pisces.svg";
-
+import styles from "../../style.module.scss";
+import {
+  AquariusIcon,
+  AriesIcon,
+  CancerIcon,
+  CapricornIcon,
+  GeminiIcon,
+  LeoIcon,
+  LibraIcon,
+  PiscesIcon,
+  SagittariusIcon,
+  ScorpioIcon,
+  TaurusIcon,
+  VirgoIcon,
+} from "../../../../../../assets/icons";
 const zodiac = [
   {
     sign: "aries",
-    icon: ariesIcon,
+    icon: <AriesIcon />,
     value: "aries",
     alt: "aries icon",
   },
   {
     sign: "taurus",
-    icon: taurusIcon,
+    icon: <TaurusIcon />,
     value: "tauro",
     alt: "taurus icon",
   },
   {
     sign: "gemini",
-    icon: geminiIcon,
+    icon: <GeminiIcon />,
     value: "geminis",
     alt: "gemini icon",
   },
   {
     sign: "cancer",
-    icon: cancerIcon,
+    icon: <CancerIcon />,
     value: "cancer",
     alt: "cancer icon",
   },
   {
     sign: "leo",
-    icon: leoIcon,
+    icon: <LeoIcon />,
     value: "leo",
     alt: "leo icon",
   },
   {
     sign: "virgo",
-    icon: virgoIcon,
+    icon: <VirgoIcon />,
     value: "virgo",
     alt: "virgo icon",
   },
 
   {
     sign: "libra",
-    icon: libraIcon,
+    icon: <LibraIcon />,
     value: "libra",
     alt: "libra icon",
   },
   {
     sign: "scorpio",
-    icon: scorpioIcon,
+    icon: <ScorpioIcon />,
     value: "escorpio",
     alt: "scorpio icon",
   },
   {
     sign: "sagittarius",
-    icon: sagittariusIcon,
+    icon: <SagittariusIcon />,
     value: "sagitario",
     alt: "sagittarius icon",
   },
   {
     sign: "capricorn",
-    icon: capricornIcon,
+    icon: <CapricornIcon />,
     value: "capricornio",
     alt: "capricorn icon",
   },
   {
     sign: "aquarius",
-    icon: aquariusIcon,
+    icon: <AquariusIcon />,
     value: "acuario",
     alt: "aquarius icon",
   },
   {
     sign: "pisces",
-    icon: piscesIcon,
+    icon: <PiscesIcon />,
     value: "piscis",
     alt: "pisces icon",
   },
@@ -95,7 +96,10 @@ export default function TheZodiacList(props: {
     <ul>
       {zodiac.map((item) => {
         return (
-          <li key={item.value}>
+          <li
+            key={item.value}
+            className={props.zodiacs?.includes(item.value) ? styles.active : ""}
+          >
             <input
               type="checkbox"
               name="chakra"
@@ -103,13 +107,7 @@ export default function TheZodiacList(props: {
               onChange={() => props.changeSelected("zodiac", item.value)}
               checked={props.zodiacs?.includes(item.value) || false}
             />
-            <Image
-              className="icon"
-              src={item.icon}
-              alt={item.alt}
-              width={20}
-              height={20}
-            />
+            {item.icon}
           </li>
         );
       })}

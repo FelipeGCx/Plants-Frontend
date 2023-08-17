@@ -1,31 +1,33 @@
-import Image from "next/image";
-import air from "./assets/elements/air.svg";
-import fire from "./assets/elements/fire.svg";
-import water from "./assets/elements/water.svg";
-import earth from "./assets/elements/earth.svg";
+import styles from "../../style.module.scss";
+import {
+  AirIcon,
+  EarthIcon,
+  FireIcon,
+  WaterIcon,
+} from "../../../../../../assets/icons";
 
 const elements = [
   {
     name: "air",
-    icon: air,
+    icon: <AirIcon />,
     value: "aire",
     alt: "air icon",
   },
   {
     name: "fire",
-    icon: fire,
+    icon: <FireIcon />,
     value: "fuego",
     alt: "fire icon",
   },
   {
     name: "water",
-    icon: water,
+    icon: <WaterIcon />,
     value: "agua",
     alt: "water icon",
   },
   {
     name: "earth",
-    icon: earth,
+    icon: <EarthIcon />,
     value: "tierra",
     alt: "earth icon",
   },
@@ -38,7 +40,10 @@ export default function TheElementsList(props: {
     <ul>
       {elements.map((item) => {
         return (
-          <li key={item.name}>
+          <li
+            key={item.name}
+            className={props.elements?.includes(item.value) ? styles.active : ""}
+          >
             <input
               type="checkbox"
               name="chakra"
@@ -46,13 +51,7 @@ export default function TheElementsList(props: {
               onChange={() => props.changeSelected("elements", item.value)}
               checked={props.elements?.includes(item.value) || false}
             />
-            <Image
-              className="icon"
-              src={item.icon}
-              alt={item.alt}
-              width={20}
-              height={20}
-            />
+            {item.icon}
           </li>
         );
       })}
