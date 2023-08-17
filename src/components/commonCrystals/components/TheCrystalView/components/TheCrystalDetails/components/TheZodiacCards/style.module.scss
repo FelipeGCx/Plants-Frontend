@@ -14,11 +14,15 @@
     gap: 1rem;
     padding: 1rem;
     filter: blur(1px);
-    img:first-child {
-      filter: var(--icon-br);
+    .icon {
+      color: var(--icon-clear-hard-color);
+      width: var(--icon-size-1x);
+      height: var(--icon-size-1x);
     }
-    img:last-child {
-      filter: var(--icon-br);
+    .logo {
+      color: var(--icon-clear-hard-color);
+      width: var(--icon-size-2_5x);
+      height: var(--icon-size-2_5x);
     }
     &.include {
       background: var(--gradient-active-zodiac);

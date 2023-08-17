@@ -10,10 +10,7 @@
     justify-content: center;
     width: 6rem;
     height: min-content;
-    filter: brightness(0.5) contrast(10) invert(1) grayscale(2) invert(1)
-      brightness(0) contrast(0.5);
-    img {
-      opacity: 20%;
+    .icon {
       width: 100%;
       height: 100%;
     }
@@ -24,10 +21,16 @@
       font-size: var(--font-01x);
     }
     &.active {
-      filter: var(--chakras-filter);
       opacity: 100%;
-      img {
+      .icon {
         opacity: 100%;
+      }
+    }
+    &.inactive {
+      opacity: 100%;
+      .icon {
+        opacity: 20%;
+        fill: var(--icon-hard-color);
       }
     }
   }

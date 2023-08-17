@@ -1,113 +1,115 @@
 import Image from "next/image";
 import styles from "./style.module.scss";
-import ariesIcon from "./assets/zodiac/aries.svg";
-import taurusIcon from "./assets/zodiac/taurus.svg";
-import geminiIcon from "./assets/zodiac/gemini.svg";
-import cancerIcon from "./assets/zodiac/cancer.svg";
-import leoIcon from "./assets/zodiac/leo.svg";
-import virgoIcon from "./assets/zodiac/virgo.svg";
-import libraIcon from "./assets/zodiac/libra.svg";
-import scorpioIcon from "./assets/zodiac/scorpio.svg";
-import sagittariusIcon from "./assets/zodiac/sagittarius.svg";
-import capricornIcon from "./assets/zodiac/capricorn.svg";
-import aquariusIcon from "./assets/zodiac/aquarius.svg";
-import piscesIcon from "./assets/zodiac/pisces.svg";
-import ariesLogo from "./assets/zodiac/aries-logo.svg";
-import taurusLogo from "./assets/zodiac/taurus-logo.svg";
-import geminiLogo from "./assets/zodiac/gemini-logo.svg";
-import cancerLogo from "./assets/zodiac/cancer-logo.svg";
-import leoLogo from "./assets/zodiac/leo-logo.svg";
-import virgoLogo from "./assets/zodiac/virgo-logo.svg";
-import libraLogo from "./assets/zodiac/libra-logo.svg";
-import scorpioLogo from "./assets/zodiac/scorpio-logo.svg";
-import sagittariusLogo from "./assets/zodiac/sagittarius-logo.svg";
-import capricornLogo from "./assets/zodiac/capricorn-logo.svg";
-import aquariusLogo from "./assets/zodiac/aquarius-logo.svg";
-import piscesLogo from "./assets/zodiac/pisces-logo.svg";
+import {
+  AquariusIcon,
+  AquariusLogo,
+  AriesIcon,
+  AriesLogo,
+  CancerIcon,
+  CancerLogo,
+  CapricornIcon,
+  CapricornLogo,
+  GeminiIcon,
+  GeminiLogo,
+  LeoIcon,
+  LeoLogo,
+  LibraIcon,
+  LibraLogo,
+  PiscesIcon,
+  PiscesLogo,
+  SagittariusIcon,
+  SagittariusLogo,
+  ScorpioIcon,
+  ScorpioLogo,
+  TaurusIcon,
+  TaurusLogo,
+  VirgoIcon,
+  VirgoLogo,
+} from "../../../../../../../../assets/icons";
 
 const zodiac = [
   {
     sign: "aries",
-    icon: ariesIcon,
-    logo: ariesLogo,
+    icon: <AriesIcon className={styles.icon} />,
+    logo: <AriesLogo className={styles.logo} />,
     value: "aries",
     alt: "aries icon",
   },
   {
     sign: "taurus",
-    icon: taurusIcon,
-    logo: taurusLogo,
+    icon: <TaurusIcon className={styles.icon} />,
+    logo: <TaurusLogo className={styles.logo} />,
     value: "tauro",
     alt: "taurus icon",
   },
   {
     sign: "gemini",
-    icon: geminiIcon,
-    logo: geminiLogo,
+    icon: <GeminiIcon className={styles.icon} />,
+    logo: <GeminiLogo className={styles.logo} />,
     value: "geminis",
     alt: "gemini icon",
   },
   {
     sign: "cancer",
-    icon: cancerIcon,
-    logo: cancerLogo,
+    icon: <CancerIcon className={styles.icon} />,
+    logo: <CancerLogo className={styles.logo} />,
     value: "cancer",
     alt: "cancer icon",
   },
   {
     sign: "leo",
-    icon: leoIcon,
-    logo: leoLogo,
+    icon: <LeoIcon className={styles.icon} />,
+    logo: <LeoLogo className={styles.logo} />,
     value: "leo",
     alt: "leo icon",
   },
   {
     sign: "virgo",
-    icon: virgoIcon,
-    logo: virgoLogo,
+    icon: <VirgoIcon className={styles.icon} />,
+    logo: <VirgoLogo className={styles.logo} />,
     value: "virgo",
     alt: "virgo icon",
   },
 
   {
     sign: "libra",
-    icon: libraIcon,
-    logo: libraLogo,
+    icon: <LibraIcon className={styles.icon} />,
+    logo: <LibraLogo className={styles.logo} />,
     value: "libra",
     alt: "libra icon",
   },
   {
     sign: "scorpio",
-    icon: scorpioIcon,
-    logo: scorpioLogo,
+    icon: <ScorpioIcon className={styles.icon} />,
+    logo: <ScorpioLogo className={styles.logo} />,
     value: "escorpio",
     alt: "scorpio icon",
   },
   {
     sign: "sagittarius",
-    icon: sagittariusIcon,
-    logo: sagittariusLogo,
+    icon: <SagittariusIcon className={styles.icon} />,
+    logo: <SagittariusLogo className={styles.logo} />,
     value: "sagitario",
     alt: "sagittarius icon",
   },
   {
     sign: "capricorn",
-    icon: capricornIcon,
-    logo: capricornLogo,
+    icon: <CapricornIcon className={styles.icon} />,
+    logo: <CapricornLogo className={styles.logo} />,
     value: "capricornio",
     alt: "capricorn icon",
   },
   {
     sign: "aquarius",
-    icon: aquariusIcon,
-    logo: aquariusLogo,
+    icon: <AquariusIcon className={styles.icon} />,
+    logo: <AquariusLogo className={styles.logo} />,
     value: "acuario",
     alt: "aquarius icon",
   },
   {
     sign: "pisces",
-    icon: piscesIcon,
-    logo: piscesLogo,
+    icon: <PiscesIcon className={styles.icon} />,
+    logo: <PiscesLogo className={styles.logo} />,
     value: "piscis",
     alt: "pisces icon",
   },
@@ -116,26 +118,17 @@ export default function TheZodiacCards(props: {
   zodiacs?: string | string[] | null;
 }) {
   return (
-    <ul className={ styles.zodiac}>
+    <ul className={styles.zodiac}>
       {zodiac.map((item) => {
         return (
-          <li key={item.value}
-            className={ props.zodiacs?.includes(item.value) ? styles.include : "" }
+          <li
+            key={item.value}
+            className={
+              props.zodiacs?.includes(item.value) ? styles.include : ""
+            }
           >
-            <Image
-              className="icon"
-              src={item.logo}
-              alt={item.alt}
-              width={29}
-              height={29}
-            />
-            <Image
-              className="icon"
-              src={item.icon}
-              alt={item.alt}
-              width={16}
-              height={16}
-            />
+            {item.logo}
+            {item.icon}
           </li>
         );
       })}

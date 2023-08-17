@@ -46,24 +46,12 @@
       flex-direction: column;
       gap: 1rem;
       li {
+        display: flex;
+        gap: 0.5rem;
+        align-items: center;
         p {
           font-size: var(--font-1x);
           text-transform: capitalize;
-          display: flex;
-          gap: 0.5rem;
-          align-items: center;
-          &::before {
-            display: block;
-            content: "";
-            min-height: 1.5rem;
-            min-width: 1.5rem;
-            max-height: 1.5rem;
-            max-width: 1.5rem;
-            background-image: url("./assets/hexa.svg");
-            background-repeat: no-repeat;
-            background-size: contain;
-            filter: var(--icon-filter);
-          }
         }
       }
     }
@@ -98,35 +86,17 @@
     justify-content: center;
     align-items: center;
     li {
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      gap: 1rem;
       p {
-        display: flex;
-        font-size: var(--font-1x);
         text-align: center;
-        align-items: center;
-        justify-content: center;
-        gap: 1rem;
-        &::after {
-          content: "";
-          min-width: 1.3rem;
-          min-height: 1.3rem;
-          max-width: 1.3rem;
-          max-height: 1.3rem;
-          background-image: url("./assets/hexa.svg");
-          background-repeat: no-repeat;
-          background-size: contain;
-          filter: var(--icon-filter);
-        }
-        &::before {
-          content: "";
-          min-height: 1.3rem;
-          min-width: 1.3rem;
-          max-height: 1.3rem;
-          max-width: 1.3rem;
-          background-image: url("./assets/hexa.svg");
-          background-repeat: no-repeat;
-          background-size: contain;
-          filter: var(--icon-filter);
-        }
+        font-size: var(--font-1x);
+      }
+      .icon {
+        min-width: var(--icon-size-1x);
+        min-height: var(--icon-size-1x);
       }
     }
   }
@@ -142,16 +112,4 @@
     left: -10rem;
     transform: rotate(40deg);
   }
-  // &::before {
-  //   content: "";
-  //   position: absolute;
-  //   border-radius: var(--radius-2x);
-  //   background-color: var(--opacity-color);
-  //   width: 54rem;
-  //   height: 36rem;
-  //   z-index: -2;
-  //   bottom: -25rem;
-  //   left: -10rem;
-  //   transform: rotate(40deg);
-  // }
 }

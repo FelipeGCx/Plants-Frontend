@@ -5,6 +5,7 @@ import { CrystalFavorite } from "../../../../../../types";
 import TheZodiacCards from "./components/TheZodiacCards";
 import ThePlanets from "./components/ThePlanets";
 import TheChakras from "./components/TheChakras";
+import { HexaIcon } from "../../../../../../assets/icons";
 
 export default function TheCrystalDetails(props: {
   crystal?: CrystalFavorite;
@@ -31,9 +32,10 @@ export default function TheCrystalDetails(props: {
       <div className={styles.data}>
         <h1>{props.crystal?.name}</h1>
         <ul className={styles.properties}>
-          {props.crystal?.properties.map((propierty: string, p: number) => {
+          {props.crystal?.properties.map((propierty: string, idx: number) => {
             return (
-              <li key={p}>
+              <li key={idx}>
+                <HexaIcon className={styles.icon} />
                 <p>{propierty}</p>
               </li>
             );
@@ -54,10 +56,12 @@ export default function TheCrystalDetails(props: {
       <p className={styles.description}>{props.crystal?.description}</p>
       <ThePlanets planets={props.crystal?.planets} />
       <ul className={styles.benefits}>
-        {props.crystal?.benefits.map((planet: string, pl: number) => {
+        {props.crystal?.benefits.map((benefit: string, idx: number) => {
           return (
-            <li key={pl}>
-              <p>{planet}</p>
+            <li key={idx}>
+              <HexaIcon className={styles.icon} />
+              <p>{benefit}</p>
+              <HexaIcon className={styles.icon} />
             </li>
           );
         })}
