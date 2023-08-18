@@ -1,43 +1,38 @@
 import Image from "next/image";
 import styles from "./style.module.scss";
-import iconAir from "./assets/elements/air.svg";
-import iconWater from "./assets/elements/water.svg";
-import iconFire from "./assets/elements/fire.svg";
-import iconEarth from "./assets/elements/earth.svg";
 import vibrationIcon from "./assets/vibration.svg";
 import favoriteOutline from "./assets/favorite_outline.svg";
 import favoriteFilled from "./assets/favorite_filled.svg";
 import React, { useState } from "react";
 import { CrystalFavorite } from "../../../../../../../../types";
+import {
+  AirIcon,
+  FireIcon,
+  WaterIcon,
+  EarthIcon,
+  VibrationIcon,
+  FavoriteOnIcon,
+  FavoriteOffIcon,
+} from "../../../../../../../../assets/icons";
 
 function icon(element: string) {
   switch (element) {
     case "aire":
-      return iconAir;
+      return <AirIcon className={styles.icon} />;
     case "fuego":
-      return iconFire;
+      return <FireIcon className={styles.icon} />;
     case "agua":
-      return iconWater;
+      return <WaterIcon className={styles.icon} />;
     case "tierra":
-      return iconEarth;
+      return <EarthIcon className={styles.icon} />;
     default:
-      return iconAir;
+      return <AirIcon className={styles.icon} />;
   }
 }
 
 function elementsDisplay(list: Array<string>) {
   return list.map((element) => {
-    return (
-      <li key={element}>
-        <Image
-          className="icon"
-          src={icon(element)}
-          alt={`${element} icon`}
-          width={18}
-          height={18}
-        />
-      </li>
-    );
+    return <li key={element}>{icon(element)}</li>;
   });
 }
 
@@ -70,13 +65,11 @@ export default function TheCrystalCard(props: {
         onBlur={handlerClose}
       />
       <button onClick={props.onFavorite} className={styles.favoriteBtn}>
-        <Image
-          className={styles.favorite}
-          src={props.crystal.favorite ? favoriteFilled : favoriteOutline}
-          alt="favorite icon crystal"
-          width={24}
-          height={24}
-        />
+        {props.crystal.favorite ? (
+          <FavoriteOnIcon className={styles.icon} />
+        ) : (
+          <FavoriteOffIcon className={styles.icon} />
+        )}
       </button>
       <Image
         className={styles.point}
@@ -94,13 +87,7 @@ export default function TheCrystalCard(props: {
           <ul>{elementsDisplay(props.crystal.elements)}</ul>
           <div className={styles.vibration}>
             {props.crystal.vibration || 0}
-            <Image
-              className="icon"
-              src={vibrationIcon}
-              alt="vibration icon"
-              width={18}
-              height={18}
-            />
+            <VibrationIcon className={styles.icon} />
           </div>
         </div>
       </div>

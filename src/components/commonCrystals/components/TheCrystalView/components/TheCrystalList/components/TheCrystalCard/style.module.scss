@@ -62,11 +62,14 @@
   .favoriteBtn {
     align-self: flex-end;
     z-index: 3;
-    .favorite {
-      width: 2.4rem;
-      height: 2.4rem;
+    .icon {
+      width: var(--icon-size-2x);
+      height: var(--icon-size-2x);
       z-index: 3;
-      filter: var(--icon-filter);
+      color: var(--icon-color);
+      &:hover {
+        color: var(--icon-hard-color);
+      }
     }
   }
   .point {
@@ -95,9 +98,10 @@
       ul {
         display: flex;
         align-items: center;
-        img {
-          width: 2.4rem;
-          height: 2.4rem;
+        .icon {
+          width: var(--icon-size-2x);
+          height: var(--icon-size-2x);
+          color: var(--icon-hard-color);
         }
         li {
           height: 2.4rem;
@@ -108,14 +112,18 @@
         background-color: var(--font-color);
         color: var(--contrast-font-color);
         border-radius: var(--radius-2x);
-        gap: 0.5rem;
+        gap: 0.4rem;
         padding: 0.2rem 3rem 0.2rem 1rem;
         font-size: var(--font-1x);
         font-weight: 500;
         position: absolute;
         right: -22%;
-        img {
-          filter: var(--invert-icon-filter);
+        justify-content: center;
+        align-items: center;
+        .icon {
+          width: var(--icon-size-1_5x);
+          height: var(--icon-size-1_5x);
+          color: var(--icon-contrast-hard-color);
         }
       }
     }
